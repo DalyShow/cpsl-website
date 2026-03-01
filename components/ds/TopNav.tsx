@@ -29,7 +29,7 @@ export function TopNav({
   ],
   logoText = "CPSL",
   logoSub  = "CAROLINA PREMIER",
-  ctaLabel = "Apply Now",
+  ctaLabel = "Join Our League",
   ctaHref  = "#schedule",
   showLive = false,
 }: TopNavProps) {

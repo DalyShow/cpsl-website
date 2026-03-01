@@ -9,7 +9,7 @@ import { SiteFooter }      from "@/components/SiteFooter";
 export default function Home() {
   return (
     <>
-      <TopNav showLive={false} ctaLabel="Apply Now" />
+      <TopNav showLive={false} ctaLabel="Join Our League" />
       <main>
         <Hero />
         <FeaturedMatches />
