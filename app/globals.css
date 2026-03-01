@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
+/* ── CPSL Brand Tokens ──────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Navy / Dark surfaces */
+  --navy-950:  #020B1A;
+  --navy-900:  #0A0E1A;
+  --navy-800:  #0F1624;
+  --navy-700:  #1A2438;
+  --navy-600:  #1E2D45;
+  --navy-500:  #243352;
+
+  /* CPSL Blue (primary) */
+  --blue-300:  #8ABAFF;
+  --blue-400:  #6A9AF2;
+  --blue-500:  #4A78E8;
+  --blue-600:  #3761CC;
+  --blue-700:  #284BAA;
+
+  /* Championship Gold */
+  --gold-300:  #E0C88A;
+  --gold-400:  #CDB268;
+  --gold-500:  #BFA05A;
+  --gold-600:  #A58840;
+  --gold-700:  #8C7030;
+
+  /* Accents */
+  --crimson:   #BF1D2D;
+  --live-red:  #FF1744;
+  --green:     #00C853;
+
+  /* Surfaces */
+  --warm-white: #F4EFE6;
+  --surface:    #F4F6FA;
+
+  /* Semantic */
+  --primary:   #4A78E8;
+  --text-dark: #0A0E1A;
+  --text-mid:  #475569;
+  --text-muted:#94A3B8;
+  --border:    #E2E8F0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy-950:  var(--navy-950);
+  --color-navy-900:  var(--navy-900);
+  --color-navy-800:  var(--navy-800);
+  --color-navy-700:  var(--navy-700);
+  --color-navy-600:  var(--navy-600);
+  --color-blue-500:  var(--blue-500);
+  --color-blue-400:  var(--blue-400);
+  --color-gold-500:  var(--gold-500);
+  --color-gold-400:  var(--gold-400);
+  --color-crimson:   var(--crimson);
+  --color-warm-white: var(--warm-white);
+  --color-surface:   var(--surface);
+  --font-display:    "Barlow Condensed", sans-serif;
+  --font-body:       "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ── Base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy-950);
+  color: var(--warm-white);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
