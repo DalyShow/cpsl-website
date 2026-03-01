@@ -29,9 +29,9 @@ export function TopNav({
   ],
   logoText = "CPSL",
   logoSub  = "CAROLINA PREMIER",
-  ctaLabel = "Get Tickets",
+  ctaLabel = "Apply Now",
   ctaHref  = "#schedule",
-  showLive = true,
+  showLive = false,
 }: TopNavProps) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [menuOpen, setMenuOpen]       = useState(false);
