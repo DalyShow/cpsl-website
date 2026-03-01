@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
@@ -6,36 +7,45 @@ export function Hero() {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
       style={{ background: "#020B1A" }}
     >
-      {/* Background diagonal motif */}
-      <div
-        className="absolute inset-0 pointer-events-none select-none"
-        aria-hidden
-        style={{ opacity: 0.04 }}
-      >
-        {/* Large ghost shield */}
-        <svg
-          viewBox="0 0 600 680"
-          className="absolute"
-          style={{ width: 700, right: -120, top: "50%", transform: "translateY(-50%)" }}
-          fill="none"
-        >
-          <path
-            d="M60 20L540 20L540 380C540 560 300 640 300 640C300 640 60 560 60 380Z"
-            stroke="white"
-            strokeWidth="2"
-          />
-          <path d="M60 20L540 380" stroke="white" strokeWidth="1.5" strokeDasharray="8 8" />
-        </svg>
-      </div>
-
       {/* Gold top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#BFA05A" }} />
 
-      <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
-        <div className="max-w-3xl">
+      {/* Approved CPSL crest — right side, desktop only */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        style={{ right: -60, opacity: 0.6 }}
+        aria-hidden
+      >
+        <Image
+          src="/crest-blue.svg"
+          alt=""
+          width={520}
+          height={661}
+          priority
+          unoptimized
+        />
+      </div>
+
+      {/* Soft glow behind crest */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block"
+        style={{
+          right: 60,
+          width: 500,
+          height: 500,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #1084FE18 0%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 w-full">
+
+        {/* ── Content column (left 55% on desktop) ── */}
+        <div className="lg:max-w-[54%]">
 
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-wrap items-center gap-3 mb-6">
             <span
               className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border"
               style={{ color: "#BFA05A", borderColor: "#BFA05A33", background: "#BFA05A11" }}
@@ -47,7 +57,7 @@ export function Hero() {
 
           {/* Main headline */}
           <h1
-            className="text-[80px] md:text-[112px] font-black leading-none uppercase mb-6"
+            className="text-[72px] sm:text-[88px] md:text-[108px] font-black leading-none uppercase mb-6"
             style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
           >
             Carolina<br />
@@ -57,7 +67,7 @@ export function Hero() {
 
           {/* Subhead */}
           <p
-            className="text-lg md:text-xl mb-10 max-w-xl"
+            className="text-lg md:text-xl mb-10 max-w-lg"
             style={{ color: "#94A3B8", fontFamily: "var(--font-body)", lineHeight: 1.6 }}
           >
             The elite soccer league spanning North and South Carolina.
@@ -84,11 +94,23 @@ export function Hero() {
               Standings
             </Link>
           </div>
+
+          {/* Mobile crest — shown below CTAs on small screens */}
+          <div className="lg:hidden mt-12 flex justify-center" aria-hidden>
+            <Image
+              src="/crest-blue.svg"
+              alt=""
+              width={220}
+              height={280}
+              unoptimized
+              style={{ opacity: 0.5 }}
+            />
+          </div>
         </div>
 
-        {/* Live ticker */}
+        {/* ── Live ticker ── */}
         <div
-          className="mt-20 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
+          className="mt-16 lg:mt-20 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
           style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
         >
           <span
@@ -100,9 +122,9 @@ export function Hero() {
           </span>
           <div className="flex items-center gap-6 text-sm overflow-x-auto">
             {[
-              { home: "Charlotte FC", away: "Raleigh AC",      score: "2–1", min: "67'" },
-              { home: "Durham Utd",   away: "Triangle FC",     score: "0–0", min: "34'" },
-              { home: "Greensboro",   away: "Asheville City",  score: "1–2", min: "81'" },
+              { home: "Charlotte FC", away: "Raleigh AC",     score: "2–1", min: "67'" },
+              { home: "Durham Utd",   away: "Triangle FC",    score: "0–0", min: "34'" },
+              { home: "Greensboro",   away: "Asheville City", score: "1–2", min: "81'" },
             ].map((m) => (
               <div key={m.home} className="flex items-center gap-2 flex-shrink-0">
                 <span style={{ color: "#94A3B8" }}>{m.home}</span>
@@ -117,12 +139,12 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Stats row */}
-        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* ── Stats row ── */}
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { value: "22",  label: "Clubs" },
-            { value: "2",   label: "States" },
-            { value: "264", label: "Matches" },
+            { value: "22",   label: "Clubs" },
+            { value: "2",    label: "States" },
+            { value: "264",  label: "Matches" },
             { value: "1.2M", label: "Fans" },
           ].map(({ value, label }) => (
             <div
