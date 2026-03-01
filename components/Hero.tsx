@@ -10,107 +10,98 @@ export function Hero() {
       {/* Gold top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#BFA05A" }} />
 
-      {/* Approved CPSL crest — right side, desktop only */}
-      <div
-        className="absolute top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
-        style={{ right: -60, opacity: 0.6 }}
-        aria-hidden
-      >
-        <Image
-          src="/crest-blue.svg"
-          alt=""
-          width={520}
-          height={661}
-          priority
-          unoptimized
-        />
-      </div>
-
-      {/* Soft glow behind crest */}
-      <div
-        className="absolute top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block"
-        style={{
-          right: 60,
-          width: 500,
-          height: 500,
-          borderRadius: "50%",
-          background: "radial-gradient(circle, #1084FE18 0%, transparent 70%)",
-        }}
-        aria-hidden
-      />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 w-full">
 
-        {/* ── Content column (left 55% on desktop) ── */}
-        <div className="lg:max-w-[54%]">
+        {/* ── Two-column row: content left, crest right ── */}
+        <div className="flex items-center gap-8">
 
-          {/* Eyebrow */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span
-              className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border"
-              style={{ color: "#BFA05A", borderColor: "#BFA05A33", background: "#BFA05A11" }}
+          {/* Left: content */}
+          <div className="flex-1 min-w-0">
+
+            {/* Eyebrow */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span
+                className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border"
+                style={{ color: "#BFA05A", borderColor: "#BFA05A33", background: "#BFA05A11" }}
+              >
+                2025–26 Season
+              </span>
+              <span className="text-xs" style={{ color: "#475569" }}>Matchweek 22 · 8 matches live</span>
+            </div>
+
+            {/* Main headline */}
+            <h1
+              className="text-[72px] sm:text-[88px] md:text-[108px] font-black leading-none uppercase mb-6"
+              style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
             >
-              2025–26 Season
-            </span>
-            <span className="text-xs" style={{ color: "#475569" }}>Matchweek 22 · 8 matches live</span>
+              Carolina<br />
+              <span style={{ color: "#4A78E8" }}>Premier</span><br />
+              Soccer
+            </h1>
+
+            {/* Subhead */}
+            <p
+              className="text-lg md:text-xl mb-10 max-w-lg"
+              style={{ color: "#94A3B8", fontFamily: "var(--font-body)", lineHeight: 1.6 }}
+            >
+              The elite soccer league spanning North and South Carolina.
+              22 clubs, 2 states, one championship.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="#schedule"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
+                style={{ background: "#4A78E8", fontFamily: "var(--font-body)" }}
+              >
+                View Schedule
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="#standings"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold transition-all hover:opacity-90"
+                style={{ background: "#1E2D45", color: "white", fontFamily: "var(--font-body)" }}
+              >
+                Standings
+              </Link>
+            </div>
           </div>
 
-          {/* Main headline */}
-          <h1
-            className="text-[72px] sm:text-[88px] md:text-[108px] font-black leading-none uppercase mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
+          {/* Right: approved crest — desktop only, right-edge flush with container */}
+          <div
+            className="hidden lg:flex flex-shrink-0 justify-end items-center"
+            style={{ opacity: 0.65 }}
+            aria-hidden
           >
-            Carolina<br />
-            <span style={{ color: "#4A78E8" }}>Premier</span><br />
-            Soccer
-          </h1>
-
-          {/* Subhead */}
-          <p
-            className="text-lg md:text-xl mb-10 max-w-lg"
-            style={{ color: "#94A3B8", fontFamily: "var(--font-body)", lineHeight: 1.6 }}
-          >
-            The elite soccer league spanning North and South Carolina.
-            22 clubs, 2 states, one championship.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="#schedule"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
-              style={{ background: "#4A78E8", fontFamily: "var(--font-body)" }}
-            >
-              View Schedule
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link
-              href="#standings"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold transition-all hover:opacity-90"
-              style={{ background: "#1E2D45", color: "white", fontFamily: "var(--font-body)" }}
-            >
-              Standings
-            </Link>
-          </div>
-
-          {/* Mobile crest — shown below CTAs on small screens */}
-          <div className="lg:hidden mt-12 flex justify-center" aria-hidden>
             <Image
               src="/crest-blue.svg"
               alt=""
-              width={220}
-              height={280}
+              width={440}
+              height={560}
+              priority
               unoptimized
-              style={{ opacity: 0.5 }}
             />
           </div>
         </div>
 
+        {/* Mobile crest — centered below CTAs */}
+        <div className="lg:hidden mt-12 flex justify-center" aria-hidden>
+          <Image
+            src="/crest-blue.svg"
+            alt=""
+            width={200}
+            height={254}
+            unoptimized
+            style={{ opacity: 0.45 }}
+          />
+        </div>
+
         {/* ── Live ticker ── */}
         <div
-          className="mt-16 lg:mt-20 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
+          className="mt-16 lg:mt-12 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
           style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
         >
           <span
