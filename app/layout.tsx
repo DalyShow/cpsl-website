@@ -16,11 +16,14 @@ const inter = Inter({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await client.fetch(
-    `*[_type == "siteSettings"][0]{ siteName, siteDescription }`,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  let settings = null;
+  try {
+    settings = await client.fetch(
+      `*[_type == "siteSettings"][0]{ siteName, siteDescription }`
+    );
+  } catch {
+    // Sanity unavailable — use hardcoded defaults below
+  }
 
   const title = settings?.siteName ?? "CPSL — Carolina Premier Soccer League";
   const description =
@@ -30,11 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-    },
+    openGraph: { title, description, type: "website" },
   };
 }
 

@@ -1,14 +1,17 @@
 import { TopNav } from "@/components/ds/TopNav";
 import { client } from "@/lib/sanity/client";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const settings = await client.fetch(
-    `*[_type == "siteSettings"][0]{ navItems, ctaLabel, ctaHref }`,
-    {},
-    { next: { revalidate: 60 } }
-  );
+  let settings = null;
+  try {
+    settings = await client.fetch(
+      `*[_type == "siteSettings"][0]{ navItems, ctaLabel, ctaHref }`
+    );
+  } catch {
+    // Sanity unavailable — TopNav will use its built-in defaults
+  }
 
   return (
     <>
