@@ -10,19 +10,19 @@
   --navy-600:  #1E2D45;
   --navy-500:  #243352;
 
-  /* CPSL Blue (primary) */
-  --blue-300:  #8ABAFF;
-  --blue-400:  #6A9AF2;
-  --blue-500:  #3B82F6;
-  --blue-600:  #3761CC;
-  --blue-700:  #284BAA;
-
-  /* Championship Gold */
-  --gold-300:  #E0C88A;
-  --gold-400:  #CDB268;
+  /* Championship Gold (primary) */
+  --gold-300:  #E5C97A;
+  --gold-400:  #D8B85E;
   --gold-500:  #C9A74C;
-  --gold-600:  #A58840;
-  --gold-700:  #8C7030;
+  --gold-600:  #B08A34;
+  --gold-700:  #8C6E24;
+
+  /* CPSL Blue (supporting interactive) */
+  --blue-300:  #93C5FD;
+  --blue-400:  #60A5FA;
+  --blue-500:  #3B82F6;
+  --blue-600:  #2563EB;
+  --blue-700:  #1D4ED8;
 
   /* Accents */
   --crimson:   #BF1D2D;
@@ -34,7 +34,7 @@
   --surface:    #F4F6FA;
 
   /* Semantic */
-  --primary:   #3B82F6;
+  --primary:   #C9A74C;
   --text-dark: #091628;
   --text-mid:  #475569;
   --text-muted:#94A3B8;

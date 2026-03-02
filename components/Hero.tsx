@@ -35,7 +35,7 @@ export function Hero() {
               style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
             >
               Carolina<br />
-              <span style={{ color: "#3B82F6" }}>Premier</span><br />
+              <span style={{ color: "#C9A74C" }}>Premier</span><br />
               Soccer
             </h1>
 
@@ -53,7 +53,7 @@ export function Hero() {
               <Link
                 href="#schedule"
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
-                style={{ background: "#3B82F6", fontFamily: "var(--font-body)" }}
+                style={{ background: "#C9A74C", color: "#091628", fontFamily: "var(--font-body)" }}
               >
                 View Schedule
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -145,7 +145,7 @@ export function Hero() {
             >
               <div
                 className="text-4xl font-black leading-none mb-1"
-                style={{ fontFamily: "var(--font-display)", color: "#3B82F6" }}
+                style={{ fontFamily: "var(--font-display)", color: "#C9A74C" }}
               >
                 {value}
               </div>

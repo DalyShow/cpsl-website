@@ -25,7 +25,7 @@ export function SiteNav() {
         <Link href="/" className="flex items-center gap-2.5 py-4 flex-shrink-0" onClick={() => setActiveIndex(-1)}>
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: "#3B82F6" }}
+            style={{ background: "#C9A74C", color: "#091628" }}
           >
             <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
               <path d="M1 1L15 1L15 12C15 16 8 17 8 17C8 17 1 16 1 12Z" fill="none" stroke="white" strokeWidth="1.5" />
@@ -52,7 +52,7 @@ export function SiteNav() {
               className="px-4 py-4 text-sm font-medium border-b-2 transition-colors"
               style={{
                 color: i === activeIndex ? "white" : "#64748B",
-                borderColor: i === activeIndex ? "#3B82F6" : "transparent",
+                borderColor: i === activeIndex ? "#C9A74C" : "transparent",
               }}
             >
               {item.label}
@@ -75,7 +75,7 @@ export function SiteNav() {
           <Link
             href="#schedule"
             className="hidden md:flex items-center px-4 py-2 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-            style={{ background: "#3B82F6" }}
+            style={{ background: "#C9A74C", color: "#091628" }}
           >
             Get Tickets
           </Link>
@@ -106,7 +106,7 @@ export function SiteNav() {
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
               className="block px-6 py-4 text-sm font-medium border-b"
-              style={{ color: i === activeIndex ? "#3B82F6" : "#94A3B8", borderColor: "#1E2D45" }}
+              style={{ color: i === activeIndex ? "#C9A74C" : "#94A3B8", borderColor: "#1E2D45" }}
             >
               {item.label}
             </Link>
@@ -115,7 +115,7 @@ export function SiteNav() {
             <Link
               href="#schedule"
               className="block w-full text-center px-4 py-2.5 rounded-xl text-sm font-bold text-white"
-              style={{ background: "#3B82F6" }}
+              style={{ background: "#C9A74C", color: "#091628" }}
               onClick={() => setMenuOpen(false)}
             >
               Get Tickets

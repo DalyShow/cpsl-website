@@ -6,7 +6,7 @@ export function CtaBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
         <div
           className="relative rounded-3xl overflow-hidden px-8 sm:px-16 py-14 sm:py-20 text-center"
-          style={{ background: "linear-gradient(135deg, #1E2D45 0%, #091628 100%)", border: "1px solid #3B82F633" }}
+          style={{ background: "linear-gradient(135deg, #1E2D45 0%, #091628 100%)", border: "1px solid #C9A74C33" }}
         >
           {/* Gold accent bar */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5" style={{ background: "#C9A74C" }} />
@@ -28,7 +28,7 @@ export function CtaBanner() {
               style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
             >
               Be Part of the<br />
-              <span style={{ color: "#3B82F6" }}>League</span>
+              <span style={{ color: "#C9A74C" }}>League</span>
             </h2>
             <p className="text-base sm:text-lg mb-10 max-w-xl mx-auto" style={{ color: "#94A3B8" }}>
               Season tickets, match-day experiences, and exclusive club access — across 22 clubs in North and South Carolina.
@@ -37,7 +37,7 @@ export function CtaBanner() {
               <Link
                 href="#schedule"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90"
-                style={{ background: "#3B82F6" }}
+                style={{ background: "#C9A74C", color: "#091628" }}
               >
                 Buy Season Tickets
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
