@@ -3,6 +3,8 @@
 interface ContentSectionCenteredProps {
   eyebrow?:    string;
   heading?:    string;
+  /** Optional image from Sanity — asset is pre-dereferenced via GROQ */
+  image?:      { asset?: { url?: string }; alt?: string };
   lead?:       string;
   paragraphs?: string[];
   background?: "white" | "surface" | "cream" | "navy" | "gold";
@@ -13,6 +15,7 @@ interface ContentSectionCenteredProps {
 export function ContentSectionCentered({
   eyebrow    = "About the League",
   heading    = "Competitive Soccer Across the Carolinas",
+  image,
   lead       = "From the Piedmont to the coast, CPSL brings together the best clubs in North and South Carolina under one banner — raising the standard for competitive soccer at every level.",
   paragraphs = [],
   background = "cream",
@@ -31,6 +34,7 @@ export function ContentSectionCentered({
                   : background === "gold"    ? "#4A2E00"
                   : "#64748B";
 
+  const imageUrl  = image?.asset?.url;
   const mid  = Math.ceil(paragraphs.length / 2);
   const col1 = paragraphs.slice(0, mid);
   const col2 = paragraphs.slice(mid);
@@ -55,7 +59,7 @@ export function ContentSectionCentered({
             </p>
           )}
           <h2
-            className="uppercase mb-6"
+            className="uppercase"
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 900,
@@ -63,10 +67,28 @@ export function ContentSectionCentered({
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
               color: headColor,
+              marginBottom: imageUrl ? "32px" : "24px",
             }}
           >
             {heading}
           </h2>
+
+          {/* Optional image — between heading and lead */}
+          {imageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageUrl}
+              alt={image?.alt ?? ""}
+              style={{
+                display: "block",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                marginBottom: "32px",
+              }}
+            />
+          )}
+
           {lead && (
             <p className="text-lg leading-relaxed" style={{ color: leadColor }}>
               {lead}

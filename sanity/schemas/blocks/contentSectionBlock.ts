@@ -7,6 +7,16 @@ export const contentSectionBlock = defineType({
   fields: [
     defineField({ name: "eyebrow", title: "Eyebrow Label",  type: "string" }),
     defineField({ name: "heading", title: "Heading",        type: "string" }),
+    defineField({
+      name: "image",
+      title: "Image (below heading)",
+      description: "Optional. Displays full-width between the heading and lead paragraph.",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: "alt", title: "Alt Text", type: "string" }),
+      ],
+    }),
     defineField({ name: "lead",    title: "Lead Paragraph", type: "text", rows: 3 }),
     defineField({
       name: "paragraphs",

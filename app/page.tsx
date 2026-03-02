@@ -25,7 +25,8 @@ export default async function Home() {
       `*[_type == "homePage"][0]{
         sections[]{
           ...,
-          backgroundImage{ ..., asset->{ url } }
+          backgroundImage{ ..., asset->{ url } },
+          image{ ..., asset->{ url } }
         }
       }`
     ),
