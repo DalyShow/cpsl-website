@@ -1,3 +1,4 @@
+"use client";
 import dynamic from "next/dynamic";
 
 // ssr: false prevents sanity.config.ts from being evaluated on the server,
