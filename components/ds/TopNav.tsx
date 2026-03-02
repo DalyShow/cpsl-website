@@ -22,11 +22,10 @@ export interface TopNavProps {
 
 export function TopNav({
   items = [
-    { label: "Standings", href: "#standings" },
-    { label: "Schedule",  href: "#schedule" },
-    { label: "Teams",     href: "#teams" },
-    { label: "Stats",     href: "#stats" },
-    { label: "News",      href: "#news" },
+    { label: "League Information",   href: "#league" },
+    { label: "For Teams",            href: "#teams" },
+    { label: "For Coaches/Managers", href: "#coaches" },
+    { label: "Contact",              href: "#contact" },
   ],
   logoText = "CPSL",
   logoSub  = "CAROLINA PREMIER",
@@ -69,7 +68,7 @@ export function TopNav({
               onClick={() => setActiveIndex(i)}
               className="px-4 py-4 text-sm font-medium border-b-2 transition-colors"
               style={{
-                color: i === activeIndex ? "white" : "#64748B",
+                color: i === activeIndex ? "white" : "#F4EFE6",
                 borderColor: i === activeIndex ? "#C9A74C" : "transparent",
               }}
             >
@@ -105,9 +104,9 @@ export function TopNav({
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
-            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} style={{ background: "#94A3B8" }} />
-            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "opacity-0" : ""}`} style={{ background: "#94A3B8" }} />
-            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} style={{ background: "#94A3B8" }} />
+            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} style={{ background: "#F4EFE6" }} />
+            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "opacity-0" : ""}`} style={{ background: "#F4EFE6" }} />
+            <span className={`block h-0.5 w-5 rounded transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} style={{ background: "#F4EFE6" }} />
           </button>
         </div>
       </div>
@@ -121,7 +120,7 @@ export function TopNav({
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
               className="block px-6 py-4 text-sm font-medium border-b"
-              style={{ color: i === activeIndex ? "#C9A74C" : "#94A3B8", borderColor: "#1E2D45" }}
+              style={{ color: i === activeIndex ? "#C9A74C" : "#F4EFE6", borderColor: "#1E2D45" }}
             >
               {item.label}
             </Link>
