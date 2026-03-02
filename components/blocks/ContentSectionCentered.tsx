@@ -81,10 +81,10 @@ export function ContentSectionCentered({
               alt={image?.alt ?? ""}
               style={{
                 display: "block",
-                width: "100%",
+                width: "auto",
+                maxWidth: "100%",
                 maxHeight: "450px",
-                objectFit: "cover",
-                marginBottom: "32px",
+                margin: "0 auto 32px",
               }}
             />
           )}
