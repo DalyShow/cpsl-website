@@ -10,6 +10,8 @@ interface ContentSectionCenteredProps {
   background?: "white" | "surface" | "cream" | "navy" | "gold";
   /** 1 = single centered column, 2 = two columns at lg (default) */
   columns?:    number;
+  /** Optional image at the bottom of the section, 120px below the last content */
+  bottomImage?: { asset?: { url?: string }; alt?: string };
 }
 
 export function ContentSectionCentered({
@@ -20,6 +22,7 @@ export function ContentSectionCentered({
   paragraphs = [],
   background = "cream",
   columns    = 2,
+  bottomImage,
 }: ContentSectionCenteredProps) {
   const bgColor   = background === "navy"    ? "#091628"
                   : background === "surface" ? "#F4F6FA"
@@ -34,7 +37,8 @@ export function ContentSectionCentered({
                   : background === "gold"    ? "#4A2E00"
                   : "#64748B";
 
-  const imageUrl  = image?.asset?.url;
+  const imageUrl       = image?.asset?.url;
+  const bottomImageUrl = bottomImage?.asset?.url;
   const mid  = Math.ceil(paragraphs.length / 2);
   const col1 = paragraphs.slice(0, mid);
   const col2 = paragraphs.slice(mid);
@@ -130,6 +134,22 @@ export function ContentSectionCentered({
               </div>
             </div>
           )
+        )}
+
+        {/* Bottom image — 120px below last content */}
+        {bottomImageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={bottomImageUrl}
+            alt={bottomImage?.alt ?? ""}
+            style={{
+              display: "block",
+              width: "auto",
+              maxWidth: "100%",
+              maxHeight: "450px",
+              margin: "120px auto 0",
+            }}
+          />
         )}
       </div>
     </section>

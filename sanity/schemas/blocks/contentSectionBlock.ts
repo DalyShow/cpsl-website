@@ -54,6 +54,16 @@ export const contentSectionBlock = defineType({
       },
       initialValue: 2,
     }),
+    defineField({
+      name: "bottomImage",
+      title: "Bottom Image",
+      description: "Optional. Displays below all content with 120px of spacing.",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: "alt", title: "Alt Text", type: "string" }),
+      ],
+    }),
   ],
   preview: {
     select: { title: "heading", bg: "background" },
