@@ -72,7 +72,7 @@ export function TopNav({
                   borderColor: i === activeIndex ? "#C9A74C" : "transparent",
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 500,
-                  fontSize: "15px",
+                  fontSize: "16px",
                 }}
               >
                 {item.label}
