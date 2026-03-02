@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
+import { client } from "@/lib/sanity/client";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-display",
@@ -14,16 +15,28 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "CPSL — Carolina Premier Soccer League",
-  description:
-    "The premier soccer league spanning North and South Carolina. Live scores, standings, match schedules, and team profiles.",
-  openGraph: {
-    title: "CPSL — Carolina Premier Soccer League",
-    description: "Live scores, standings, and schedules for the Carolina Premier Soccer League.",
-    type: "website",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await client.fetch(
+    `*[_type == "siteSettings"][0]{ siteName, siteDescription }`,
+    {},
+    { next: { revalidate: 60 } }
+  );
+
+  const title = settings?.siteName ?? "CPSL — Carolina Premier Soccer League";
+  const description =
+    settings?.siteDescription ??
+    "The premier soccer league spanning North and South Carolina. Live scores, standings, match schedules, and team profiles.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+    },
+  };
+}
 
 export default function RootLayout({
   children,
