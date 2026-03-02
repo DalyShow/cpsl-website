@@ -32,10 +32,10 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
   return (
     <div
       className="rounded-2xl overflow-hidden border hover:border-[#3B82F6] transition-colors group"
-      style={{ background: "#091628", borderColor: "#1E2D45" }}
+      style={{ background: "#FFFFFF", borderColor: "#D9D0BF" }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: "#1E2D45" }}>
+      <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: "#D9D0BF" }}>
         <span className="text-xs font-semibold" style={{ color: "#475569" }}>{match.competition}</span>
         <span className="text-xs font-bold" style={{ color: "#C9A74C" }}>{match.date}</span>
       </div>
@@ -50,7 +50,7 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
           >
             {match.home.abbr}
           </div>
-          <span className="text-xs font-semibold text-center" style={{ color: "#94A3B8" }}>
+          <span className="text-xs font-semibold text-center" style={{ color: "#64748B" }}>
             {match.home.name}
           </span>
         </div>
@@ -59,11 +59,11 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
         <div className="flex flex-col items-center gap-1 px-4">
           <span
             className="text-3xl font-black"
-            style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-1px" }}
+            style={{ fontFamily: "var(--font-display)", color: "#091628", letterSpacing: "-1px" }}
           >
             VS
           </span>
-          <span className="text-[10px] tracking-widest uppercase" style={{ color: "#475569" }}>
+          <span className="text-[10px] tracking-widest uppercase" style={{ color: "#94A3B8" }}>
             {match.status}
           </span>
         </div>
@@ -76,7 +76,7 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
           >
             {match.away.abbr}
           </div>
-          <span className="text-xs font-semibold text-center" style={{ color: "#94A3B8" }}>
+          <span className="text-xs font-semibold text-center" style={{ color: "#64748B" }}>
             {match.away.name}
           </span>
         </div>
@@ -85,9 +85,9 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
       {/* Footer */}
       <div
         className="flex items-center justify-between px-5 py-3 border-t"
-        style={{ borderColor: "#1E2D45" }}
+        style={{ borderColor: "#D9D0BF" }}
       >
-        <span className="text-xs" style={{ color: "#475569" }}>{match.venue}</span>
+        <span className="text-xs" style={{ color: "#64748B" }}>{match.venue}</span>
         <button
           className="text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
           style={{ color: "#3B82F6", background: "#3B82F622" }}
@@ -101,7 +101,7 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
 
 export function FeaturedMatches() {
   return (
-    <section id="schedule" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
+    <section id="schedule" style={{ background: "#EDE8DC", borderTop: "1px solid #D9D0BF" }}>
       <div className="max-w-7xl mx-auto px-6 py-24">
         {/* Section header */}
         <div className="flex items-end justify-between mb-12">
@@ -111,7 +111,7 @@ export function FeaturedMatches() {
             </p>
             <h2
               className="text-5xl md:text-6xl font-black uppercase"
-              style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-1px" }}
+              style={{ fontFamily: "var(--font-display)", color: "#091628", letterSpacing: "-1px" }}
             >
               Next Matches
             </h2>

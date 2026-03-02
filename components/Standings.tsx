@@ -26,7 +26,7 @@ function FormDot({ result }: { result: string }) {
 
 export function Standings() {
   return (
-    <section id="standings" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
+    <section id="standings" style={{ background: "#F4EFE6", borderTop: "1px solid #D9D0BF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
 
         {/* Header */}
@@ -37,7 +37,7 @@ export function Standings() {
             </p>
             <h2
               className="text-4xl sm:text-5xl md:text-6xl font-black uppercase"
-              style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-1px" }}
+              style={{ fontFamily: "var(--font-display)", color: "#091628", letterSpacing: "-1px" }}
             >
               Standings
             </h2>
@@ -46,14 +46,14 @@ export function Standings() {
         </div>
 
         {/* Table */}
-        <div className="rounded-2xl overflow-hidden border" style={{ borderColor: "#1E2D45" }}>
+        <div className="rounded-2xl overflow-hidden border" style={{ borderColor: "#D9D0BF" }}>
           {/* Column headers */}
           <div
             className="hidden sm:grid items-center px-5 py-3 text-[10px] font-bold uppercase tracking-widest"
             style={{
               gridTemplateColumns: "32px 1fr 40px 40px 40px 40px 52px 60px 96px",
-              background: "#091628",
-              borderBottom: "1px solid #1E2D45",
+              background: "#EDE8DC",
+              borderBottom: "1px solid #D9D0BF",
               color: "#475569",
             }}
           >
@@ -73,8 +73,8 @@ export function Standings() {
               key={row.team}
               className="border-b last:border-b-0"
               style={{
-                background: i === 0 ? "#1E2D45" : i % 2 === 0 ? "#091628" : "#0D1220",
-                borderColor: "#1E2D45",
+                background: i === 0 ? "#E8E1D5" : i % 2 === 0 ? "#FFFFFF" : "#F4EFE6",
+                borderColor: "#D9D0BF",
               }}
             >
               {/* Desktop row */}
@@ -90,7 +90,7 @@ export function Standings() {
                   >
                     {row.abbr}
                   </div>
-                  <span className="text-sm font-semibold" style={{ color: "white" }}>{row.team}</span>
+                  <span className="text-sm font-semibold" style={{ color: "#091628" }}>{row.team}</span>
                 </div>
                 {[row.p, row.w, row.d, row.l].map((v, j) => (
                   <span key={j} className="text-center text-sm" style={{ color: "#94A3B8" }}>{v}</span>
@@ -110,7 +110,7 @@ export function Standings() {
                 <div className="w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black text-white flex-shrink-0" style={{ background: row.color }}>
                   {row.abbr}
                 </div>
-                <span className="text-sm font-semibold flex-1" style={{ color: "white" }}>{row.team}</span>
+                <span className="text-sm font-semibold flex-1" style={{ color: "#091628" }}>{row.team}</span>
                 <div className="flex items-center gap-3 text-xs">
                   <span style={{ color: "#94A3B8" }}>{row.p}P</span>
                   <span className="font-black" style={{ color: "#3B82F6" }}>{row.pts}pts</span>

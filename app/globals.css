@@ -64,8 +64,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--navy-950);
-  color: var(--warm-white);
+  background: var(--warm-white);
+  color: var(--text-dark);
   font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.6;

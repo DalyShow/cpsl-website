@@ -26,7 +26,7 @@ const NEWS = [
 
 export function NewsStrip() {
   return (
-    <section id="news" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
+    <section id="news" style={{ background: "#EDE8DC", borderTop: "1px solid #D9D0BF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
 
         {/* Header */}
@@ -35,7 +35,7 @@ export function NewsStrip() {
             <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#3B82F6" }}>Latest</p>
             <h2
               className="text-4xl sm:text-5xl md:text-6xl font-black uppercase"
-              style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-1px" }}
+              style={{ fontFamily: "var(--font-display)", color: "#091628", letterSpacing: "-1px" }}
             >
               News
             </h2>
@@ -50,12 +50,12 @@ export function NewsStrip() {
             <article
               key={i}
               className="rounded-2xl border overflow-hidden group cursor-pointer hover:border-[#3B82F6] transition-colors"
-              style={{ background: "#091628", borderColor: "#1E2D45" }}
+              style={{ background: "#FFFFFF", borderColor: "#D9D0BF" }}
             >
               {/* Image placeholder */}
               <div
                 className="w-full h-44 relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, #1E2D45 0%, #091628 100%)` }}
+                style={{ background: `linear-gradient(135deg, #E8E1D5 0%, #D9D0BF 100%)` }}
               >
                 {/* Diagonal motif on each card */}
                 <div
@@ -66,7 +66,7 @@ export function NewsStrip() {
                 />
                 <div
                   className="absolute bottom-3 right-3 text-3xl font-black opacity-20"
-                  style={{ fontFamily: "var(--font-display)", color: "white" }}
+                  style={{ fontFamily: "var(--font-display)", color: "#091628" }}
                 >
                   CPSL
                 </div>
@@ -79,7 +79,7 @@ export function NewsStrip() {
                 </div>
                 <h3
                   className="text-base font-bold leading-snug mb-2 group-hover:text-[#3B82F6] transition-colors"
-                  style={{ color: "white" }}
+                  style={{ color: "#091628" }}
                 >
                   {item.headline}
                 </h3>

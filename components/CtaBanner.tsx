@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function CtaBanner() {
   return (
-    <section style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
+    <section style={{ background: "#F4EFE6", borderTop: "1px solid #D9D0BF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
         <div
           className="relative rounded-3xl overflow-hidden px-8 sm:px-16 py-14 sm:py-20 text-center"

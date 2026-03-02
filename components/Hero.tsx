@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ background: "#091628" }}
+      style={{ background: "#F4EFE6" }}
     >
       {/* Gold top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#C9A74C" }} />
@@ -32,7 +32,7 @@ export function Hero() {
             {/* Main headline */}
             <h1
               className="text-[72px] sm:text-[88px] md:text-[108px] font-black leading-none uppercase mb-6"
-              style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
+              style={{ fontFamily: "var(--font-display)", color: "#091628", letterSpacing: "-2px" }}
             >
               Carolina<br />
               <span style={{ color: "#C9A74C" }}>Premier</span><br />
@@ -42,7 +42,7 @@ export function Hero() {
             {/* Subhead */}
             <p
               className="text-lg md:text-xl mb-10 max-w-lg"
-              style={{ color: "#94A3B8", fontFamily: "var(--font-body)", lineHeight: 1.6 }}
+              style={{ color: "#64748B", fontFamily: "var(--font-body)", lineHeight: 1.6 }}
             >
               The elite soccer league spanning North and South Carolina.
               22 clubs, 2 states, one championship.
@@ -63,7 +63,7 @@ export function Hero() {
               <Link
                 href="#standings"
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold transition-all hover:opacity-90"
-                style={{ background: "#1E2D45", color: "white", fontFamily: "var(--font-body)" }}
+                style={{ background: "#E8E1D5", color: "#091628", fontFamily: "var(--font-body)" }}
               >
                 Standings
               </Link>
@@ -102,7 +102,7 @@ export function Hero() {
         {/* ── Live ticker ── */}
         <div
           className="mt-16 lg:mt-12 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
-          style={{ background: "#091628", borderColor: "#1E2D45" }}
+          style={{ background: "#FFFFFF", borderColor: "#D9D0BF" }}
         >
           <span
             className="flex items-center gap-1.5 text-xs font-bold flex-shrink-0"
@@ -118,13 +118,13 @@ export function Hero() {
               { home: "Greensboro",   away: "Asheville City", score: "1–2", min: "81'" },
             ].map((m) => (
               <div key={m.home} className="flex items-center gap-2 flex-shrink-0">
-                <span style={{ color: "#94A3B8" }}>{m.home}</span>
-                <span className="font-bold px-2 py-0.5 rounded-lg text-xs" style={{ background: "#1E2D45", color: "white" }}>
+                <span style={{ color: "#64748B" }}>{m.home}</span>
+                <span className="font-bold px-2 py-0.5 rounded-lg text-xs" style={{ background: "#091628", color: "white" }}>
                   {m.score}
                 </span>
-                <span style={{ color: "#94A3B8" }}>{m.away}</span>
-                <span className="text-xs" style={{ color: "#475569" }}>{m.min}</span>
-                <span className="w-px h-4 ml-2" style={{ background: "#1E2D45" }} />
+                <span style={{ color: "#64748B" }}>{m.away}</span>
+                <span className="text-xs" style={{ color: "#94A3B8" }}>{m.min}</span>
+                <span className="w-px h-4 ml-2" style={{ background: "#D9D0BF" }} />
               </div>
             ))}
           </div>
@@ -141,7 +141,7 @@ export function Hero() {
             <div
               key={label}
               className="rounded-2xl p-5 border"
-              style={{ background: "#091628", borderColor: "#1E2D45" }}
+              style={{ background: "#FFFFFF", borderColor: "#D9D0BF" }}
             >
               <div
                 className="text-4xl font-black leading-none mb-1"
@@ -149,7 +149,7 @@ export function Hero() {
               >
                 {value}
               </div>
-              <div className="text-xs uppercase tracking-widest" style={{ color: "#475569" }}>{label}</div>
+              <div className="text-xs uppercase tracking-widest" style={{ color: "#64748B" }}>{label}</div>
             </div>
           ))}
         </div>
