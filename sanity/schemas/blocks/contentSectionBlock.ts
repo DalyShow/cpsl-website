@@ -1,0 +1,54 @@
+import { defineField, defineType } from "sanity";
+
+export const contentSectionBlock = defineType({
+  name: "contentSectionBlock",
+  title: "Content Section",
+  type: "object",
+  fields: [
+    defineField({ name: "eyebrow", title: "Eyebrow Label",  type: "string" }),
+    defineField({ name: "heading", title: "Heading",        type: "string" }),
+    defineField({ name: "lead",    title: "Lead Paragraph", type: "text", rows: 3 }),
+    defineField({
+      name: "paragraphs",
+      title: "Body Paragraphs",
+      description: "Each paragraph is a separate block of text.",
+      type: "array",
+      of: [{ type: "text" }],
+    }),
+    defineField({
+      name: "background",
+      title: "Background",
+      type: "string",
+      options: {
+        list: [
+          { title: "Cream (default)", value: "cream" },
+          { title: "White",           value: "white" },
+          { title: "Surface (light grey)", value: "surface" },
+          { title: "Navy",            value: "navy" },
+          { title: "Gold",            value: "gold" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "cream",
+    }),
+    defineField({
+      name: "columns",
+      title: "Body Columns",
+      type: "number",
+      options: {
+        list: [
+          { title: "1 column — editorial, short copy", value: 1 },
+          { title: "2 columns — default, longer copy", value: 2 },
+        ],
+        layout: "radio",
+      },
+      initialValue: 2,
+    }),
+  ],
+  preview: {
+    select: { title: "heading", bg: "background" },
+    prepare(s) {
+      return { title: `Content Section — ${s.title ?? "Untitled"}`, subtitle: s.bg ?? "cream" };
+    },
+  },
+});

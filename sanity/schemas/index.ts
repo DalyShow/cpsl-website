@@ -1,4 +1,13 @@
-import { siteSettings } from "./siteSettings";
-import { homePage } from "./homePage";
+import { siteSettings }       from "./siteSettings";
+import { homePage }           from "./homePage";
+import { heroBlock }          from "./blocks/heroBlock";
+import { contentSectionBlock } from "./blocks/contentSectionBlock";
 
-export const schemaTypes = [siteSettings, homePage];
+export const schemaTypes = [
+  // Documents
+  siteSettings,
+  homePage,
+  // Blocks (reusable object types used inside page section arrays)
+  heroBlock,
+  contentSectionBlock,
+];
