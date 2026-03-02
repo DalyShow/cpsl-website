@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
-import { client } from "@/lib/sanity/client";
+import { sanityFetch } from "@/lib/sanity/client";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-display",
@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  let settings = null;
+  let settings: { siteName?: string; siteDescription?: string } | null = null;
   try {
-    settings = await client.fetch(
+    settings = await sanityFetch<{ siteName?: string; siteDescription?: string }>(
       `*[_type == "siteSettings"][0]{ siteName, siteDescription }`
     );
   } catch {

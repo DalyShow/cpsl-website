@@ -1,12 +1,12 @@
 import { TopNav } from "@/components/ds/TopNav";
-import { client } from "@/lib/sanity/client";
+import { sanityFetch } from "@/lib/sanity/client";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  let settings = null;
+  let settings: { navItems?: { label: string; href: string }[]; ctaLabel?: string; ctaHref?: string } | null = null;
   try {
-    settings = await client.fetch(
+    settings = await sanityFetch<{ navItems?: { label: string; href: string }[]; ctaLabel?: string; ctaHref?: string }>(
       `*[_type == "siteSettings"][0]{ navItems, ctaLabel, ctaHref }`
     );
   } catch {
