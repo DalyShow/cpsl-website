@@ -43,42 +43,43 @@ export function TopNav({
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
 
-        {/* ── Logo ─────────────────────────────────────────────────── */}
-        <Link
-          href="/"
-          className="flex items-center py-3 flex-shrink-0"
-          onClick={() => setActiveIndex(-1)}
-        >
-          <Image
-            src="/cpsl-horizontal.svg"
-            alt="CPSL"
-            width={148}
-            height={54}
-            unoptimized
-            priority
-          />
-        </Link>
+        {/* ── Logo + Desktop nav (grouped flush-left, matching design system) ── */}
+        <div className="flex items-center gap-8">
+          <Link
+            href="/"
+            className="flex items-center py-3 flex-shrink-0"
+            onClick={() => setActiveIndex(-1)}
+          >
+            <Image
+              src="/cpsl-horizontal.svg"
+              alt="CPSL"
+              width={148}
+              height={54}
+              unoptimized
+              priority
+            />
+          </Link>
 
-        {/* ── Desktop nav ──────────────────────────────────────────── */}
-        <nav className="hidden md:flex gap-1">
-          {items.map((item, i) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={() => setActiveIndex(i)}
-              className="px-4 py-4 border-b-2 transition-colors text-[#7A9BAA] hover:text-[#F4EFE6]"
-              style={{
-                color: i === activeIndex ? "white" : undefined,
-                borderColor: i === activeIndex ? "#C9A74C" : "transparent",
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontWeight: 700,
-                fontSize: "15px",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="hidden md:flex gap-1">
+            {items.map((item, i) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setActiveIndex(i)}
+                className="px-4 py-4 border-b-2 transition-colors text-[#7A9BAA] hover:text-[#F4EFE6]"
+                style={{
+                  color: i === activeIndex ? "white" : undefined,
+                  borderColor: i === activeIndex ? "#C9A74C" : "transparent",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
         {/* ── Right slot ───────────────────────────────────────────── */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -95,7 +96,7 @@ export function TopNav({
           <Link
             href={ctaHref}
             className="hidden md:flex items-center px-4 py-2 rounded-none text-sm font-bold transition-all hover:opacity-90"
-            style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "15px" }}
+            style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500, fontSize: "15px" }}
           >
             {ctaLabel}
           </Link>
@@ -123,7 +124,7 @@ export function TopNav({
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
               className="block px-6 py-4 text-sm font-medium border-b text-[#7A9BAA] hover:text-[#F4EFE6] transition-colors"
-              style={{ color: i === activeIndex ? "#C9A74C" : undefined, borderColor: "#1E2D45", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "15px" }}
+              style={{ color: i === activeIndex ? "#C9A74C" : undefined, borderColor: "#1E2D45", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500, fontSize: "15px" }}
             >
               {item.label}
             </Link>
@@ -132,7 +133,7 @@ export function TopNav({
             <Link
               href={ctaHref}
               className="block text-center px-4 py-3 rounded-none text-sm font-bold"
-              style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "15px" }}
+              style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500, fontSize: "15px" }}
               onClick={() => setMenuOpen(false)}
             >
               {ctaLabel}
