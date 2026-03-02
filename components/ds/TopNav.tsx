@@ -70,6 +70,8 @@ export function TopNav({
               style={{
                 color: i === activeIndex ? "white" : undefined,
                 borderColor: i === activeIndex ? "#C9A74C" : "transparent",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 500,
               }}
             >
               {item.label}
@@ -92,7 +94,7 @@ export function TopNav({
           <Link
             href={ctaHref}
             className="hidden md:flex items-center px-4 py-2 rounded-none text-sm font-bold transition-all hover:opacity-90"
-            style={{ background: "#C9A74C", color: "#091628" }}
+            style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500 }}
           >
             {ctaLabel}
           </Link>
@@ -120,7 +122,7 @@ export function TopNav({
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
               className="block px-6 py-4 text-sm font-medium border-b text-[#7A9BAA] hover:text-[#F4EFE6] transition-colors"
-              style={{ color: i === activeIndex ? "#C9A74C" : undefined, borderColor: "#1E2D45" }}
+              style={{ color: i === activeIndex ? "#C9A74C" : undefined, borderColor: "#1E2D45", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500 }}
             >
               {item.label}
             </Link>
@@ -129,7 +131,7 @@ export function TopNav({
             <Link
               href={ctaHref}
               className="block text-center px-4 py-3 rounded-none text-sm font-bold"
-              style={{ background: "#C9A74C", color: "#091628" }}
+              style={{ background: "#C9A74C", color: "#091628", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500 }}
               onClick={() => setMenuOpen(false)}
             >
               {ctaLabel}
