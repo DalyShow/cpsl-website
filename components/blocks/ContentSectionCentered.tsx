@@ -83,11 +83,11 @@ export function ContentSectionCentered({
             <img
               src={imageUrl}
               alt={image?.alt ?? ""}
+              className="max-h-[250px] lg:max-h-[450px]"
               style={{
                 display: "block",
                 width: "auto",
                 maxWidth: "100%",
-                maxHeight: "450px",
                 margin: "0 auto 32px",
               }}
             />
