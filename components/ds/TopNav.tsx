@@ -66,9 +66,9 @@ export function TopNav({
               key={item.label}
               href={item.href}
               onClick={() => setActiveIndex(i)}
-              className="px-4 py-4 text-sm font-medium border-b-2 transition-colors"
+              className="px-4 py-4 text-sm font-medium border-b-2 transition-colors text-[#7A9BAA] hover:text-[#F4EFE6]"
               style={{
-                color: i === activeIndex ? "white" : "#F4EFE6",
+                color: i === activeIndex ? "white" : undefined,
                 borderColor: i === activeIndex ? "#C9A74C" : "transparent",
               }}
             >
@@ -119,8 +119,8 @@ export function TopNav({
               key={item.label}
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
-              className="block px-6 py-4 text-sm font-medium border-b"
-              style={{ color: i === activeIndex ? "#C9A74C" : "#F4EFE6", borderColor: "#1E2D45" }}
+              className="block px-6 py-4 text-sm font-medium border-b text-[#7A9BAA] hover:text-[#F4EFE6] transition-colors"
+              style={{ color: i === activeIndex ? "#C9A74C" : undefined, borderColor: "#1E2D45" }}
             >
               {item.label}
             </Link>

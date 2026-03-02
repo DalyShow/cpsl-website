@@ -24,6 +24,9 @@
   --blue-600:  #2563EB;
   --blue-700:  #1D4ED8;
 
+  /* Steel Blue — nav text, secondary UI on dark surfaces */
+  --steel:     #7A9BAA;
+
   /* Accents */
   --crimson:   #BF1D2D;
   --live-red:  #FF1744;
@@ -51,6 +54,7 @@
   --color-blue-400:  var(--blue-400);
   --color-gold-500:  var(--gold-500);
   --color-gold-400:  var(--gold-400);
+  --color-steel:     var(--steel);
   --color-crimson:   var(--crimson);
   --color-warm-white: var(--warm-white);
   --color-surface:   var(--surface);
