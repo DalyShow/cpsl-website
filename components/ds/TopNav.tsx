@@ -91,8 +91,8 @@ export function TopNav({
 
           <Link
             href={ctaHref}
-            className="hidden md:flex items-center px-4 py-2 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-            style={{ background: "#C9A74C" }}
+            className="hidden md:flex items-center px-4 py-2 rounded-none text-sm font-bold transition-all hover:opacity-90"
+            style={{ background: "#C9A74C", color: "#091628" }}
           >
             {ctaLabel}
           </Link>
@@ -128,8 +128,8 @@ export function TopNav({
           <div className="px-6 py-4">
             <Link
               href={ctaHref}
-              className="block text-center px-4 py-3 rounded-xl text-sm font-bold text-white"
-              style={{ background: "#C9A74C" }}
+              className="block text-center px-4 py-3 rounded-none text-sm font-bold"
+              style={{ background: "#C9A74C", color: "#091628" }}
               onClick={() => setMenuOpen(false)}
             >
               {ctaLabel}
