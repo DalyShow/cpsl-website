@@ -4,8 +4,8 @@ const MATCHES = [
     competition: "CPSL Premiership",
     date: "Sat 8 Mar, 7:30pm",
     status: "upcoming",
-    home: { name: "Charlotte FC",     abbr: "CFC", color: "#4A78E8" },
-    away: { name: "Raleigh Athletic", abbr: "RAC", color: "#8B40D4" },
+    home: { name: "Charlotte FC",     abbr: "CFC", color: "#3B82F6" },
+    away: { name: "Raleigh Athletic", abbr: "RAC", color: "#7C3AEC" },
     venue: "Bank of America Stadium",
   },
   {
@@ -13,7 +13,7 @@ const MATCHES = [
     competition: "CPSL Cup · QF",
     date: "Sun 9 Mar, 5:00pm",
     status: "upcoming",
-    home: { name: "Durham United",   abbr: "DUR", color: "#BFA05A" },
+    home: { name: "Durham United",   abbr: "DUR", color: "#C9A74C" },
     away: { name: "Triangle FC",     abbr: "TRI", color: "#00C853" },
     venue: "Durham Athletic Park",
   },
@@ -31,13 +31,13 @@ const MATCHES = [
 function MatchCard({ match }: { match: typeof MATCHES[0] }) {
   return (
     <div
-      className="rounded-2xl overflow-hidden border hover:border-[#4A78E8] transition-colors group"
-      style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
+      className="rounded-2xl overflow-hidden border hover:border-[#3B82F6] transition-colors group"
+      style={{ background: "#091628", borderColor: "#1E2D45" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: "#1E2D45" }}>
         <span className="text-xs font-semibold" style={{ color: "#475569" }}>{match.competition}</span>
-        <span className="text-xs font-bold" style={{ color: "#BFA05A" }}>{match.date}</span>
+        <span className="text-xs font-bold" style={{ color: "#C9A74C" }}>{match.date}</span>
       </div>
 
       {/* Teams */}
@@ -90,7 +90,7 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
         <span className="text-xs" style={{ color: "#475569" }}>{match.venue}</span>
         <button
           className="text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
-          style={{ color: "#4A78E8", background: "#4A78E822" }}
+          style={{ color: "#3B82F6", background: "#3B82F622" }}
         >
           Tickets →
         </button>
@@ -101,12 +101,12 @@ function MatchCard({ match }: { match: typeof MATCHES[0] }) {
 
 export function FeaturedMatches() {
   return (
-    <section id="schedule" style={{ background: "#020B1A", borderTop: "1px solid #1E2D45" }}>
+    <section id="schedule" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
       <div className="max-w-7xl mx-auto px-6 py-24">
         {/* Section header */}
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#4A78E8" }}>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#3B82F6" }}>
               Upcoming
             </p>
             <h2

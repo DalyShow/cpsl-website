@@ -26,13 +26,13 @@ const NEWS = [
 
 export function NewsStrip() {
   return (
-    <section id="news" style={{ background: "#020B1A", borderTop: "1px solid #1E2D45" }}>
+    <section id="news" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#4A78E8" }}>Latest</p>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#3B82F6" }}>Latest</p>
             <h2
               className="text-4xl sm:text-5xl md:text-6xl font-black uppercase"
               style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-1px" }}
@@ -49,19 +49,19 @@ export function NewsStrip() {
           {NEWS.map((item, i) => (
             <article
               key={i}
-              className="rounded-2xl border overflow-hidden group cursor-pointer hover:border-[#4A78E8] transition-colors"
-              style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
+              className="rounded-2xl border overflow-hidden group cursor-pointer hover:border-[#3B82F6] transition-colors"
+              style={{ background: "#091628", borderColor: "#1E2D45" }}
             >
               {/* Image placeholder */}
               <div
                 className="w-full h-44 relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, #1E2D45 0%, #0A0E1A 100%)` }}
+                style={{ background: `linear-gradient(135deg, #1E2D45 0%, #091628 100%)` }}
               >
                 {/* Diagonal motif on each card */}
                 <div
                   className="absolute inset-0 opacity-20"
                   style={{
-                    background: `linear-gradient(135deg, ${i === 0 ? "#4A78E8" : i === 1 ? "#BFA05A" : "#8B40D4"} 0%, transparent 60%)`,
+                    background: `linear-gradient(135deg, ${i === 0 ? "#3B82F6" : i === 1 ? "#C9A74C" : "#7C3AEC"} 0%, transparent 60%)`,
                   }}
                 />
                 <div
@@ -78,7 +78,7 @@ export function NewsStrip() {
                   <span className="text-xs" style={{ color: "#475569" }}>{item.date}</span>
                 </div>
                 <h3
-                  className="text-base font-bold leading-snug mb-2 group-hover:text-[#4A78E8] transition-colors"
+                  className="text-base font-bold leading-snug mb-2 group-hover:text-[#3B82F6] transition-colors"
                   style={{ color: "white" }}
                 >
                   {item.headline}

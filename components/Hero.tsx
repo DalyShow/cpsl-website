@@ -5,10 +5,10 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ background: "#020B1A" }}
+      style={{ background: "#091628" }}
     >
       {/* Gold top accent bar */}
-      <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#BFA05A" }} />
+      <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#C9A74C" }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 w-full">
 
@@ -22,7 +22,7 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span
                 className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border"
-                style={{ color: "#BFA05A", borderColor: "#BFA05A33", background: "#BFA05A11" }}
+                style={{ color: "#C9A74C", borderColor: "#C9A74C33", background: "#C9A74C11" }}
               >
                 2025–26 Season
               </span>
@@ -35,7 +35,7 @@ export function Hero() {
               style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
             >
               Carolina<br />
-              <span style={{ color: "#4A78E8" }}>Premier</span><br />
+              <span style={{ color: "#3B82F6" }}>Premier</span><br />
               Soccer
             </h1>
 
@@ -53,7 +53,7 @@ export function Hero() {
               <Link
                 href="#schedule"
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
-                style={{ background: "#4A78E8", fontFamily: "var(--font-body)" }}
+                style={{ background: "#3B82F6", fontFamily: "var(--font-body)" }}
               >
                 View Schedule
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -102,7 +102,7 @@ export function Hero() {
         {/* ── Live ticker ── */}
         <div
           className="mt-16 lg:mt-12 flex items-center gap-4 py-4 px-5 rounded-2xl border overflow-x-auto"
-          style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
+          style={{ background: "#091628", borderColor: "#1E2D45" }}
         >
           <span
             className="flex items-center gap-1.5 text-xs font-bold flex-shrink-0"
@@ -141,11 +141,11 @@ export function Hero() {
             <div
               key={label}
               className="rounded-2xl p-5 border"
-              style={{ background: "#0A0E1A", borderColor: "#1E2D45" }}
+              style={{ background: "#091628", borderColor: "#1E2D45" }}
             >
               <div
                 className="text-4xl font-black leading-none mb-1"
-                style={{ fontFamily: "var(--font-display)", color: "#4A78E8" }}
+                style={{ fontFamily: "var(--font-display)", color: "#3B82F6" }}
               >
                 {value}
               </div>

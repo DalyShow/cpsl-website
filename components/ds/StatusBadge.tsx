@@ -17,9 +17,9 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; color: string; border: st
   postponed: { bg: "#FFF3E0", color: "#E65100", border: "#FFCC80" },
   loss:      { bg: "#FFF0F0", color: "#FF1744", border: "#FFC5CC" },
   draw:      { bg: "#F4F6FA", color: "#475569", border: "#E2E8F0" },
-  cup:       { bg: "#F5F0FF", color: "#8B40D4", border: "#DDD6FE" },
-  featured:  { bg: "#EEF4FF", color: "#4A78E8", border: "#BEDAFF" },
-  new:       { bg: "#EEF4FF", color: "#4A78E8", border: "#BEDAFF" },
+  cup:       { bg: "#F5F0FF", color: "#7C3AEC", border: "#DDD6FE" },
+  featured:  { bg: "#EEF4FF", color: "#3B82F6", border: "#BEDAFF" },
+  new:       { bg: "#EEF4FF", color: "#3B82F6", border: "#BEDAFF" },
 };
 
 export function StatusBadge({ label, variant, bg, color, border }: StatusBadgeProps) {

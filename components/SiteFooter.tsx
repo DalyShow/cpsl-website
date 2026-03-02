@@ -9,7 +9,7 @@ const FOOTER_LINKS = {
 
 export function SiteFooter() {
   return (
-    <footer style={{ background: "#020B1A", borderTop: "1px solid #1E2D45" }}>
+    <footer style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-10">
 
         {/* Top row */}
@@ -17,7 +17,7 @@ export function SiteFooter() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#4A78E8" }}>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#3B82F6" }}>
                 <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
                   <path d="M1 1L15 1L15 12C15 16 8 17 8 17C8 17 1 16 1 12Z" fill="none" stroke="white" strokeWidth="1.5" />
                   <path d="M4 9.5L8 6L12 9.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -60,7 +60,7 @@ export function SiteFooter() {
         </div>
 
         {/* Gold divider */}
-        <div className="h-px mb-8" style={{ background: "linear-gradient(to right, #BFA05A44, transparent)" }} />
+        <div className="h-px mb-8" style={{ background: "linear-gradient(to right, #C9A74C44, transparent)" }} />
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">

@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export function CtaBanner() {
   return (
-    <section style={{ background: "#0A0E1A", borderTop: "1px solid #1E2D45" }}>
+    <section style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
         <div
           className="relative rounded-3xl overflow-hidden px-8 sm:px-16 py-14 sm:py-20 text-center"
-          style={{ background: "linear-gradient(135deg, #1E2D45 0%, #020B1A 100%)", border: "1px solid #4A78E833" }}
+          style={{ background: "linear-gradient(135deg, #1E2D45 0%, #091628 100%)", border: "1px solid #3B82F633" }}
         >
           {/* Gold accent bar */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5" style={{ background: "#BFA05A" }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5" style={{ background: "#C9A74C" }} />
 
           {/* Ghost shield */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden>
@@ -20,7 +20,7 @@ export function CtaBanner() {
           </div>
 
           <div className="relative">
-            <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#BFA05A" }}>
+            <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#C9A74C" }}>
               2025–26 Season
             </p>
             <h2
@@ -28,7 +28,7 @@ export function CtaBanner() {
               style={{ fontFamily: "var(--font-display)", color: "white", letterSpacing: "-2px" }}
             >
               Be Part of the<br />
-              <span style={{ color: "#4A78E8" }}>League</span>
+              <span style={{ color: "#3B82F6" }}>League</span>
             </h2>
             <p className="text-base sm:text-lg mb-10 max-w-xl mx-auto" style={{ color: "#94A3B8" }}>
               Season tickets, match-day experiences, and exclusive club access — across 22 clubs in North and South Carolina.
@@ -37,7 +37,7 @@ export function CtaBanner() {
               <Link
                 href="#schedule"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white transition-all hover:opacity-90"
-                style={{ background: "#4A78E8" }}
+                style={{ background: "#3B82F6" }}
               >
                 Buy Season Tickets
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

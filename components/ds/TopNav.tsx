@@ -39,7 +39,7 @@ export function TopNav({
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
-      style={{ background: "#020B1A", borderBottom: "1px solid #1E2D45" }}
+      style={{ background: "#091628", borderBottom: "1px solid #1E2D45" }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
 
@@ -51,7 +51,7 @@ export function TopNav({
         >
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: "#4A78E8" }}
+            style={{ background: "#3B82F6" }}
           >
             <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
               <path d="M1 1L15 1L15 12C15 16 8 17 8 17C8 17 1 16 1 12Z" fill="none" stroke="white" strokeWidth="1.5" />
@@ -81,7 +81,7 @@ export function TopNav({
               className="px-4 py-4 text-sm font-medium border-b-2 transition-colors"
               style={{
                 color: i === activeIndex ? "white" : "#64748B",
-                borderColor: i === activeIndex ? "#4A78E8" : "transparent",
+                borderColor: i === activeIndex ? "#3B82F6" : "transparent",
               }}
             >
               {item.label}
@@ -104,7 +104,7 @@ export function TopNav({
           <Link
             href={ctaHref}
             className="hidden md:flex items-center px-4 py-2 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-            style={{ background: "#4A78E8" }}
+            style={{ background: "#3B82F6" }}
           >
             {ctaLabel}
           </Link>
@@ -125,14 +125,14 @@ export function TopNav({
 
       {/* ── Mobile menu ──────────────────────────────────────────────── */}
       {menuOpen && (
-        <div style={{ background: "#0A0E1A", borderTop: "1px solid #1E2D45" }}>
+        <div style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
           {items.map((item, i) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={() => { setActiveIndex(i); setMenuOpen(false); }}
               className="block px-6 py-4 text-sm font-medium border-b"
-              style={{ color: i === activeIndex ? "#4A78E8" : "#94A3B8", borderColor: "#1E2D45" }}
+              style={{ color: i === activeIndex ? "#3B82F6" : "#94A3B8", borderColor: "#1E2D45" }}
             >
               {item.label}
             </Link>
@@ -141,7 +141,7 @@ export function TopNav({
             <Link
               href={ctaHref}
               className="block text-center px-4 py-3 rounded-xl text-sm font-bold text-white"
-              style={{ background: "#4A78E8" }}
+              style={{ background: "#3B82F6" }}
               onClick={() => setMenuOpen(false)}
             >
               {ctaLabel}

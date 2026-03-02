@@ -1,16 +1,16 @@
 // Uses design system StandingsList pattern
 
 const ROWS = [
-  { pos: 1,  team: "Charlotte FC",     abbr: "CFC", color: "#4A78E8", p: 22, w: 17, d: 3, l: 2,  gd: "+31", pts: 54, form: ["W","W","W","D","W"] },
-  { pos: 2,  team: "Raleigh Athletic", abbr: "RAC", color: "#8B40D4", p: 22, w: 14, d: 4, l: 4,  gd: "+18", pts: 46, form: ["W","L","W","W","D"] },
-  { pos: 3,  team: "Durham United",    abbr: "DUR", color: "#BFA05A", p: 22, w: 12, d: 5, l: 5,  gd: "+12", pts: 41, form: ["D","W","W","L","W"] },
+  { pos: 1,  team: "Charlotte FC",     abbr: "CFC", color: "#3B82F6", p: 22, w: 17, d: 3, l: 2,  gd: "+31", pts: 54, form: ["W","W","W","D","W"] },
+  { pos: 2,  team: "Raleigh Athletic", abbr: "RAC", color: "#7C3AEC", p: 22, w: 14, d: 4, l: 4,  gd: "+18", pts: 46, form: ["W","L","W","W","D"] },
+  { pos: 3,  team: "Durham United",    abbr: "DUR", color: "#C9A74C", p: 22, w: 12, d: 5, l: 5,  gd: "+12", pts: 41, form: ["D","W","W","L","W"] },
   { pos: 4,  team: "Triangle FC",      abbr: "TRI", color: "#00C853", p: 22, w: 11, d: 4, l: 7,  gd: "+7",  pts: 37, form: ["L","W","D","W","L"] },
   { pos: 5,  team: "Greensboro SC",    abbr: "GSB", color: "#FF1744", p: 22, w: 10, d: 3, l: 9,  gd: "+2",  pts: 33, form: ["W","L","L","W","W"] },
   { pos: 6,  team: "Asheville City",   abbr: "AVL", color: "#0288D1", p: 22, w: 9,  d: 4, l: 9,  gd: "-4",  pts: 31, form: ["D","D","W","L","D"] },
 ];
 
 const FORM_COLOR: Record<string, string> = {
-  W: "#00C853", D: "#BFA05A", L: "#FF1744",
+  W: "#00C853", D: "#C9A74C", L: "#FF1744",
 };
 
 function FormDot({ result }: { result: string }) {
@@ -26,13 +26,13 @@ function FormDot({ result }: { result: string }) {
 
 export function Standings() {
   return (
-    <section id="standings" style={{ background: "#0A0E1A", borderTop: "1px solid #1E2D45" }}>
+    <section id="standings" style={{ background: "#091628", borderTop: "1px solid #1E2D45" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#BFA05A" }}>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "#C9A74C" }}>
               2025–26
             </p>
             <h2
@@ -52,7 +52,7 @@ export function Standings() {
             className="hidden sm:grid items-center px-5 py-3 text-[10px] font-bold uppercase tracking-widest"
             style={{
               gridTemplateColumns: "32px 1fr 40px 40px 40px 40px 52px 60px 96px",
-              background: "#020B1A",
+              background: "#091628",
               borderBottom: "1px solid #1E2D45",
               color: "#475569",
             }}
@@ -73,7 +73,7 @@ export function Standings() {
               key={row.team}
               className="border-b last:border-b-0"
               style={{
-                background: i === 0 ? "#1E2D45" : i % 2 === 0 ? "#0A0E1A" : "#0D1220",
+                background: i === 0 ? "#1E2D45" : i % 2 === 0 ? "#091628" : "#0D1220",
                 borderColor: "#1E2D45",
               }}
             >
@@ -98,7 +98,7 @@ export function Standings() {
                 <span className="text-center text-sm font-semibold" style={{ color: Number(row.gd) > 0 ? "#00C853" : Number(row.gd) < 0 ? "#FF1744" : "#94A3B8" }}>
                   {row.gd}
                 </span>
-                <span className="text-center text-sm font-black" style={{ color: "#4A78E8" }}>{row.pts}</span>
+                <span className="text-center text-sm font-black" style={{ color: "#3B82F6" }}>{row.pts}</span>
                 <div className="flex justify-center gap-1">
                   {row.form.map((r, j) => <FormDot key={j} result={r} />)}
                 </div>
@@ -113,7 +113,7 @@ export function Standings() {
                 <span className="text-sm font-semibold flex-1" style={{ color: "white" }}>{row.team}</span>
                 <div className="flex items-center gap-3 text-xs">
                   <span style={{ color: "#94A3B8" }}>{row.p}P</span>
-                  <span className="font-black" style={{ color: "#4A78E8" }}>{row.pts}pts</span>
+                  <span className="font-black" style={{ color: "#3B82F6" }}>{row.pts}pts</span>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export function Standings() {
         {/* Promotion/relegation legend */}
         <div className="mt-4 flex flex-wrap gap-4 text-xs" style={{ color: "#475569" }}>
           <span className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-sm" style={{ background: "#4A78E822", border: "1px solid #4A78E8" }} />
+            <span className="w-3 h-3 rounded-sm" style={{ background: "#3B82F622", border: "1px solid #3B82F6" }} />
             Champions League qualification
           </span>
           <span className="flex items-center gap-2">
