@@ -82,7 +82,7 @@ export function ContentSectionCentered({
               style={{
                 display: "block",
                 width: "100%",
-                height: "auto",
+                maxHeight: "450px",
                 objectFit: "cover",
                 marginBottom: "32px",
               }}
