@@ -35,7 +35,7 @@ export function CTABanner({
           {/* Left — copy */}
           <div>
             {eyebrow && (
-              <div style={{ color: "#697279", fontSize: "10px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "12px" }}>
+              <div style={{ color: "#E74552", fontSize: "10px", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "12px" }}>
                 {eyebrow}
               </div>
             )}
