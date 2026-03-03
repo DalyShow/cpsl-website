@@ -1,0 +1,114 @@
+import { TopNav } from "@/components/ds/TopNav";
+import { ApplicationForm } from "./ApplicationForm";
+import { sanityFetch } from "@/lib/sanity/client";
+
+export const dynamic = "force-dynamic";
+
+type NavSettings = {
+  navItems?: { label: string; href: string }[];
+  ctaLabel?: string;
+  ctaHref?: string;
+};
+
+export const metadata = {
+  title: "Apply to Join — CPSL",
+  description:
+    "Submit your club membership application to join the Carolina Premier Soccer League.",
+};
+
+export default async function ApplyPage() {
+  let settings: NavSettings | null = null;
+  try {
+    settings = await sanityFetch<NavSettings>(
+      `*[_type == "siteSettings"][0]{ navItems, ctaLabel, ctaHref }`
+    );
+  } catch {
+    // Sanity unavailable — render without nav items
+  }
+
+  return (
+    <>
+      <TopNav
+        items={settings?.navItems ?? undefined}
+        ctaLabel={settings?.ctaLabel ?? "Join Our League"}
+        ctaHref={settings?.ctaHref ?? "/apply"}
+        showLive={false}
+      />
+
+      <main className="pt-[56px]">
+        {/* ── Page header ───────────────────────────────────────────────── */}
+        <div style={{
+          background: "#091628",
+          borderBottom: "1px solid #1E2D45",
+          padding: "56px 40px 48px",
+          position: "relative",
+          overflow: "hidden",
+        }}>
+          {/* Gold left accent bar */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 4,
+            height: "100%",
+            background: "#C9A74C",
+          }} />
+
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <p style={{
+              fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+              fontWeight: 700,
+              fontSize: "11px",
+              letterSpacing: "3px",
+              color: "#E74552",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+            }}>
+              Membership Application
+            </p>
+            <h1 style={{
+              fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+              fontWeight: 900,
+              fontSize: "clamp(36px, 5vw, 56px)",
+              color: "#F4EFE6",
+              textTransform: "uppercase",
+              lineHeight: 1,
+              margin: "0 0 16px",
+              letterSpacing: "-0.01em",
+            }}>
+              Apply to Join CPSL
+            </h1>
+            <p style={{
+              fontFamily: "var(--font-body, Inter, sans-serif)",
+              fontSize: "16px",
+              color: "#94A3B8",
+              lineHeight: 1.7,
+              margin: 0,
+              maxWidth: 560,
+            }}>
+              Complete the form below to apply for membership in the Carolina
+              Premier Soccer League. Our team will review your application and
+              reach out within 5–7 business days.
+            </p>
+          </div>
+        </div>
+
+        {/* ── Form section ──────────────────────────────────────────────── */}
+        <div style={{
+          background: "var(--bg-page)",
+          padding: "56px 40px 80px",
+        }}>
+          <div style={{
+            maxWidth: 720,
+            margin: "0 auto",
+            background: "#0D1B3E",
+            border: "1px solid #1E2D45",
+            padding: "40px",
+          }}>
+            <ApplicationForm />
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
