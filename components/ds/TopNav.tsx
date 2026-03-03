@@ -2,7 +2,7 @@
 // Extended for marketing site: Next.js Link, mobile menu, CTA button
 
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,6 +35,19 @@ export function TopNav({
 }: TopNavProps) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [menuOpen, setMenuOpen]       = useState(false);
+  const [theme, setTheme]             = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Sync with whatever data-theme is on <html> at mount
+    const current = document.documentElement.dataset.theme as "light" | "dark";
+    setTheme(current === "dark" ? "dark" : "light");
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = next;
+    setTheme(next);
+  }
 
   return (
     <header
@@ -100,6 +113,34 @@ export function TopNav({
           >
             {ctaLabel}
           </Link>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+            className="hidden md:flex items-center justify-center w-9 h-9 rounded-none transition-colors hover:text-white"
+            style={{ color: "#7A9BAA" }}
+          >
+            {theme === "light" ? (
+              /* Moon — switch to dark */
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            ) : (
+              /* Sun — switch to light */
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1"  x2="12" y2="3"  />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"  />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1"  y1="12" x2="3"  y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"  />
+              </svg>
+            )}
+          </button>
 
           {/* Mobile hamburger */}
           <button
