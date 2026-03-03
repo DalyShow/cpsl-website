@@ -63,7 +63,7 @@ export function CTABanner({
                 {eyebrow}
               </div>
             )}
-            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(28px, 5vw, 56px)", fontWeight: 800, color: "white", lineHeight: 0.95, letterSpacing: "-1.5px", marginBottom: "16px", textTransform: "uppercase" }}>
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(28px, 5vw, 56px)", fontWeight: 800, color: "#F4EFE6", lineHeight: 0.95, letterSpacing: "-1.5px", marginBottom: "16px", textTransform: "uppercase" }}>
               {headline}
               {headlineAccent && (
                 <><br /><span style={{ color: "#C9A74C" }}>{headlineAccent}</span></>
