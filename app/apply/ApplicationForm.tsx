@@ -162,7 +162,7 @@ export function ApplicationForm() {
           borderBottom: "1px solid #1E2D45",
         }}>Club Information</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div style={fieldStyle}>
             <label htmlFor="clubName" style={labelStyle}>Club Name <span style={{ color: "#E74552" }}>*</span></label>
             <input id="clubName" name="clubName" type="text" required placeholder="e.g. Charlotte FC Academy" style={inputStyle} />
@@ -188,7 +188,7 @@ export function ApplicationForm() {
           borderBottom: "1px solid #1E2D45",
         }}>Primary Contact</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           <div style={fieldStyle}>
             <label htmlFor="contactName" style={labelStyle}>Contact Name <span style={{ color: "#E74552" }}>*</span></label>
             <input id="contactName" name="contactName" type="text" required placeholder="Full name" style={inputStyle} />
@@ -253,7 +253,7 @@ export function ApplicationForm() {
         </div>
 
         {/* Boys / Girls two-column layout */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {([
             { label: "Boys", groups: BOYS_GROUPS, allSelected: allBoysSelected, toggle: toggleSelectBoys },
             { label: "Girls", groups: GIRLS_GROUPS, allSelected: allGirlsSelected, toggle: toggleSelectGirls },
