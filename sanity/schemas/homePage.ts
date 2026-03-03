@@ -13,6 +13,7 @@ export const homePage = defineType({
       of: [
         { type: "heroBlock" },
         { type: "contentSectionBlock" },
+        { type: "ctaBannerBlock" },
       ],
     }),
   ],

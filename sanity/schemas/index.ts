@@ -2,6 +2,7 @@ import { siteSettings }       from "./siteSettings";
 import { homePage }           from "./homePage";
 import { heroBlock }          from "./blocks/heroBlock";
 import { contentSectionBlock } from "./blocks/contentSectionBlock";
+import { ctaBannerBlock }     from "./blocks/ctaBannerBlock";
 
 export const schemaTypes = [
   // Documents
@@ -10,4 +11,5 @@ export const schemaTypes = [
   // Blocks (reusable object types used inside page section arrays)
   heroBlock,
   contentSectionBlock,
+  ctaBannerBlock,
 ];
