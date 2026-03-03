@@ -41,7 +41,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="light" className={`${barlowCondensed.variable} ${inter.variable}`}>
+    <html lang="en" data-theme="dark" className={`${barlowCondensed.variable} ${inter.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );
