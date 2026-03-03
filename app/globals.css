@@ -46,6 +46,7 @@
   --border:    #E2E8F0;
 
   /* ── Light theme (default) — cream background ── */
+  --eyebrow-color: #C9A74C;   /* gold — eyebrow label on light bg    */
   --bg-page:       #F4EFE6;   /* cream — main page background        */
   --bg-card:       #FFFFFF;   /* card / panel surfaces               */
   --bg-card-alt:   #EBE3D0;   /* cream-dark — elevated / secondary   */
@@ -59,6 +60,7 @@
 
 /* ── Dark theme — nav navy background ── */
 [data-theme="dark"] {
+  --eyebrow-color: #E74552;   /* crimson-400 — eyebrow on dark bg    */
   --bg-page:       #091628;   /* deep navy — mirrors TopNav          */
   --bg-card:       #0D1B3E;   /* midnight navy — card surfaces       */
   --bg-card-alt:   #1E2D45;   /* elevated / border-level surfaces    */
