@@ -12,8 +12,8 @@ const initialState: FormState = {};
 // ─── Shared input style ───────────────────────────────────────────────────────
 const inputStyle: React.CSSProperties = {
   width: "100%",
-  background: "#091628",
-  border: "1px solid #1E2D45",
+  background: "#1E2D45",
+  border: "1px solid #2A3F5C",
   padding: "12px 16px",
   fontFamily: "var(--font-body, Inter, sans-serif)",
   fontSize: "15px",
@@ -307,8 +307,8 @@ export function ApplicationForm() {
                       display: "flex",
                       alignItems: "center",
                       gap: "10px",
-                      background: selectedGroups.includes(group) ? "#0D1B3E" : "#091628",
-                      border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#1E2D45"}`,
+                      background: selectedGroups.includes(group) ? "#0D1B3E" : "#1E2D45",
+                      border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#2A3F5C"}`,
                       padding: "11px 14px",
                       cursor: "pointer",
                       userSelect: "none",
