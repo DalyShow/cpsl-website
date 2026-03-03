@@ -3,17 +3,9 @@
 import { useActionState, useState } from "react";
 import { submitApplication, type FormState } from "./actions";
 
-const AGE_GROUPS = [
-  ["U8 Boys",  "U8 Girls"],
-  ["U9 Boys",  "U9 Girls"],
-  ["U10 Boys", "U10 Girls"],
-  ["U11 Boys", "U11 Girls"],
-  ["U12 Boys", "U12 Girls"],
-  ["U13 Boys", "U13 Girls"],
-  ["U14 Boys", "U14 Girls"],
-];
-
-const ALL_GROUPS = AGE_GROUPS.flat();
+const BOYS_GROUPS  = ["U8 Boys",  "U9 Boys",  "U10 Boys", "U11 Boys", "U12 Boys", "U13 Boys", "U14 Boys"];
+const GIRLS_GROUPS = ["U8 Girls", "U9 Girls", "U10 Girls","U11 Girls","U12 Girls","U13 Girls","U14 Girls"];
+const ALL_GROUPS   = [...BOYS_GROUPS, ...GIRLS_GROUPS];
 
 const initialState: FormState = {};
 
@@ -51,10 +43,28 @@ export function ApplicationForm() {
   const [state, action, isPending] = useActionState(submitApplication, initialState);
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
 
-  const allSelected = selectedGroups.length === ALL_GROUPS.length;
+  const allSelected   = selectedGroups.length === ALL_GROUPS.length;
+  const allBoysSelected  = BOYS_GROUPS.every((g)  => selectedGroups.includes(g));
+  const allGirlsSelected = GIRLS_GROUPS.every((g) => selectedGroups.includes(g));
 
   function toggleSelectAll() {
     setSelectedGroups(allSelected ? [] : [...ALL_GROUPS]);
+  }
+
+  function toggleSelectBoys() {
+    setSelectedGroups((prev) =>
+      allBoysSelected
+        ? prev.filter((g) => !BOYS_GROUPS.includes(g))
+        : [...new Set([...prev, ...BOYS_GROUPS])]
+    );
+  }
+
+  function toggleSelectGirls() {
+    setSelectedGroups((prev) =>
+      allGirlsSelected
+        ? prev.filter((g) => !GIRLS_GROUPS.includes(g))
+        : [...new Set([...prev, ...GIRLS_GROUPS])]
+    );
   }
 
   function toggleGroup(group: string) {
@@ -210,6 +220,7 @@ export function ApplicationForm() {
         }}>
           Age Groups <span style={{ color: "#E74552" }}>*</span>
         </p>
+        {/* Helper text + select all */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
           <p style={{
             fontFamily: "var(--font-body, Inter, sans-serif)",
@@ -241,49 +252,97 @@ export function ApplicationForm() {
           </button>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px" }}>
-          {AGE_GROUPS.flatMap((pair) =>
-            pair.map((group) => (
-              <label
-                key={group}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  background: selectedGroups.includes(group) ? "#0D1B3E" : "#091628",
-                  border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#1E2D45"}`,
-                  padding: "11px 14px",
-                  cursor: "pointer",
-                  userSelect: "none",
-                  transition: "border-color 0.1s ease, background 0.1s ease",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  name="ageGroups"
-                  value={group}
-                  checked={selectedGroups.includes(group)}
-                  onChange={() => toggleGroup(group)}
-                  style={{
-                    width: 16,
-                    height: 16,
-                    accentColor: "#C9A74C",
-                    flexShrink: 0,
-                    cursor: "pointer",
-                  }}
-                />
+        {/* Boys / Girls two-column layout */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+          {([
+            { label: "Boys", groups: BOYS_GROUPS, allSelected: allBoysSelected, toggle: toggleSelectBoys },
+            { label: "Girls", groups: GIRLS_GROUPS, allSelected: allGirlsSelected, toggle: toggleSelectGirls },
+          ] as const).map(({ label, groups, allSelected: colAllSelected, toggle }) => (
+            <div key={label}>
+              {/* Column header */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "10px",
+                paddingBottom: "10px",
+                borderBottom: "1px solid #1E2D45",
+              }}>
                 <span style={{
                   fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  color: "#F4EFE6",
-                  letterSpacing: "0.03em",
+                  fontWeight: 700,
+                  fontSize: "11px",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  color: "#C9A74C",
                 }}>
-                  {group}
+                  {label}
                 </span>
-              </label>
-            ))
-          )}
+                <button
+                  type="button"
+                  onClick={toggle}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    padding: "0",
+                    fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+                    fontWeight: 600,
+                    fontSize: "11px",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    color: colAllSelected ? "#E74552" : "#64748B",
+                    cursor: "pointer",
+                  }}
+                >
+                  {colAllSelected ? "Deselect All" : "Select All"}
+                </button>
+              </div>
+
+              {/* Checkboxes */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                {groups.map((group) => (
+                  <label
+                    key={group}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      background: selectedGroups.includes(group) ? "#0D1B3E" : "#091628",
+                      border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#1E2D45"}`,
+                      padding: "11px 14px",
+                      cursor: "pointer",
+                      userSelect: "none",
+                      transition: "border-color 0.1s ease, background 0.1s ease",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      name="ageGroups"
+                      value={group}
+                      checked={selectedGroups.includes(group)}
+                      onChange={() => toggleGroup(group)}
+                      style={{
+                        width: 16,
+                        height: 16,
+                        accentColor: "#C9A74C",
+                        flexShrink: 0,
+                        cursor: "pointer",
+                      }}
+                    />
+                    <span style={{
+                      fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+                      fontWeight: 600,
+                      fontSize: "14px",
+                      color: "#F4EFE6",
+                      letterSpacing: "0.03em",
+                    }}>
+                      {group}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
