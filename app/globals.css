@@ -44,6 +44,30 @@
   --text-mid:  #475569;
   --text-muted:#94A3B8;
   --border:    #E2E8F0;
+
+  /* ── Light theme (default) — cream background ── */
+  --bg-page:       #F4EFE6;   /* cream — main page background        */
+  --bg-card:       #FFFFFF;   /* card / panel surfaces               */
+  --bg-card-alt:   #EBE3D0;   /* cream-dark — elevated / secondary   */
+  --bg-inset:      #F4EFE6;   /* inset wells, recessed areas         */
+  --fg-primary:    #091628;   /* deep navy — headlines, body text    */
+  --fg-secondary:  #475569;   /* mid-grey — supporting copy          */
+  --fg-muted:      #94A3B8;   /* muted — captions, placeholders      */
+  --ui-border:     #D9CEBF;   /* warm-toned divider on cream         */
+  --ui-divider:    #EBE3D0;   /* subtle section separator            */
+}
+
+/* ── Dark theme — nav navy background ── */
+[data-theme="dark"] {
+  --bg-page:       #091628;   /* deep navy — mirrors TopNav          */
+  --bg-card:       #0D1B3E;   /* midnight navy — card surfaces       */
+  --bg-card-alt:   #1E2D45;   /* elevated / border-level surfaces    */
+  --bg-inset:      #0A1628;   /* inset wells on dark                 */
+  --fg-primary:    #F4EFE6;   /* warm white — headlines, body text   */
+  --fg-secondary:  #94A3B8;   /* cool grey — supporting copy         */
+  --fg-muted:      #475569;   /* muted — captions, placeholders      */
+  --ui-border:     #1E2D45;   /* dark border                         */
+  --ui-divider:    #1E2D45;   /* dark section separator              */
 }
 
 @theme inline {
@@ -69,6 +93,16 @@
   --color-surface:   var(--surface);
   --font-display:    "Barlow Condensed", sans-serif;
   --font-body:       "Inter", sans-serif;
+  /* Theme-aware utilities */
+  --color-bg-page:      var(--bg-page);
+  --color-bg-card:      var(--bg-card);
+  --color-bg-card-alt:  var(--bg-card-alt);
+  --color-bg-inset:     var(--bg-inset);
+  --color-fg-primary:   var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted:     var(--fg-muted);
+  --color-ui-border:    var(--ui-border);
+  --color-ui-divider:   var(--ui-divider);
 }
 
 /* ── Base ───────────────────────────────────────────────────────────── */
@@ -77,8 +111,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--warm-white);
-  color: var(--text-dark);
+  background: var(--bg-page);
+  color: var(--fg-primary);
   font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.6;
