@@ -17,15 +17,17 @@
   --gold-600:  #B08A34;
   --gold-700:  #8C6E24;
 
-  /* CPSL Blue (supporting interactive) */
-  --blue-300:  #93C5FD;
-  --blue-400:  #60A5FA;
-  --blue-500:  #3B82F6;
-  --blue-600:  #2563EB;
-  --blue-700:  #1D4ED8;
-
-  /* Steel Blue — nav text, secondary UI on dark surfaces */
-  --steel:     #7A9BAA;
+  /* CPSL Steel (secondary — midpoint #697279) */
+  --steel-50:  #F2F4F5;
+  --steel-100: #E3E7E9;
+  --steel-200: #C8CED2;
+  --steel-300: #A7AFB5;
+  --steel-400: #8A9299;
+  --steel-500: #697279;
+  --steel-600: #505960;
+  --steel-700: #3A4248;
+  --steel-800: #262D32;
+  --steel-900: #161B1E;
 
   /* Accents */
   --crimson:   #BF1D2D;
@@ -50,11 +52,18 @@
   --color-navy-800:  var(--navy-800);
   --color-navy-700:  var(--navy-700);
   --color-navy-600:  var(--navy-600);
-  --color-blue-500:  var(--blue-500);
-  --color-blue-400:  var(--blue-400);
+  --color-steel-50:  var(--steel-50);
+  --color-steel-100: var(--steel-100);
+  --color-steel-200: var(--steel-200);
+  --color-steel-300: var(--steel-300);
+  --color-steel-400: var(--steel-400);
+  --color-steel-500: var(--steel-500);
+  --color-steel-600: var(--steel-600);
+  --color-steel-700: var(--steel-700);
+  --color-steel-800: var(--steel-800);
+  --color-steel-900: var(--steel-900);
   --color-gold-500:  var(--gold-500);
   --color-gold-400:  var(--gold-400);
-  --color-steel:     var(--steel);
   --color-crimson:   var(--crimson);
   --color-warm-white: var(--warm-white);
   --color-surface:   var(--surface);
