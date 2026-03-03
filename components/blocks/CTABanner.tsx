@@ -1,5 +1,7 @@
 // Ported from CPSL Design System — components/cpsl/modules/CTABanner.tsx
 
+type Background = "white" | "cream" | "surface" | "navy" | "gold"
+
 interface CTABannerProps {
   eyebrow?:             string;
   headline?:            string;
@@ -11,7 +13,24 @@ interface CTABannerProps {
   showSecondaryButton?: boolean;
   secondaryCtaLabel?:   string;
   secondaryCtaHref?:    string;
+  background?:          Background;
 }
+
+const outerBgMap: Record<Background, string> = {
+  white:   "#FFFFFF",
+  cream:   "#F4EFE6",
+  surface: "#F4F6FA",
+  navy:    "#091628",
+  gold:    "#C9A74C",
+};
+
+const cardBgMap: Record<Background, string> = {
+  white:   "#091628",
+  cream:   "#091628",
+  surface: "#091628",
+  navy:    "#0D1B3E",
+  gold:    "#091628",
+};
 
 export function CTABanner({
   eyebrow             = "2025–26 Season",
@@ -23,12 +42,16 @@ export function CTABanner({
   showSecondaryButton = false,
   secondaryCtaLabel   = "Learn More",
   secondaryCtaHref    = "#",
+  background          = "cream",
 }: CTABannerProps) {
+  const outerBg = outerBgMap[background] ?? outerBgMap.cream;
+  const cardBg  = cardBgMap[background]  ?? cardBgMap.cream;
+
   return (
-    <section style={{ background: "#F4EFE6", padding: "64px 24px" }}>
+    <section style={{ background: outerBg, padding: "64px 24px" }}>
       <div
         className="mx-auto max-w-7xl rounded-2xl overflow-hidden border"
-        style={{ background: "#091628", borderColor: "#1E2D45" }}
+        style={{ background: cardBg, borderColor: "#1E2D45" }}
       >
         <div className="px-6 py-10 md:px-16 md:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
 

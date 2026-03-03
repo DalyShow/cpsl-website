@@ -5,6 +5,22 @@ export const ctaBannerBlock = defineType({
   title: "CTA Banner",
   type: "object",
   fields: [
+    defineField({
+      name: "background",
+      title: "Background",
+      type: "string",
+      initialValue: "cream",
+      options: {
+        list: [
+          { title: "Cream (default)",    value: "cream"   },
+          { title: "White",              value: "white"   },
+          { title: "Surface (light grey)", value: "surface" },
+          { title: "Navy (dark)",        value: "navy"    },
+          { title: "Gold",               value: "gold"    },
+        ],
+        layout: "radio",
+      },
+    }),
     defineField({ name: "eyebrow",        title: "Eyebrow Label",       type: "string" }),
     defineField({ name: "headline",       title: "Headline",             type: "string" }),
     defineField({ name: "headlineAccent", title: "Headline Accent Line", type: "string",
@@ -29,9 +45,9 @@ export const ctaBannerBlock = defineType({
       hidden: ({ parent }) => !parent?.showSecondaryButton }),
   ],
   preview: {
-    select: { title: "headline", accent: "headlineAccent" },
+    select: { title: "headline", accent: "headlineAccent", bg: "background" },
     prepare(s) {
-      return { title: `CTA Banner — ${s.title ?? "Untitled"}`, subtitle: s.accent ?? "" };
+      return { title: `CTA Banner — ${s.title ?? "Untitled"}`, subtitle: `${s.bg ?? "cream"} · ${s.accent ?? ""}` };
     },
   },
 });
