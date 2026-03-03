@@ -30,7 +30,7 @@ export function TopNav({
   logoText = "CPSL",
   logoSub  = "CAROLINA PREMIER",
   ctaLabel = "Join Our League",
-  ctaHref  = "#schedule",
+  ctaHref  = "/apply",
   showLive = false,
 }: TopNavProps) {
   const [activeIndex, setActiveIndex] = useState(-1);

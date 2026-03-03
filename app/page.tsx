@@ -38,7 +38,7 @@ export default async function Home() {
       <TopNav
         items={settings?.navItems ?? undefined}
         ctaLabel={settings?.ctaLabel ?? "Join Our League"}
-        ctaHref={settings?.ctaHref ?? "#contact"}
+        ctaHref={settings?.ctaHref ?? "/apply"}
         showLive={false}
       />
 
