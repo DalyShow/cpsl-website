@@ -16,10 +16,11 @@ interface CTABannerProps {
   background?:          Background;
 }
 
+// Navy and gold are fixed editorial colours; light variants adapt to the active theme
 const outerBgMap: Record<Background, string> = {
-  white:   "#FFFFFF",
-  cream:   "#F4EFE6",
-  surface: "#F4F6FA",
+  white:   "var(--bg-page)",   // was #FFFFFF
+  cream:   "var(--bg-page)",   // was #F4EFE6
+  surface: "var(--bg-page)",   // was #F4F6FA
   navy:    "#091628",
   gold:    "#C9A74C",
 };

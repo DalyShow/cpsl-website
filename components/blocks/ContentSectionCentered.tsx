@@ -24,18 +24,19 @@ export function ContentSectionCentered({
   columns    = 2,
   bottomImage,
 }: ContentSectionCenteredProps) {
-  const bgColor   = background === "navy"    ? "#091628"
-                  : background === "surface" ? "#F4F6FA"
-                  : background === "cream"   ? "#F4EFE6"
-                  : background === "gold"    ? "#C9A74C"
-                  : "#FFFFFF";
-  const headColor = background === "navy"    ? "#F4EFE6" : "#091628";
-  const leadColor = background === "navy"    ? "#94A3B8"
-                  : background === "gold"    ? "#3D2400"
-                  : "#475569";
-  const bodyColor = background === "navy"    ? "#64748B"
-                  : background === "gold"    ? "#4A2E00"
-                  : "#64748B";
+  // Navy and gold are fixed editorial colours; light variants adapt to the active theme
+  const bgColor   = background === "navy" ? "#091628"
+                  : background === "gold" ? "#C9A74C"
+                  : "var(--bg-page)";          // cream / white / surface → theme-aware
+  const headColor = background === "navy" ? "#F4EFE6"
+                  : background === "gold" ? "#3D2400"
+                  : "var(--fg-primary)";
+  const leadColor = background === "navy" ? "#94A3B8"
+                  : background === "gold" ? "#3D2400"
+                  : "var(--fg-secondary)";
+  const bodyColor = background === "navy" ? "#64748B"
+                  : background === "gold" ? "#4A2E00"
+                  : "var(--fg-secondary)";
 
   const imageUrl       = image?.asset?.url;
   const bottomImageUrl = bottomImage?.asset?.url;
