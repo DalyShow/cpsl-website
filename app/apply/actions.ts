@@ -74,7 +74,7 @@ export async function submitApplication(
   // Send confirmation email (non-blocking — don't fail if email errors)
   try {
     await resend.emails.send({
-      from: "CPSL <noreply@cpslsoccer.com>",
+      from: "CPSL <noreply@carolinapremiersoccerleague.com>",
       to: contactEmail,
       subject: "CPSL — Membership Application Received",
       html: `
