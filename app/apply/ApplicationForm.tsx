@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { submitApplication, type FormState } from "./actions";
 
 const AGE_GROUPS = [
@@ -12,6 +12,8 @@ const AGE_GROUPS = [
   ["U13 Boys", "U13 Girls"],
   ["U14 Boys", "U14 Girls"],
 ];
+
+const ALL_GROUPS = AGE_GROUPS.flat();
 
 const initialState: FormState = {};
 
@@ -47,6 +49,19 @@ const fieldStyle: React.CSSProperties = {
 
 export function ApplicationForm() {
   const [state, action, isPending] = useActionState(submitApplication, initialState);
+  const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
+
+  const allSelected = selectedGroups.length === ALL_GROUPS.length;
+
+  function toggleSelectAll() {
+    setSelectedGroups(allSelected ? [] : [...ALL_GROUPS]);
+  }
+
+  function toggleGroup(group: string) {
+    setSelectedGroups((prev) =>
+      prev.includes(group) ? prev.filter((g) => g !== group) : [...prev, group]
+    );
+  }
 
   if (state.success) {
     return (
@@ -195,14 +210,36 @@ export function ApplicationForm() {
         }}>
           Age Groups <span style={{ color: "#E74552" }}>*</span>
         </p>
-        <p style={{
-          fontFamily: "var(--font-body, Inter, sans-serif)",
-          fontSize: "13px",
-          color: "#64748B",
-          margin: "0 0 20px",
-        }}>
-          Select all age groups your club intends to register.
-        </p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
+          <p style={{
+            fontFamily: "var(--font-body, Inter, sans-serif)",
+            fontSize: "13px",
+            color: "#64748B",
+            margin: 0,
+          }}>
+            Select all age groups your club intends to register.
+          </p>
+          <button
+            type="button"
+            onClick={toggleSelectAll}
+            style={{
+              background: "transparent",
+              border: "1px solid #1E2D45",
+              padding: "7px 16px",
+              fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+              fontWeight: 600,
+              fontSize: "12px",
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+              color: allSelected ? "#E74552" : "#C9A74C",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            {allSelected ? "Deselect All" : "Select All"}
+          </button>
+        </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px" }}>
           {AGE_GROUPS.flatMap((pair) =>
@@ -213,17 +250,20 @@ export function ApplicationForm() {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  background: "#091628",
-                  border: "1px solid #1E2D45",
+                  background: selectedGroups.includes(group) ? "#0D1B3E" : "#091628",
+                  border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#1E2D45"}`,
                   padding: "11px 14px",
                   cursor: "pointer",
                   userSelect: "none",
+                  transition: "border-color 0.1s ease, background 0.1s ease",
                 }}
               >
                 <input
                   type="checkbox"
                   name="ageGroups"
                   value={group}
+                  checked={selectedGroups.includes(group)}
+                  onChange={() => toggleGroup(group)}
                   style={{
                     width: 16,
                     height: 16,
