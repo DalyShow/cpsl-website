@@ -1,6 +1,8 @@
 import { HeroBlock } from "./HeroBlock";
 import { ContentSectionCentered } from "./ContentSectionCentered";
 import { CTABanner } from "./CTABanner";
+import { ClubDirectoryBlock } from "./ClubDirectoryBlock";
+import { CalendarDayViewBlock } from "./CalendarDayViewBlock";
 
 // Each block from Sanity has _type, _key, and its own fields
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -13,12 +15,20 @@ export function BlockRenderer({ block }: { block: Block }) {
       return <HeroBlock {...(block as any)} />;
 
     case "contentSectionBlock":
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-reflect-any
       return <ContentSectionCentered {...(block as any)} />;
 
     case "ctaBannerBlock":
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return <CTABanner {...(block as any)} />;
+
+    case "clubDirectoryBlock":
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return <ClubDirectoryBlock {...(block as any)} />;
+
+    case "calendarDayViewBlock":
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return <CalendarDayViewBlock {...(block as any)} />;
 
     default:
       // Unknown block type — log in dev, render nothing in prod

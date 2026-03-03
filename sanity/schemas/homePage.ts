@@ -14,6 +14,8 @@ export const homePage = defineType({
         { type: "heroBlock" },
         { type: "contentSectionBlock" },
         { type: "ctaBannerBlock" },
+        { type: "clubDirectoryBlock" },
+        { type: "calendarDayViewBlock" },
       ],
     }),
   ],
