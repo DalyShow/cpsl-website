@@ -22,6 +22,16 @@ export default defineConfig({
               .title("Home Page")
               .id("homePage")
               .child(S.document().schemaType("homePage").documentId("homePage")),
+            S.divider(),
+            S.listItem()
+              .title("Pages")
+              .id("pages")
+              .schemaType("page")
+              .child(
+                S.documentTypeList("page")
+                  .title("Pages")
+                  .defaultOrdering([{ field: "title", direction: "asc" }])
+              ),
           ]),
     }),
   ],
