@@ -53,18 +53,8 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
         <GhostShield color={shieldColor} />
       </div>
 
-      {/* Gold accent bar — bottom-left, aligns to content padding */}
-      <div style={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        width: 80,
-        height: 3,
-        backgroundColor: "#C9A74C",
-      }} />
-
       {/* Content — matches TopNav container */}
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-7 lg:py-0 lg:h-[148px] flex flex-col justify-end pb-7">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-9 flex flex-col justify-center">
         {/* Title + badge row */}
         <div className="flex items-baseline gap-4 flex-wrap">
           <h2
