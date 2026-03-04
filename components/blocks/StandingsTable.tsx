@@ -250,7 +250,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
       <div className="max-w-7xl mx-auto">
       <div className="cpsl-table" style={{ overflowX: "auto", scrollbarWidth: "none" }}>
         {/* minWidth keeps the stat columns from collapsing; sticky cell is excluded from this calculation */}
-        <div style={{ minWidth: 480 }}>
+        <div style={{ minWidth: 480, width: "100%" }}>
 
           {/* Header row */}
           <div style={{ borderBottom: "1px solid #1E2D45" }}>
@@ -275,7 +275,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
               </div>
 
               {/* Scrollable stat headers */}
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
                 <HeaderCell label="PTS" width={W.pts}  />
                 <HeaderCell label="GP"  width={W.gp}   />
                 <HeaderCell label="W"   width={W.stat}  />
@@ -335,7 +335,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                   </div>
 
                   {/* Scrollable stats */}
-                  <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
                     {/* PTS — gold */}
                     <div style={{ width: W.pts, flexShrink: 0, textAlign: "center" }}>
                       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 17, color: "#C9A74C" }}>
