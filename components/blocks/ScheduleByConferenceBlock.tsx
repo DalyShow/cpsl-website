@@ -66,116 +66,113 @@ interface Props {
   seasonLabel?: string;
 }
 
-export function ScheduleByConferenceBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18" }: Props) {
-  const [activeConf, setActiveConf] = useState<string>("all");
+export function MatchdayBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18" }: Props) {
+  const [activeConf, setActiveConf] = useState<string>(CONFERENCES[0]);
 
-  // Which conferences to display
-  const visibleConferences = activeConf === "all" ? CONFERENCES : [activeConf];
+  const confMatches = ALL_MATCHES.filter((m) => m.competition === activeConf);
+  const liveCount   = confMatches.filter((m) => m.status === "live").length;
 
   return (
     <div style={{ background: "#091628" }}>
 
-      {/* ── Conference filter tabs ── */}
-      <style>{`.cpsl-sched-tabs::-webkit-scrollbar{display:none}`}</style>
-      <div
-        className="cpsl-sched-tabs"
-        style={{ borderBottom: "1px solid #1E2D45", overflowX: "auto", scrollbarWidth: "none" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ display: "flex", whiteSpace: "nowrap" }}>
-          {/* All tab */}
-          {["all", ...CONFERENCES].map((conf) => {
-            const isActive = conf === activeConf;
-            return (
-              <button
-                key={conf}
-                onClick={() => setActiveConf(conf)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  borderBottom: `3px solid ${isActive ? "#C9A74C" : "transparent"}`,
-                  marginBottom: -1,
-                  padding: "0 16px",
-                  height: 48,
-                  cursor: "pointer",
-                  fontFamily: FONT,
-                  fontWeight: isActive ? 700 : 600,
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: isActive ? "#C9A74C" : "#8899B0",
-                  transition: "color 0.15s, border-color 0.15s",
-                }}
-              >
-                {conf === "all" ? "All Conferences" : conf}
-              </button>
-            );
-          })}
+      {/* ── Conference dropdown ── */}
+      <style>{`
+        .cpsl-conf-select { appearance: none; -webkit-appearance: none; }
+        .cpsl-conf-select:focus { outline: none; border-color: #C9A74C !important; }
+      `}</style>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ paddingTop: 24, paddingBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          {/* Label */}
+          <span style={{
+            fontFamily: INTER,
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#8899B0",
+            whiteSpace: "nowrap",
+          }}>
+            Conference
+          </span>
+
+          {/* Select wrapper */}
+          <div style={{ position: "relative", flexShrink: 0 }}>
+            <select
+              className="cpsl-conf-select"
+              value={activeConf}
+              onChange={(e) => setActiveConf(e.target.value)}
+              style={{
+                background: "#0D1B3E",
+                border: "1px solid #1E2D45",
+                borderRadius: 8,
+                padding: "8px 36px 8px 14px",
+                fontFamily: FONT,
+                fontWeight: 700,
+                fontSize: 14,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "#C9A74C",
+                cursor: "pointer",
+                minWidth: 180,
+              }}
+            >
+              {CONFERENCES.map((conf) => (
+                <option key={conf} value={conf}>{conf}</option>
+              ))}
+            </select>
+            {/* Chevron */}
+            <svg
+              viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+              style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", width: 10, height: 6, pointerEvents: "none" }}
+            >
+              <path d="M1 1L5 5L9 1" stroke="#C9A74C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+
+          {/* Live badge — only when there are live matches */}
+          {liveCount > 0 && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: 5,
+              padding: "4px 10px",
+              borderRadius: 20,
+              background: "rgba(191,29,45,0.12)",
+              border: "1px solid rgba(191,29,45,0.3)",
+            }}>
+              <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#BF1D2D" }} />
+              <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 10, letterSpacing: "0.08em", color: "#F87171" }}>
+                {liveCount} LIVE
+              </span>
+            </div>
+          )}
+
+          {/* Match count */}
+          <span style={{ fontFamily: INTER, fontSize: 11, color: "#8899B0", marginLeft: "auto" }}>
+            {confMatches.length} {confMatches.length === 1 ? "match" : "matches"}
+          </span>
         </div>
       </div>
 
-      {/* ── Conference sections ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ paddingTop: 32, paddingBottom: 48 }}>
-        {visibleConferences.map((conf) => {
-          const confMatches = ALL_MATCHES.filter((m) => m.competition === conf);
-          if (!confMatches.length) return null;
-
-          const liveCount = confMatches.filter((m) => m.status === "live").length;
-
-          return (
-            <div key={conf} style={{ marginBottom: 36 }}>
-              {/* Conference heading */}
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                marginBottom: 14,
-                paddingBottom: 10,
-                borderBottom: "1px solid #1E2D45",
-              }}>
-                <span style={{
-                  fontFamily: FONT,
-                  fontWeight: 900,
-                  fontSize: 18,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  color: "#F4EFE6",
-                }}>
-                  {conf}
-                </span>
-                <span style={{
-                  fontFamily: INTER,
-                  fontSize: 10,
-                  color: "#8899B0",
-                  letterSpacing: "0.04em",
-                }}>
-                  CONFERENCE
-                </span>
-                {liveCount > 0 && (
-                  <div style={{
-                    display: "flex", alignItems: "center", gap: 4,
-                    padding: "2px 7px",
-                    borderRadius: 20,
-                    background: "rgba(191,29,45,0.12)",
-                    border: "1px solid rgba(191,29,45,0.3)",
-                    marginLeft: 4,
-                  }}>
-                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#BF1D2D" }} />
-                    <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 9, letterSpacing: "0.08em", color: "#F87171" }}>
-                      {liveCount} LIVE
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Cards row */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                {confMatches.map((match, i) => (
-                  <CompactMatchCard key={i} {...match} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      {/* ── Match grid ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ paddingBottom: 48 }}>
+        {confMatches.length > 0 ? (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {confMatches.map((match, i) => (
+              <CompactMatchCard key={i} {...match} />
+            ))}
+          </div>
+        ) : (
+          <div style={{
+            padding: "48px 0",
+            textAlign: "center",
+            fontFamily: FONT,
+            fontSize: 14,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: "#8899B0",
+          }}>
+            No matches scheduled for this conference
+          </div>
+        )}
       </div>
 
       {/* Season footer */}

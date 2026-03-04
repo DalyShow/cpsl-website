@@ -1,6 +1,6 @@
 import { TopNav } from "@/components/ds/TopNav";
 import { SectionHeader } from "@/components/blocks/SectionHeader";
-import { ScheduleByConferenceBlock } from "@/components/blocks/ScheduleByConferenceBlock";
+import { MatchdayBlock } from "@/components/blocks/ScheduleByConferenceBlock";
 import { sanityFetch } from "@/lib/sanity/client";
 
 type NavSettings = {
@@ -31,7 +31,7 @@ export default async function SchedulePage() {
           badge="2026–2027 Season"
           subtitle="Select a conference to filter matchday results"
         />
-        <ScheduleByConferenceBlock />
+        <MatchdayBlock />
       </main>
     </>
   );
