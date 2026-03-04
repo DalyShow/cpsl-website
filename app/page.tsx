@@ -42,8 +42,8 @@ export default async function Home() {
         showLive={false}
       />
 
-      {/* pt-[56px] offsets the fixed nav height */}
-      <main className="pt-[56px]">
+      {/* pt-20 = 80px — offsets the fixed nav height */}
+      <main className="pt-20">
         {page?.sections?.map((block) => (
           <BlockRenderer key={block._key} block={block} />
         ))}

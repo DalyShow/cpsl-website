@@ -246,29 +246,45 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
       </div>
 
       {/* ── Table ── */}
-      <div style={{ overflowX: "auto" }}>
-        <div style={{ minWidth: 640 }}>
+      <style>{`.cpsl-table::-webkit-scrollbar{display:none}`}</style>
+      <div className="cpsl-table" style={{ overflowX: "auto", scrollbarWidth: "none" }}>
+        {/* minWidth keeps the stat columns from collapsing; sticky cell is excluded from this calculation */}
+        <div style={{ minWidth: 480 }}>
 
-          {/* Header row — transparent border-left keeps alignment with data rows */}
-          <div style={{ borderBottom: "1px solid #1E2D45", borderLeft: "3px solid transparent" }}>
-            <div
-              className="max-w-7xl mx-auto px-4 sm:px-6"
-              style={{ display: "flex", alignItems: "center", height: 40 }}
-            >
-              <HeaderCell label="POS"  width={W.pos}  align="left" />
-              <div style={{ flex: 1 }}>
+          {/* Header row */}
+          <div style={{ borderBottom: "1px solid #1E2D45" }}>
+            <div style={{ display: "flex", alignItems: "center", height: 40 }}>
+
+              {/* Sticky: POS + CLUB header */}
+              <div style={{
+                position: "sticky", left: 0, zIndex: 2,
+                background: "#091628",
+                display: "flex", alignItems: "center",
+                height: "100%",
+                borderLeft: "3px solid transparent",
+                paddingLeft: 13,
+                paddingRight: 8,
+                flexShrink: 0, width: 230,
+                boxShadow: "4px 0 8px -2px rgba(0,0,0,0.4)",
+              }}>
+                <HeaderCell label="POS" width={W.pos - 3} align="left" />
                 <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8899B0" }}>
                   CLUB
                 </span>
               </div>
-              <HeaderCell label="PTS" width={W.pts}  />
-              <HeaderCell label="GP"  width={W.gp}   />
-              <HeaderCell label="W"   width={W.stat}  />
-              <HeaderCell label="D"   width={W.stat}  />
-              <HeaderCell label="L"   width={W.stat}  />
-              <HeaderCell label="GF"  width={W.gp}   />
-              <HeaderCell label="GA"  width={W.gp}   />
-              <HeaderCell label="GD"  width={W.gd}   />
+
+              {/* Scrollable stat headers */}
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <HeaderCell label="PTS" width={W.pts}  />
+                <HeaderCell label="GP"  width={W.gp}   />
+                <HeaderCell label="W"   width={W.stat}  />
+                <HeaderCell label="D"   width={W.stat}  />
+                <HeaderCell label="L"   width={W.stat}  />
+                <HeaderCell label="GF"  width={W.gp}   />
+                <HeaderCell label="GA"  width={W.gp}   />
+                <HeaderCell label="GD"  width={W.gd}   />
+                <div style={{ width: 16, flexShrink: 0 }} />
+              </div>
             </div>
           </div>
 
@@ -276,88 +292,69 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
           {rows.map((row) => {
             const isFirst = row.pos === 1;
             return (
-              <div
-                key={row.pos}
-                style={{
-                  borderBottom: "1px solid #1E2D45",
-                  borderLeft: `3px solid ${isFirst ? "#C9A74C" : "transparent"}`,
-                }}
-              >
-              <div
-                className="max-w-7xl mx-auto px-4 sm:px-6"
-                style={{ display: "flex", alignItems: "center", height: 56 }}
-              >
-                {/* POS */}
-                <div style={{ width: W.pos, flexShrink: 0 }}>
-                  <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 18, color: "#F4EFE6" }}>
-                    {row.pos}
-                  </span>
-                </div>
+              <div key={row.pos} style={{ borderBottom: "1px solid #1E2D45" }}>
+                <div style={{ display: "flex", alignItems: "center", height: 56 }}>
 
-                {/* Club + location */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontFamily: FONT,
-                      fontWeight: 700,
-                      fontSize: 15,
-                      letterSpacing: "0.04em",
-                      textTransform: "uppercase",
-                      color: "#F4EFE6",
-                      lineHeight: 1.2,
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {row.clubName}
+                  {/* Sticky: POS + CLUB — border-left lives here so it stays on screen during scroll */}
+                  <div style={{
+                    position: "sticky", left: 0, zIndex: 2,
+                    background: "#091628",
+                    display: "flex", alignItems: "center",
+                    height: "100%",
+                    borderLeft: `3px solid ${isFirst ? "#C9A74C" : "transparent"}`,
+                    paddingLeft: 13,
+                    paddingRight: 8,
+                    flexShrink: 0, width: 230,
+                    boxShadow: "4px 0 8px -2px rgba(0,0,0,0.4)",
+                  }}>
+                    {/* POS */}
+                    <div style={{ width: W.pos - 3, flexShrink: 0 }}>
+                      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 18, color: "#F4EFE6" }}>
+                        {row.pos}
+                      </span>
+                    </div>
+
+                    {/* Club + location */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{
+                        fontFamily: FONT, fontWeight: 700, fontSize: 15,
+                        letterSpacing: "0.04em", textTransform: "uppercase",
+                        color: "#F4EFE6", lineHeight: 1.2,
+                        whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                      }}>
+                        {row.clubName}
+                      </div>
+                      <div style={{
+                        fontFamily: INTER, fontWeight: 400, fontSize: 10,
+                        color: "#8899B0", marginTop: 2, lineHeight: 1,
+                      }}>
+                        {row.location}
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      fontFamily: INTER,
-                      fontWeight: 400,
-                      fontSize: 10,
-                      color: "#8899B0",
-                      marginTop: 2,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {row.location}
+
+                  {/* Scrollable stats */}
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    {/* PTS — gold */}
+                    <div style={{ width: W.pts, flexShrink: 0, textAlign: "center" }}>
+                      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 17, color: "#C9A74C" }}>
+                        {row.pts}
+                      </span>
+                    </div>
+                    <StatCell value={row.gp} width={W.gp}   color="#8899B0" />
+                    <StatCell value={row.w}  width={W.stat} color="#F4EFE6" />
+                    <StatCell value={row.d}  width={W.stat} color="#F4EFE6" />
+                    <StatCell value={row.l}  width={W.stat} color="#F4EFE6" />
+                    <StatCell value={row.gf} width={W.gp}   color="#8899B0" />
+                    <StatCell value={row.ga} width={W.gp}   color="#8899B0" />
+                    <div style={{ width: W.gd, flexShrink: 0, textAlign: "center" }}>
+                      <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 15, color: gdColor(row.gd) }}>
+                        {gdLabel(row.gd)}
+                      </span>
+                    </div>
+                    <div style={{ width: 16, flexShrink: 0 }} />
                   </div>
                 </div>
-
-                {/* PTS — gold */}
-                <div style={{ width: W.pts, flexShrink: 0, textAlign: "center" }}>
-                  <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 17, color: "#C9A74C" }}>
-                    {row.pts}
-                  </span>
-                </div>
-
-                {/* GP */}
-                <StatCell value={row.gp} width={W.gp} color="#8899B0" />
-
-                {/* W */}
-                <StatCell value={row.w} width={W.stat} color="#F4EFE6" />
-
-                {/* D */}
-                <StatCell value={row.d} width={W.stat} color="#F4EFE6" />
-
-                {/* L */}
-                <StatCell value={row.l} width={W.stat} color="#F4EFE6" />
-
-                {/* GF */}
-                <StatCell value={row.gf} width={W.gp} color="#8899B0" />
-
-                {/* GA */}
-                <StatCell value={row.ga} width={W.gp} color="#8899B0" />
-
-                {/* GD */}
-                <div style={{ width: W.gd, flexShrink: 0, textAlign: "center" }}>
-                  <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 15, color: gdColor(row.gd) }}>
-                    {gdLabel(row.gd)}
-                  </span>
-                </div>
-              </div>
               </div>
             );
           })}

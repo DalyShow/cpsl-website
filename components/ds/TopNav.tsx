@@ -51,10 +51,10 @@ export function TopNav({
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50 h-20"
       style={{ background: "#091628", borderBottom: "1px solid #1E2D45" }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6">
 
         {/* ── Logo + Desktop nav (grouped flush-left, matching design system) ── */}
         <div className="flex items-center gap-8">

@@ -35,7 +35,7 @@ export default async function ApplyPage() {
         showLive={false}
       />
 
-      <main className="pt-[56px]">
+      <main className="pt-20">
         {/* ── Page header ───────────────────────────────────────────────── */}
         <div style={{
           background: "#091628",

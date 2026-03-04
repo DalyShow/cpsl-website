@@ -65,7 +65,7 @@ export default async function DynamicPage({
         ctaHref={settings?.ctaHref ?? "/apply"}
         showLive={false}
       />
-      <main className="pt-[56px]">
+      <main className="pt-20">
         {page.sections?.map((block) => (
           <BlockRenderer key={block._key} block={block} />
         ))}

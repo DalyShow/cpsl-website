@@ -26,7 +26,7 @@ export default async function ClubsPage() {
         showLive={false}
       />
 
-      <main className="pt-[56px]" style={{ background: "#091628", minHeight: "100vh" }}>
+      <main className="pt-20" style={{ background: "#091628", minHeight: "100vh" }}>
         {/* Page header */}
         <div style={{ borderBottom: "1px solid #1E2D45", padding: "48px 0 40px" }}>
           <div className="max-w-5xl mx-auto px-6">

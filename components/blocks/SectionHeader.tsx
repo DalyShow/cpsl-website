@@ -39,6 +39,8 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
         backgroundColor: bg,
         borderBottom: `1px solid ${border}`,
         overflow: "hidden",
+        paddingTop: 44,
+        paddingBottom: 44,
       }}
     >
       {/* Ghost shield — right-aligned, vertically centred */}
@@ -54,7 +56,7 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
       </div>
 
       {/* Content — matches TopNav container */}
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-9 flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6" style={{ display: "flex", flexDirection: "column" }}>
         {/* Title + badge row */}
         <div className="flex items-baseline gap-4 flex-wrap">
           <h2
