@@ -1,28 +1,44 @@
+"use client";
+
 // Ported from CPSL Design System — components/cpsl/modules/ContentSectionCentered.tsx
+
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
+interface LottieField {
+  url?:      string;
+  loop?:     boolean;
+  autoplay?: boolean;
+}
 
 interface ContentSectionCenteredProps {
   eyebrow?:    string;
   heading?:    string;
   /** Optional image from Sanity — asset is pre-dereferenced via GROQ */
   image?:      { asset?: { url?: string }; alt?: string };
+  /** Optional Lottie animation — sits in same slot as image, takes precedence */
+  lottie?:     LottieField;
   lead?:       string;
   paragraphs?: string[];
   background?: "white" | "surface" | "cream" | "navy" | "gold";
   /** 1 = single centered column, 2 = two columns at lg (default) */
   columns?:    number;
   /** Optional image at the bottom of the section, 120px below the last content */
-  bottomImage?: { asset?: { url?: string }; alt?: string };
+  bottomImage?:  { asset?: { url?: string }; alt?: string };
+  /** Optional Lottie animation at the bottom — takes precedence over bottomImage */
+  bottomLottie?: LottieField;
 }
 
 export function ContentSectionCentered({
   eyebrow    = "About the League",
   heading    = "Competitive Soccer Across the Carolinas",
   image,
+  lottie,
   lead       = "From the Piedmont to the coast, CPSL brings together the best clubs in North and South Carolina under one banner — raising the standard for competitive soccer at every level.",
   paragraphs = [],
   background = "cream",
   columns    = 2,
   bottomImage,
+  bottomLottie,
 }: ContentSectionCenteredProps) {
   // Navy and gold are fixed editorial colours; light variants adapt to the active theme
   const bgColor   = background === "navy" ? "#091628"
@@ -40,6 +56,8 @@ export function ContentSectionCentered({
 
   const imageUrl       = image?.asset?.url;
   const bottomImageUrl = bottomImage?.asset?.url;
+  const hasTopMedia    = !!(lottie?.url || imageUrl);
+  const hasBottomMedia = !!(bottomLottie?.url || bottomImageUrl);
   const mid  = Math.ceil(paragraphs.length / 2);
   const col1 = paragraphs.slice(0, mid);
   const col2 = paragraphs.slice(mid);
@@ -74,14 +92,23 @@ export function ContentSectionCentered({
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
               color: headColor,
-              marginBottom: imageUrl ? "32px" : "24px",
+              marginBottom: hasTopMedia ? "32px" : "24px",
             }}
           >
             {heading}
           </h2>
 
-          {/* Optional image — between heading and lead */}
-          {imageUrl && (
+          {/* Optional media — between heading and lead. Lottie takes precedence. */}
+          {lottie?.url ? (
+            <div style={{ margin: "0 auto 32px", width: "100%", maxWidth: "100%" }}>
+              <DotLottieReact
+                src={lottie.url}
+                loop={lottie.loop ?? true}
+                autoplay={lottie.autoplay ?? true}
+                style={{ width: "100%", height: 320 }}
+              />
+            </div>
+          ) : imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={imageUrl}
@@ -94,7 +121,7 @@ export function ContentSectionCentered({
                 margin: "0 auto 32px",
               }}
             />
-          )}
+          ) : null}
 
           {lead && (
             <p className="text-lg leading-relaxed" style={{ color: leadColor }}>
@@ -139,8 +166,17 @@ export function ContentSectionCentered({
           )
         )}
 
-        {/* Bottom image — 120px below last content */}
-        {bottomImageUrl && (
+        {/* Bottom media — 120px below last content. Lottie takes precedence. */}
+        {bottomLottie?.url ? (
+          <div style={{ margin: "120px auto 0", width: "100%", maxWidth: "100%" }}>
+            <DotLottieReact
+              src={bottomLottie.url}
+              loop={bottomLottie.loop ?? true}
+              autoplay={bottomLottie.autoplay ?? true}
+              style={{ width: "100%", height: 400 }}
+            />
+          </div>
+        ) : bottomImageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={bottomImageUrl}
@@ -153,7 +189,7 @@ export function ContentSectionCentered({
               margin: "120px auto 0",
             }}
           />
-        )}
+        ) : null}
       </div>
     </section>
   );

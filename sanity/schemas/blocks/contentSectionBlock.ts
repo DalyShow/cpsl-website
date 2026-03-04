@@ -55,6 +55,17 @@ export const contentSectionBlock = defineType({
       initialValue: 2,
     }),
     defineField({
+      name: "lottie",
+      title: "Lottie Animation (below heading)",
+      description: "Optional. URL to a .lottie or .json file. Sits in the same slot as the image — between heading and lead. Takes precedence over image if both are set.",
+      type: "object",
+      fields: [
+        defineField({ name: "url",      title: "Animation URL",  type: "url",     validation: (R) => R.required() }),
+        defineField({ name: "loop",     title: "Loop",           type: "boolean", initialValue: true }),
+        defineField({ name: "autoplay", title: "Autoplay",       type: "boolean", initialValue: true }),
+      ],
+    }),
+    defineField({
       name: "bottomImage",
       title: "Bottom Image",
       description: "Optional. Displays below all content with 120px of spacing.",
@@ -62,6 +73,17 @@ export const contentSectionBlock = defineType({
       options: { hotspot: true },
       fields: [
         defineField({ name: "alt", title: "Alt Text", type: "string" }),
+      ],
+    }),
+    defineField({
+      name: "bottomLottie",
+      title: "Bottom Lottie Animation",
+      description: "Optional. URL to a .lottie or .json file. Displays at the bottom of the section with 120px of spacing. Takes precedence over bottom image if both are set.",
+      type: "object",
+      fields: [
+        defineField({ name: "url",      title: "Animation URL",  type: "url",     validation: (R) => R.required() }),
+        defineField({ name: "loop",     title: "Loop",           type: "boolean", initialValue: true }),
+        defineField({ name: "autoplay", title: "Autoplay",       type: "boolean", initialValue: true }),
       ],
     }),
   ],
