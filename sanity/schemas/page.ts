@@ -33,6 +33,7 @@ export const page = defineType({
       type: "array",
       of: [
         { type: "heroBlock" },
+        { type: "sectionHeaderBlock" },
         { type: "contentSectionBlock" },
         { type: "ctaBannerBlock" },
         { type: "clubDirectoryBlock" },

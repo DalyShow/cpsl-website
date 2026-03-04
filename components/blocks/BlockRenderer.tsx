@@ -1,4 +1,5 @@
 import { HeroBlock } from "./HeroBlock";
+import { SectionHeader } from "./SectionHeader";
 import { ContentSectionCentered } from "./ContentSectionCentered";
 import { CTABanner } from "./CTABanner";
 import { ClubDirectoryBlock } from "./ClubDirectoryBlock";
@@ -13,6 +14,10 @@ export function BlockRenderer({ block }: { block: Block }) {
     case "heroBlock":
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return <HeroBlock {...(block as any)} />;
+
+    case "sectionHeaderBlock":
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return <SectionHeader {...(block as any)} />;
 
     case "contentSectionBlock":
       // eslint-disable-next-line @typescript-eslint/no-reflect-any

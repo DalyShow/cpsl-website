@@ -6,6 +6,7 @@ import { contentSectionBlock }  from "./blocks/contentSectionBlock";
 import { ctaBannerBlock }       from "./blocks/ctaBannerBlock";
 import { clubDirectoryBlock }   from "./blocks/clubDirectoryBlock";
 import { calendarDayViewBlock } from "./blocks/calendarDayViewBlock";
+import { sectionHeaderBlock }  from "./blocks/sectionHeaderBlock";
 
 export const schemaTypes = [
   // Documents
@@ -14,6 +15,7 @@ export const schemaTypes = [
   page,
   // Blocks
   heroBlock,
+  sectionHeaderBlock,
   contentSectionBlock,
   ctaBannerBlock,
   clubDirectoryBlock,
