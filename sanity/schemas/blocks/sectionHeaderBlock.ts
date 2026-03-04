@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const sectionHeaderBlock = defineType({
   name: "sectionHeaderBlock",
-  title: "Section Header",
+  title: "Hero-slim",
   type: "object",
   fields: [
     defineField({
@@ -43,7 +43,7 @@ export const sectionHeaderBlock = defineType({
     prepare({ title, badge, variant }) {
       const label = badge ? `${title} — ${badge}` : title;
       return {
-        title: `Section Header — ${label ?? "Untitled"}`,
+        title: `Hero-slim — ${label ?? "Untitled"}`,
         subtitle: variant === "light" ? "Light / Cream" : "Dark / Navy",
       };
     },
