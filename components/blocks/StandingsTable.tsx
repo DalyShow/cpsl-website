@@ -246,7 +246,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
       </div>
 
       {/* ── Table ── */}
-      <style>{`.cpsl-table::-webkit-scrollbar{display:none}`}</style>
+      <style>{`.cpsl-table::-webkit-scrollbar{display:none} @media(min-width:768px){.cpsl-sticky-cell{box-shadow:none!important}}`}</style>
       <div className="max-w-7xl mx-auto">
       <div className="cpsl-table" style={{ overflowX: "auto", scrollbarWidth: "none" }}>
         {/* minWidth keeps the stat columns from collapsing; sticky cell is excluded from this calculation */}
@@ -257,7 +257,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
             <div style={{ display: "flex", alignItems: "center", height: 40 }}>
 
               {/* Sticky: POS + CLUB header */}
-              <div style={{
+              <div className="cpsl-sticky-cell" style={{
                 position: "sticky", left: 0, zIndex: 2,
                 background: "#091628",
                 display: "flex", alignItems: "center",
@@ -297,7 +297,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                 <div style={{ display: "flex", alignItems: "center", height: 56 }}>
 
                   {/* Sticky: POS + CLUB — border-left lives here so it stays on screen during scroll */}
-                  <div style={{
+                  <div className="cpsl-sticky-cell" style={{
                     position: "sticky", left: 0, zIndex: 2,
                     background: "#091628",
                     display: "flex", alignItems: "center",
