@@ -63,8 +63,8 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
         backgroundColor: "#C9A74C",
       }} />
 
-      {/* Content */}
-      <div className="px-6 sm:px-12 lg:px-20 py-7 lg:py-0 lg:h-[148px] flex flex-col justify-end pb-7">
+      {/* Content — matches TopNav container */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-7 lg:py-0 lg:h-[148px] flex flex-col justify-end pb-7">
         {/* Title + badge row */}
         <div className="flex items-baseline gap-4 flex-wrap">
           <h2
