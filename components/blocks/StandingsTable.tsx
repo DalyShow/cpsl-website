@@ -173,8 +173,47 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
   return (
     <div style={{ background: "#091628" }}>
 
-      {/* ── Conference tabs ── */}
-      <div style={{ borderBottom: "1px solid #1E2D45", overflowX: "auto" }}>
+      {/* ── Conference select (mobile) ── */}
+      <div className="md:hidden" style={{ borderBottom: "1px solid #1E2D45" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ paddingTop: 12, paddingBottom: 12 }}>
+          <div style={{ position: "relative" }}>
+            <select
+              value={active}
+              onChange={(e) => setActive(e.target.value as Conference)}
+              style={{
+                width: "100%",
+                background: "#0D1B3E",
+                border: "1px solid #1E2D45",
+                borderRadius: 4,
+                color: "#C9A74C",
+                fontFamily: FONT,
+                fontWeight: 700,
+                fontSize: 13,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "10px 36px 10px 14px",
+                appearance: "none",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              {CONFERENCES.map((conf) => (
+                <option key={conf} value={conf}>{conf}</option>
+              ))}
+            </select>
+            <svg
+              style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
+              width="12" height="8" viewBox="0 0 12 8" fill="none"
+            >
+              <path d="M1 1L6 6L11 1" stroke="#C9A74C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Conference tabs (desktop) ── */}
+      <style>{`.cpsl-tabs::-webkit-scrollbar{display:none}`}</style>
+      <div className="hidden md:block cpsl-tabs" style={{ borderBottom: "1px solid #1E2D45", overflowX: "auto", scrollbarWidth: "none" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ display: "flex", whiteSpace: "nowrap" }}>
           {CONFERENCES.map((conf) => {
             const isActive = conf === active;
