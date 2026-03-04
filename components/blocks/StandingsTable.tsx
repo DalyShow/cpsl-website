@@ -175,7 +175,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
 
       {/* ── Conference tabs ── */}
       <div style={{ borderBottom: "1px solid #1E2D45", overflowX: "auto" }}>
-        <div style={{ display: "flex", paddingLeft: 16, paddingRight: 16, whiteSpace: "nowrap" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ display: "flex", whiteSpace: "nowrap" }}>
           {CONFERENCES.map((conf) => {
             const isActive = conf === active;
             return (
@@ -210,31 +210,27 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
       <div style={{ overflowX: "auto" }}>
         <div style={{ minWidth: 640 }}>
 
-          {/* Header row — paddingLeft accounts for the 3px border-left on data rows */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              height: 40,
-              borderBottom: "1px solid #1E2D45",
-              paddingLeft: 19, // 16 base + 3 for border-left alignment
-              paddingRight: 16,
-            }}
-          >
-            <HeaderCell label="POS"  width={W.pos}  align="left" />
-            <div style={{ flex: 1 }}>
-              <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8899B0" }}>
-                CLUB
-              </span>
+          {/* Header row — transparent border-left keeps alignment with data rows */}
+          <div style={{ borderBottom: "1px solid #1E2D45", borderLeft: "3px solid transparent" }}>
+            <div
+              className="max-w-7xl mx-auto px-4 sm:px-6"
+              style={{ display: "flex", alignItems: "center", height: 40 }}
+            >
+              <HeaderCell label="POS"  width={W.pos}  align="left" />
+              <div style={{ flex: 1 }}>
+                <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8899B0" }}>
+                  CLUB
+                </span>
+              </div>
+              <HeaderCell label="PTS" width={W.pts}  />
+              <HeaderCell label="GP"  width={W.gp}   />
+              <HeaderCell label="W"   width={W.stat}  />
+              <HeaderCell label="D"   width={W.stat}  />
+              <HeaderCell label="L"   width={W.stat}  />
+              <HeaderCell label="GF"  width={W.gp}   />
+              <HeaderCell label="GA"  width={W.gp}   />
+              <HeaderCell label="GD"  width={W.gd}   />
             </div>
-            <HeaderCell label="PTS" width={W.pts}  />
-            <HeaderCell label="GP"  width={W.gp}   />
-            <HeaderCell label="W"   width={W.stat}  />
-            <HeaderCell label="D"   width={W.stat}  />
-            <HeaderCell label="L"   width={W.stat}  />
-            <HeaderCell label="GF"  width={W.gp}   />
-            <HeaderCell label="GA"  width={W.gp}   />
-            <HeaderCell label="GD"  width={W.gd}   />
           </div>
 
           {/* Data rows */}
@@ -244,14 +240,13 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
               <div
                 key={row.pos}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  height: 56,
                   borderBottom: "1px solid #1E2D45",
                   borderLeft: `3px solid ${isFirst ? "#C9A74C" : "transparent"}`,
-                  paddingLeft: 16,
-                  paddingRight: 16,
                 }}
+              >
+              <div
+                className="max-w-7xl mx-auto px-4 sm:px-6"
+                style={{ display: "flex", alignItems: "center", height: 56 }}
               >
                 {/* POS */}
                 <div style={{ width: W.pos, flexShrink: 0 }}>
@@ -323,6 +318,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                     {gdLabel(row.gd)}
                   </span>
                 </div>
+              </div>
               </div>
             );
           })}
