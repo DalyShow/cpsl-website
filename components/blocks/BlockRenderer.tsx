@@ -5,6 +5,7 @@ import { CTABanner } from "./CTABanner";
 import { ClubDirectoryBlock } from "./ClubDirectoryBlock";
 import { CalendarDayViewBlock } from "./CalendarDayViewBlock";
 import { StandingsBlock } from "./StandingsBlock";
+import { ScheduleByConferenceBlock } from "./ScheduleByConferenceBlock";
 
 // Each block from Sanity has _type, _key, and its own fields
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,6 +40,10 @@ export function BlockRenderer({ block }: { block: Block }) {
     case "standingsBlock":
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return <StandingsBlock {...(block as any)} />;
+
+    case "scheduleByConferenceBlock":
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return <ScheduleByConferenceBlock {...(block as any)} />;
 
     default:
       // Unknown block type — log in dev, render nothing in prod
