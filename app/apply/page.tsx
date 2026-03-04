@@ -95,7 +95,7 @@ export default async function ApplyPage() {
 
         {/* ── Form section ──────────────────────────────────────────────── */}
         <div className="px-4 sm:px-10 py-12 sm:py-14 pb-20" style={{ background: "var(--bg-page)" }}>
-          <div className="max-w-[720px] mx-auto p-5 sm:p-10" style={{ background: "#0D1B3E", border: "1px solid #1E2D45" }}>
+          <div className="max-w-[720px] mx-auto">
             <ApplicationForm />
           </div>
         </div>

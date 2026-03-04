@@ -9,7 +9,25 @@ const ALL_GROUPS   = [...BOYS_GROUPS, ...GIRLS_GROUPS];
 
 const initialState: FormState = {};
 
-// ─── Shared input style ───────────────────────────────────────────────────────
+// ─── Shared styles ────────────────────────────────────────────────────────────
+const cardStyle: React.CSSProperties = {
+  background: "#0D1B3E",
+  border: "1px solid #1E2D45",
+  padding: "32px",
+  marginBottom: "16px",
+};
+
+const cardHeadingStyle: React.CSSProperties = {
+  fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
+  fontWeight: 900,
+  fontSize: "28px",
+  letterSpacing: "-0.01em",
+  textTransform: "uppercase",
+  color: "#F4EFE6",
+  margin: "0 0 28px",
+  lineHeight: 1,
+};
+
 const inputStyle: React.CSSProperties = {
   width: "100%",
   background: "#1E2D45",
@@ -43,7 +61,7 @@ export function ApplicationForm() {
   const [state, action, isPending] = useActionState(submitApplication, initialState);
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
 
-  const allSelected   = selectedGroups.length === ALL_GROUPS.length;
+  const allSelected      = selectedGroups.length === ALL_GROUPS.length;
   const allBoysSelected  = BOYS_GROUPS.every((g)  => selectedGroups.includes(g));
   const allGirlsSelected = GIRLS_GROUPS.every((g) => selectedGroups.includes(g));
 
@@ -81,7 +99,6 @@ export function ApplicationForm() {
         padding: "48px 40px",
         textAlign: "center",
       }}>
-        {/* Gold check */}
         <div style={{
           width: 56,
           height: 56,
@@ -139,7 +156,7 @@ export function ApplicationForm() {
           background: "#2D0A0E",
           border: "1px solid #BF1D2D",
           padding: "14px 20px",
-          marginBottom: "32px",
+          marginBottom: "16px",
           fontFamily: "var(--font-body, Inter, sans-serif)",
           fontSize: "14px",
           color: "#E74552",
@@ -148,21 +165,11 @@ export function ApplicationForm() {
         </div>
       )}
 
-      {/* ── Section: Club Information ───────────────────────────────────── */}
-      <div style={{ marginBottom: "40px" }}>
-        <p style={{
-          fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
-          fontWeight: 700,
-          fontSize: "11px",
-          letterSpacing: "3px",
-          color: "#E74552",
-          textTransform: "uppercase",
-          marginBottom: "20px",
-          paddingBottom: "12px",
-          borderBottom: "1px solid #1E2D45",
-        }}>Club Information</p>
+      {/* ── Card 1: Club Info ───────────────────────────────────────────── */}
+      <div style={cardStyle}>
+        <h3 style={cardHeadingStyle}>Club Info</h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           <div style={fieldStyle}>
             <label htmlFor="clubName" style={labelStyle}>Club Name <span style={{ color: "#E74552" }}>*</span></label>
             <input id="clubName" name="clubName" type="text" required placeholder="e.g. Charlotte FC Academy" style={inputStyle} />
@@ -172,21 +179,6 @@ export function ApplicationForm() {
             <input id="location" name="location" type="text" required placeholder="City, State" style={inputStyle} />
           </div>
         </div>
-      </div>
-
-      {/* ── Section: Primary Contact ────────────────────────────────────── */}
-      <div style={{ marginBottom: "40px" }}>
-        <p style={{
-          fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
-          fontWeight: 700,
-          fontSize: "11px",
-          letterSpacing: "3px",
-          color: "#E74552",
-          textTransform: "uppercase",
-          marginBottom: "20px",
-          paddingBottom: "12px",
-          borderBottom: "1px solid #1E2D45",
-        }}>Primary Contact</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           <div style={fieldStyle}>
@@ -205,31 +197,10 @@ export function ApplicationForm() {
         </div>
       </div>
 
-      {/* ── Section: Age Groups ─────────────────────────────────────────── */}
-      <div style={{ marginBottom: "40px" }}>
-        <p style={{
-          fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
-          fontWeight: 700,
-          fontSize: "11px",
-          letterSpacing: "3px",
-          color: "#E74552",
-          textTransform: "uppercase",
-          marginBottom: "6px",
-          paddingBottom: "12px",
-          borderBottom: "1px solid #1E2D45",
-        }}>
-          Age Groups <span style={{ color: "#E74552" }}>*</span>
-        </p>
-        {/* Helper text + select all */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
-          <p style={{
-            fontFamily: "var(--font-body, Inter, sans-serif)",
-            fontSize: "13px",
-            color: "#64748B",
-            margin: 0,
-          }}>
-            Select all age groups your club intends to register.
-          </p>
+      {/* ── Card 2: Age Groups ──────────────────────────────────────────── */}
+      <div style={{ ...cardStyle, marginBottom: "24px" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "28px" }}>
+          <h3 style={{ ...cardHeadingStyle, margin: 0 }}>Age Groups</h3>
           <button
             type="button"
             onClick={toggleSelectAll}
@@ -252,6 +223,15 @@ export function ApplicationForm() {
           </button>
         </div>
 
+        <p style={{
+          fontFamily: "var(--font-body, Inter, sans-serif)",
+          fontSize: "13px",
+          color: "#64748B",
+          margin: "0 0 20px",
+        }}>
+          Select all age groups your club intends to register.
+        </p>
+
         {/* Boys / Girls two-column layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {([
@@ -259,7 +239,6 @@ export function ApplicationForm() {
             { label: "Girls", groups: GIRLS_GROUPS, allSelected: allGirlsSelected, toggle: toggleSelectGirls },
           ] as const).map(({ label, groups, allSelected: colAllSelected, toggle }) => (
             <div key={label}>
-              {/* Column header */}
               <div style={{
                 display: "flex",
                 alignItems: "center",
@@ -274,7 +253,7 @@ export function ApplicationForm() {
                   fontSize: "11px",
                   letterSpacing: "2px",
                   textTransform: "uppercase",
-                  color: "#C9A74C",
+                  color: "#F4EFE6",
                 }}>
                   {label}
                 </span>
@@ -290,7 +269,7 @@ export function ApplicationForm() {
                     fontSize: "11px",
                     letterSpacing: "1px",
                     textTransform: "uppercase",
-                    color: colAllSelected ? "#E74552" : "#64748B",
+                    color: colAllSelected ? "#E74552" : "#C9A74C",
                     cursor: "pointer",
                   }}
                 >
@@ -298,7 +277,6 @@ export function ApplicationForm() {
                 </button>
               </div>
 
-              {/* Checkboxes */}
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {groups.map((group) => (
                   <label
