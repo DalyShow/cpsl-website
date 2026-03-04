@@ -38,6 +38,7 @@ export const page = defineType({
         { type: "ctaBannerBlock" },
         { type: "clubDirectoryBlock" },
         { type: "calendarDayViewBlock" },
+        { type: "standingsBlock" },
       ],
     }),
   ],
