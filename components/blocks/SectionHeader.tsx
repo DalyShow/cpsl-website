@@ -26,7 +26,7 @@ function GhostShield({ color }: { color: string }) {
 export function SectionHeader({ title, badge, subtitle, variant = "dark" }: SectionHeaderProps) {
   const dark = variant === "dark";
 
-  const bg        = dark ? "#0D1B3E" : "#F4EFE6";
+  const bg        = dark ? "#1A2438" : "#F4EFE6";
   const border    = dark ? "#1E2D45" : "#D9CEBF";
   const titleColor   = dark ? "#F4EFE6" : "#091628";
   const subtitleColor = dark ? "#8899B0" : "#64748B";
