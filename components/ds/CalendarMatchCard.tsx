@@ -122,7 +122,7 @@ export function CalendarMatchCard({
             fontFamily: "'Barlow Condensed', sans-serif",
             fontWeight: 900,
             fontSize: 22,
-            color: isPostponed ? "#475569" : "white",
+            color: isPostponed ? "#8899B0" : "white",
             letterSpacing: "-0.5px",
           }}
         >
@@ -132,7 +132,7 @@ export function CalendarMatchCard({
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: 10,
-            color: "#475569",
+            color: "#8899B0",
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}
@@ -169,7 +169,7 @@ export function CalendarMatchCard({
                   fontWeight: 700,
                   fontSize: 11,
                   letterSpacing: "0.08em",
-                  color: isPostponed ? "#475569" : cc.text,
+                  color: isPostponed ? "#8899B0" : cc.text,
                 }}
               >
                 {competitionLabel(competition)}
@@ -180,7 +180,7 @@ export function CalendarMatchCard({
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 11,
-                  color: "#475569",
+                  color: "#8899B0",
                 }}
               >
                 Matchday {matchday}
@@ -201,7 +201,7 @@ export function CalendarMatchCard({
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 20,
-                color: isPostponed ? "#475569" : "white",
+                color: isPostponed ? "#8899B0" : "white",
                 letterSpacing: "0.01em",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
@@ -211,7 +211,7 @@ export function CalendarMatchCard({
               {home.name.toUpperCase()}
             </div>
             {home.position != null && (
-              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#64748B" }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#8899B0" }}>
                 Home · {ordinal(home.position)} Place
               </div>
             )}
@@ -247,7 +247,7 @@ export function CalendarMatchCard({
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 300,
                   fontSize: 20,
-                  color: "#475569",
+                  color: "#8899B0",
                   margin: "0 8px",
                 }}
               >
@@ -278,7 +278,7 @@ export function CalendarMatchCard({
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 700,
                   fontSize: 13,
-                  color: "#475569",
+                  color: "#8899B0",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -303,7 +303,7 @@ export function CalendarMatchCard({
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: 20,
-                color: isPostponed ? "#475569" : "white",
+                color: isPostponed ? "#8899B0" : "white",
                 letterSpacing: "0.01em",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
@@ -313,7 +313,7 @@ export function CalendarMatchCard({
               {away.name.toUpperCase()}
             </div>
             {away.position != null && (
-              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#64748B" }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#8899B0" }}>
                 Away · {ordinal(away.position)} Place
               </div>
             )}
@@ -336,7 +336,7 @@ export function CalendarMatchCard({
               height="13"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#475569"
+              stroke="#8899B0"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -348,7 +348,7 @@ export function CalendarMatchCard({
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 11,
-                color: "#475569",
+                color: "#8899B0",
               }}
             >
               {venue}
@@ -421,7 +421,7 @@ function StatusBadge({
             fontWeight: 700,
             fontSize: 11,
             letterSpacing: "0.06em",
-            color: "#64748B",
+            color: "#8899B0",
           }}
         >
           FULL TIME
@@ -446,7 +446,7 @@ function StatusBadge({
             fontWeight: 700,
             fontSize: 11,
             letterSpacing: "0.06em",
-            color: "#475569",
+            color: "#8899B0",
           }}
         >
           POSTPONED

@@ -17,15 +17,15 @@ const MATCH_DAYS = [
 ];
 
 const MATCHES = [
-  { day: 1,  kickoff: "12:00", home: { name: "Charlotte FC",      position: 1 }, away: { name: "Durham United",    position: 3 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 18, venue: "Memorial Stadium" },
-  { day: 1,  kickoff: "14:00", home: { name: "Raleigh Athletic",  position: 2 }, away: { name: "Triangle FC",       position: 4 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 18, venue: "Dix Park" },
-  { day: 8,  kickoff: "13:00", home: { name: "Greensboro FC",     position: 1 }, away: { name: "Winston-Salem SC",  position: 2 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 19, venue: "UNCG Stadium" },
+  { day: 1,  kickoff: "12:00", home: { name: "Charlotte FC",      position: 1 }, away: { name: "Durham United",    position: 3 }, status: "upcoming"  as const, competition: "Central",      matchday: 18, venue: "Memorial Stadium" },
+  { day: 1,  kickoff: "14:00", home: { name: "Raleigh Athletic",  position: 2 }, away: { name: "Triangle FC",       position: 4 }, status: "upcoming"  as const, competition: "Northeast",    matchday: 18, venue: "Dix Park" },
+  { day: 8,  kickoff: "13:00", home: { name: "Greensboro FC",     position: 1 }, away: { name: "Winston-Salem SC",  position: 2 }, status: "upcoming"  as const, competition: "Midwest",      matchday: 19, venue: "UNCG Stadium" },
   { day: 8,  kickoff: "16:00", home: { name: "Charlotte FC",      position: 1 }, away: { name: "Asheville FC",      position: 3 }, status: "upcoming"  as const, competition: "cup"         as const, matchday: 1,  venue: "Memorial Stadium" },
-  { day: 15, kickoff: "12:00", home: { name: "Durham United",     position: 3 }, away: { name: "Coastal SC",        position: 5 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 20, venue: "Durham Bulls Athletic" },
-  { day: 15, kickoff: "14:30", home: { name: "Triangle FC",       position: 4 }, away: { name: "Charlotte FC",      position: 1 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 20, venue: "Sahlen's Stadium" },
-  { day: 22, kickoff: "13:00", home: { name: "Winston-Salem SC",  position: 2 }, away: { name: "Columbia United",   position: 4 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 21, venue: "BB&T Field" },
+  { day: 15, kickoff: "12:00", home: { name: "Durham United",     position: 3 }, away: { name: "Coastal SC",        position: 5 }, status: "upcoming"  as const, competition: "Northeast",    matchday: 20, venue: "Durham Bulls Athletic" },
+  { day: 15, kickoff: "14:30", home: { name: "Triangle FC",       position: 4 }, away: { name: "Charlotte FC",      position: 1 }, status: "upcoming"  as const, competition: "Northeast",    matchday: 20, venue: "Sahlen's Stadium" },
+  { day: 22, kickoff: "13:00", home: { name: "Winston-Salem SC",  position: 2 }, away: { name: "Columbia United",   position: 4 }, status: "upcoming"  as const, competition: "Midwest",      matchday: 21, venue: "BB&T Field" },
   { day: 22, kickoff: "15:00", home: { name: "Greensboro FC",     position: 1 }, away: { name: "Charleston FC",     position: 5 }, status: "upcoming"  as const, competition: "cup"         as const, matchday: 2,  venue: "UNCG Stadium" },
-  { day: 29, kickoff: "14:00", home: { name: "Charlotte FC",      position: 1 }, away: { name: "Greensboro FC",     position: 2 }, status: "upcoming"  as const, competition: "premiership" as const, matchday: 22, venue: "Memorial Stadium" },
+  { day: 29, kickoff: "14:00", home: { name: "Charlotte FC",      position: 1 }, away: { name: "Greensboro FC",     position: 2 }, status: "upcoming"  as const, competition: "Central",      matchday: 22, venue: "Memorial Stadium" },
 ];
 
 export function CalendarDayViewBlock({ heading, monthLabel }: Props) {
