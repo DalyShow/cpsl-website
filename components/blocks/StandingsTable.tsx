@@ -115,7 +115,7 @@ const FONT  = "'Barlow Condensed', sans-serif";
 const INTER = "'Inter', sans-serif";
 
 function gdColor(gd: number) {
-  if (gd > 0) return "#3B82F6";
+  if (gd > 0) return "#00C853";
   if (gd < 0) return "#BF1D2D";
   return "#8899B0";
 }
