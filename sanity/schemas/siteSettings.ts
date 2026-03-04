@@ -37,6 +37,16 @@ export const siteSettings = defineType({
       ],
     }),
     defineField({
+      name: "ogImage",
+      title: "Social / OG Image",
+      description: "Shown when the site is shared on social media (Twitter, iMessage, etc.). Recommended size: 1200 × 630 px.",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: "alt", title: "Alt Text", type: "string" }),
+      ],
+    }),
+    defineField({
       name: "ctaLabel",
       title: "CTA Button Label",
       type: "string",

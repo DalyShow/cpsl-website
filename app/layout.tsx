@@ -15,11 +15,17 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+type SiteSettings = {
+  siteName?:        string;
+  siteDescription?: string;
+  ogImage?:         { asset?: { url?: string }; alt?: string };
+};
+
 export async function generateMetadata(): Promise<Metadata> {
-  let settings: { siteName?: string; siteDescription?: string } | null = null;
+  let settings: SiteSettings | null = null;
   try {
-    settings = await sanityFetch<{ siteName?: string; siteDescription?: string }>(
-      `*[_type == "siteSettings"][0]{ siteName, siteDescription }`
+    settings = await sanityFetch<SiteSettings>(
+      `*[_type == "siteSettings"][0]{ siteName, siteDescription, ogImage{ ..., asset->{ url } } }`
     );
   } catch {
     // Sanity unavailable — use hardcoded defaults below
@@ -30,10 +36,34 @@ export async function generateMetadata(): Promise<Metadata> {
     settings?.siteDescription ??
     "The premier soccer league spanning North and South Carolina. Live scores, standings, match schedules, and team profiles.";
 
+  const ogImageUrl = settings?.ogImage?.asset?.url;
+  const ogImages   = ogImageUrl
+    ? [{ url: ogImageUrl, width: 1200, height: 630, alt: settings?.ogImage?.alt ?? title }]
+    : [];
+
   return {
     title,
     description,
-    openGraph: { title, description, type: "website" },
+    icons: {
+      // SVG favicon — modern browsers use this; /app/favicon.ico is the .ico fallback
+      icon: [
+        { url: "/favicon.ico" },
+        { url: "/crest-blue.svg", type: "image/svg+xml" },
+      ],
+      apple: "/apple-icon.png",   // drop a 180×180 PNG in /public/ to activate
+    },
+    openGraph: {
+      title,
+      description,
+      type:   "website",
+      images: ogImages,
+    },
+    twitter: {
+      card:        ogImageUrl ? "summary_large_image" : "summary",
+      title,
+      description,
+      images:      ogImages,
+    },
   };
 }
 
