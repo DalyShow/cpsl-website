@@ -247,6 +247,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
 
       {/* ── Table ── */}
       <style>{`.cpsl-table::-webkit-scrollbar{display:none}`}</style>
+      <div className="max-w-7xl mx-auto">
       <div className="cpsl-table" style={{ overflowX: "auto", scrollbarWidth: "none" }}>
         {/* minWidth keeps the stat columns from collapsing; sticky cell is excluded from this calculation */}
         <div style={{ minWidth: 480 }}>
@@ -359,6 +360,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
             );
           })}
         </div>
+      </div>
       </div>
 
       {/* Season label footer */}
