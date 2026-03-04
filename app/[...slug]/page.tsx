@@ -48,7 +48,9 @@ export default async function DynamicPage({
             ...,
             backgroundImage{ ..., asset->{ url } },
             image{ ..., asset->{ url } },
-            bottomImage{ ..., asset->{ url } }
+            bottomImage{ ..., asset->{ url } },
+            lottie{ ..., asset->{ url } },
+            bottomLottie{ ..., asset->{ url } }
           }
         }`,
       { slug: pageSlug, parentSlug }

@@ -5,7 +5,8 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 interface LottieField {
-  url?:      string;
+  /** Sanity file asset — dereferenced via GROQ asset->{ url } */
+  asset?:    { url?: string };
   loop?:     boolean;
   autoplay?: boolean;
 }
@@ -56,8 +57,10 @@ export function ContentSectionCentered({
 
   const imageUrl       = image?.asset?.url;
   const bottomImageUrl = bottomImage?.asset?.url;
-  const hasTopMedia    = !!(lottie?.url || imageUrl);
-  const hasBottomMedia = !!(bottomLottie?.url || bottomImageUrl);
+  const lottieUrl      = lottie?.asset?.url;
+  const bottomLottieUrl = bottomLottie?.asset?.url;
+  const hasTopMedia    = !!(lottieUrl || imageUrl);
+  const hasBottomMedia = !!(bottomLottieUrl || bottomImageUrl);
   const mid  = Math.ceil(paragraphs.length / 2);
   const col1 = paragraphs.slice(0, mid);
   const col2 = paragraphs.slice(mid);
@@ -99,12 +102,12 @@ export function ContentSectionCentered({
           </h2>
 
           {/* Optional media — between heading and lead. Lottie takes precedence. */}
-          {lottie?.url ? (
+          {lottieUrl ? (
             <div style={{ margin: "0 auto 32px", width: "100%", maxWidth: "100%" }}>
               <DotLottieReact
-                src={lottie.url}
-                loop={lottie.loop ?? true}
-                autoplay={lottie.autoplay ?? true}
+                src={lottieUrl}
+                loop={lottie?.loop ?? true}
+                autoplay={lottie?.autoplay ?? true}
                 style={{ width: "100%", height: 320 }}
               />
             </div>
@@ -167,12 +170,12 @@ export function ContentSectionCentered({
         )}
 
         {/* Bottom media — 120px below last content. Lottie takes precedence. */}
-        {bottomLottie?.url ? (
+        {bottomLottieUrl ? (
           <div style={{ margin: "120px auto 0", width: "100%", maxWidth: "100%" }}>
             <DotLottieReact
-              src={bottomLottie.url}
-              loop={bottomLottie.loop ?? true}
-              autoplay={bottomLottie.autoplay ?? true}
+              src={bottomLottieUrl}
+              loop={bottomLottie?.loop ?? true}
+              autoplay={bottomLottie?.autoplay ?? true}
               style={{ width: "100%", height: 400 }}
             />
           </div>

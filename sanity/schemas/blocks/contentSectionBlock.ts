@@ -57,12 +57,12 @@ export const contentSectionBlock = defineType({
     defineField({
       name: "lottie",
       title: "Lottie Animation (below heading)",
-      description: "Optional. URL to a .lottie or .json file. Sits in the same slot as the image — between heading and lead. Takes precedence over image if both are set.",
-      type: "object",
+      description: "Optional. Upload a .lottie or .json file. Sits in the same slot as the image — between heading and lead. Takes precedence over image if both are set.",
+      type: "file",
+      options: { accept: ".lottie,.json,application/json" },
       fields: [
-        defineField({ name: "url",      title: "Animation URL",  type: "url",     validation: (R) => R.required() }),
-        defineField({ name: "loop",     title: "Loop",           type: "boolean", initialValue: true }),
-        defineField({ name: "autoplay", title: "Autoplay",       type: "boolean", initialValue: true }),
+        defineField({ name: "loop",     title: "Loop",     type: "boolean", initialValue: true }),
+        defineField({ name: "autoplay", title: "Autoplay", type: "boolean", initialValue: true }),
       ],
     }),
     defineField({
@@ -78,12 +78,12 @@ export const contentSectionBlock = defineType({
     defineField({
       name: "bottomLottie",
       title: "Bottom Lottie Animation",
-      description: "Optional. URL to a .lottie or .json file. Displays at the bottom of the section with 120px of spacing. Takes precedence over bottom image if both are set.",
-      type: "object",
+      description: "Optional. Upload a .lottie or .json file. Displays at the bottom of the section with 120px of spacing. Takes precedence over bottom image if both are set.",
+      type: "file",
+      options: { accept: ".lottie,.json,application/json" },
       fields: [
-        defineField({ name: "url",      title: "Animation URL",  type: "url",     validation: (R) => R.required() }),
-        defineField({ name: "loop",     title: "Loop",           type: "boolean", initialValue: true }),
-        defineField({ name: "autoplay", title: "Autoplay",       type: "boolean", initialValue: true }),
+        defineField({ name: "loop",     title: "Loop",     type: "boolean", initialValue: true }),
+        defineField({ name: "autoplay", title: "Autoplay", type: "boolean", initialValue: true }),
       ],
     }),
   ],
