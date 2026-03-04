@@ -44,14 +44,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    icons: {
-      // SVG favicon — modern browsers use this; /app/favicon.ico is the .ico fallback
-      icon: [
-        { url: "/favicon.ico" },
-        { url: "/crest-blue.svg", type: "image/svg+xml" },
-      ],
-      apple: "/apple-icon.png",   // drop a 180×180 PNG in /public/ to activate
-    },
+    // Favicons are handled via file convention:
+    //   app/favicon.ico → .ico fallback (all browsers)
+    //   app/icon.svg    → SVG favicon (modern browsers, takes precedence)
+    // No need to declare icons here — Next.js picks them up automatically.
     openGraph: {
       title,
       description,
