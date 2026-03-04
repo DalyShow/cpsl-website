@@ -39,6 +39,7 @@ export const page = defineType({
         { type: "clubDirectoryBlock" },
         { type: "calendarDayViewBlock" },
         { type: "standingsBlock" },
+        { type: "matchdayBlock" },
       ],
     }),
   ],
