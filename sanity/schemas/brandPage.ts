@@ -193,9 +193,9 @@ export const brandPage = defineType({
                 fields: [
                   defineField({ name: "name",      title: "Color Name",       type: "string" }),
                   defineField({ name: "role",      title: "Usage Role",       type: "string" }),
-                  defineField({ name: "hex",       title: "Hex (#RRGGBB)",    type: "string" }),
+                  defineField({ name: "hex",       title: "Swatch Color",     type: "color" }),
                   defineField({ name: "rgb",       title: "RGB (n / n / n)", type: "string" }),
-                  defineField({ name: "textColor", title: "Label Text Color", type: "string" }),
+                  defineField({ name: "textColor", title: "Label Text Color", type: "color" }),
                 ],
                 preview: { select: { title: "name", subtitle: "hex" } },
               }],
