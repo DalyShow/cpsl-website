@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { ColorHexInput } from "../components/ColorHexInput";
 
 export const brandPage = defineType({
   name: "brandPage",
@@ -193,9 +194,9 @@ export const brandPage = defineType({
                 fields: [
                   defineField({ name: "name",      title: "Color Name",       type: "string" }),
                   defineField({ name: "role",      title: "Usage Role",       type: "string" }),
-                  defineField({ name: "hex",       title: "Swatch Color",     type: "color" }),
+                  defineField({ name: "hex",       title: "Swatch Color",     type: "string", components: { input: ColorHexInput } }),
                   defineField({ name: "rgb",       title: "RGB (n / n / n)", type: "string" }),
-                  defineField({ name: "textColor", title: "Label Text Color", type: "color" }),
+                  defineField({ name: "textColor", title: "Label Text Color", type: "string", components: { input: ColorHexInput } }),
                 ],
                 preview: { select: { title: "name", subtitle: "hex" } },
               }],

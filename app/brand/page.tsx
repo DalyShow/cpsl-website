@@ -565,7 +565,7 @@ export default async function BrandPage() {
         imageFit, panelBg,
         lockups[]    { label, invertImage, bgVariant, displayStyle, assetFile { asset->{ url } } },
         usageDonts,
-        colors[]     { name, role, "hex": hex.hex, rgb, "textColor": textColor.hex },
+        colors[]     { name, role, hex, rgb, textColor },
         sectionTitle,
         displayName, displayWeights, displaySample, bodyName, bodyWeights, bodySample,
         assets[]     { label, format, note, size, file { asset->{ url } } }
