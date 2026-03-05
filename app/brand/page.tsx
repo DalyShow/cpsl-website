@@ -293,41 +293,30 @@ function RenderFullBleedImage({ s }: { s: BrandSection }) {
   const panelBg     = s.panelBg  ?? T.navy;
   const specs       = s.specs    ?? [];
 
-  // Build panel background style based on fit mode
-  const panelStyle: React.CSSProperties =
-    fit === "tile"
-      ? { backgroundImage: `url(${imageUrl})`, backgroundRepeat: "repeat", backgroundSize: "auto", backgroundColor: panelBg }
-      : fit === "contain"
-      ? { backgroundColor: panelBg, display: "flex", alignItems: "center", justifyContent: "center" }
-      : { backgroundColor: panelBg, position: "relative", overflow: "hidden" };
-
   return (
-    <section style={{ borderBottom: `1px solid ${T.navy3}`, padding: "64px", background: T.charcoal }}>
+    <section style={{ borderBottom: `1px solid ${T.navy3}` }}>
       <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: "70vh" }}>
 
-        {/* ── Left: image panel ──────────────────────────────────────── */}
+        {/* ── Left: image panel — 64px padding creates the frame ─────── */}
         <div
           className="lg:order-first"
-          style={{
-            minHeight: "400px",
-            ...panelStyle,
-          }}
+          style={{ minHeight: "400px", padding: "64px", backgroundColor: T.charcoal, display: "flex", alignItems: "stretch" }}
         >
-          {fit === "cover" && imageUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={imageUrl} alt=""
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
+          {/* Inner div fills content area (inside the padding) */}
+          {fit === "tile" && (
+            <div style={{ flex: 1, backgroundColor: panelBg, backgroundImage: imageUrl ? `url(${imageUrl})` : "none", backgroundRepeat: "repeat", backgroundSize: "auto" }} />
           )}
-          {fit === "contain" && imageUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={imageUrl} alt=""
-              style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }}
-            />
+          {fit === "cover" && (
+            <div style={{ flex: 1, backgroundColor: panelBg, backgroundImage: imageUrl ? `url(${imageUrl})` : "none", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />
           )}
-          {/* tile mode: background-image handles it, no <img> needed */}
+          {fit === "contain" && (
+            <div style={{ flex: 1, backgroundColor: panelBg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={imageUrl} alt="" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
+              )}
+            </div>
+          )}
         </div>
 
         {/* ── Right: text / specs ────────────────────────────────────── */}
