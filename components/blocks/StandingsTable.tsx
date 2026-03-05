@@ -171,7 +171,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
   const rows = MOCK[active];
 
   return (
-    <div style={{ background: "#091628" }}>
+    <div style={{ background: "#041124" }}>
 
       {/* ── Conference select (mobile) ── */}
       <div className="md:hidden" style={{ borderBottom: "1px solid #1E2D45" }}>
@@ -182,10 +182,10 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
               onChange={(e) => setActive(e.target.value as Conference)}
               style={{
                 width: "100%",
-                background: "#0D1B3E",
+                background: "#131B2D",
                 border: "1px solid #1E2D45",
                 borderRadius: 4,
-                color: "#C9A74C",
+                color: "#D4B949",
                 fontFamily: FONT,
                 fontWeight: 700,
                 fontSize: 13,
@@ -205,7 +205,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
               style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
               width="12" height="8" viewBox="0 0 12 8" fill="none"
             >
-              <path d="M1 1L6 6L11 1" stroke="#C9A74C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M1 1L6 6L11 1" stroke="#D4B949" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
         </div>
@@ -224,7 +224,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                 style={{
                   background: "none",
                   border: "none",
-                  borderBottom: `3px solid ${isActive ? "#C9A74C" : "transparent"}`,
+                  borderBottom: `3px solid ${isActive ? "#D4B949" : "transparent"}`,
                   marginBottom: -1,
                   padding: "0 18px",
                   height: 52,
@@ -234,7 +234,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                   fontSize: 13,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: isActive ? "#C9A74C" : "#8899B0",
+                  color: isActive ? "#D4B949" : "#8899B0",
                   transition: "color 0.15s, border-color 0.15s",
                 }}
               >
@@ -259,7 +259,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
               {/* Sticky: POS + CLUB header */}
               <div className="cpsl-sticky-cell" style={{
                 position: "sticky", left: 0, zIndex: 2,
-                background: "#091628",
+                background: "#131B2D",
                 display: "flex", alignItems: "center",
                 height: "100%",
                 borderLeft: "3px solid transparent",
@@ -299,10 +299,10 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                   {/* Sticky: POS + CLUB — border-left lives here so it stays on screen during scroll */}
                   <div className="cpsl-sticky-cell" style={{
                     position: "sticky", left: 0, zIndex: 2,
-                    background: "#091628",
+                    background: "#131B2D",
                     display: "flex", alignItems: "center",
                     height: "100%",
-                    borderLeft: `3px solid ${isFirst ? "#C9A74C" : "transparent"}`,
+                    borderLeft: `3px solid ${isFirst ? "#D4B949" : "transparent"}`,
                     paddingLeft: 13,
                     paddingRight: 8,
                     flexShrink: 0, width: 230,
@@ -338,7 +338,7 @@ export function StandingsTable({ seasonLabel }: StandingsTableProps) {
                   <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
                     {/* PTS — gold */}
                     <div style={{ width: W.pts, flexShrink: 0, textAlign: "center" }}>
-                      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 17, color: "#C9A74C" }}>
+                      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 17, color: "#D4B949" }}>
                         {row.pts}
                       </span>
                     </div>

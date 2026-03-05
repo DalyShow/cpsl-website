@@ -73,12 +73,12 @@ export function MatchdayBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18
   const liveCount   = confMatches.filter((m) => m.status === "live").length;
 
   return (
-    <div style={{ background: "#091628" }}>
+    <div style={{ background: "#041124" }}>
 
       {/* ── Conference dropdown ── */}
       <style>{`
         .cpsl-conf-select { appearance: none; -webkit-appearance: none; }
-        .cpsl-conf-select:focus { outline: none; border-color: #C9A74C !important; }
+        .cpsl-conf-select:focus { outline: none; border-color: #D4B949 !important; }
       `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6" style={{ paddingTop: 24, paddingBottom: 20 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -102,7 +102,7 @@ export function MatchdayBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18
               value={activeConf}
               onChange={(e) => setActiveConf(e.target.value)}
               style={{
-                background: "#0D1B3E",
+                background: "#131B2D",
                 border: "1px solid #1E2D45",
                 borderRadius: 8,
                 padding: "8px 36px 8px 14px",
@@ -111,7 +111,7 @@ export function MatchdayBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18
                 fontSize: 14,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
-                color: "#C9A74C",
+                color: "#D4B949",
                 cursor: "pointer",
                 minWidth: 180,
               }}
@@ -125,7 +125,7 @@ export function MatchdayBlock({ seasonLabel = "2026–2027 SEASON · MATCHDAY 18
               viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"
               style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", width: 10, height: 6, pointerEvents: "none" }}
             >
-              <path d="M1 1L5 5L9 1" stroke="#C9A74C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M1 1L5 5L9 1" stroke="#D4B949" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
 

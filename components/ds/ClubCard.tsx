@@ -28,7 +28,7 @@ export function ClubCard({ club, onClick }: ClubCardProps) {
       style={{
         display: "flex",
         alignItems: "center",
-        background: hovered ? "#162040" : "#0D1B3E",
+        background: hovered ? "#162040" : "#131B2D",
         border: `1px solid ${hovered ? "#2D4060" : "#1E2D45"}`,
         borderRadius: 12,
         overflow: "hidden",
@@ -86,7 +86,7 @@ export function ClubCard({ club, onClick }: ClubCardProps) {
 
       {/* Points */}
       <div style={{ width: 72, borderLeft: "1px solid #1E2D45", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "12px 0", flexShrink: 0 }}>
-        <div style={{ fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", fontWeight: 900, fontSize: 26, color: "#C9A74C", lineHeight: 1 }}>{pts}</div>
+        <div style={{ fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", fontWeight: 900, fontSize: 26, color: "#D4B949", lineHeight: 1 }}>{pts}</div>
         <div style={{ fontSize: 10, color: "#334155", fontWeight: 700, fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", letterSpacing: "0.08em", marginTop: 2 }}>PTS</div>
       </div>
     </div>

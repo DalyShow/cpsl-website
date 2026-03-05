@@ -38,7 +38,7 @@ export default async function ApplyPage() {
       <main className="pt-20">
         {/* ── Page header ───────────────────────────────────────────────── */}
         <div style={{
-          background: "#091628",
+          background: "#041124",
           borderBottom: "1px solid #1E2D45",
           padding: "56px 40px 48px",
           position: "relative",
@@ -51,7 +51,7 @@ export default async function ApplyPage() {
             left: 0,
             width: 4,
             height: "100%",
-            background: "#C9A74C",
+            background: "#D4B949",
           }} />
 
           <div style={{ maxWidth: 720, margin: "0 auto" }}>

@@ -78,9 +78,9 @@ export async function submitApplication(
       to: contactEmail,
       subject: "CPSL — Membership Application Received",
       html: `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#091628;">
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#041124;">
           <div style="padding:32px;text-align:center;border-bottom:1px solid #1E2D45;">
-            <p style="color:#C9A74C;font-size:22px;font-weight:900;letter-spacing:3px;margin:0;">CPSL</p>
+            <p style="color:#D4B949;font-size:22px;font-weight:900;letter-spacing:3px;margin:0;">CPSL</p>
             <p style="color:#64748B;font-size:11px;letter-spacing:2px;margin:6px 0 0;text-transform:uppercase;">Carolina Premier Soccer League</p>
           </div>
           <div style="padding:40px 32px;">
@@ -90,7 +90,7 @@ export async function submitApplication(
               <strong style="color:#F4EFE6;">${clubName}</strong>.
               Our team will review it and be in touch shortly.
             </p>
-            <div style="background:#0D1B3E;border:1px solid #1E2D45;padding:24px;margin-bottom:24px;">
+            <div style="background:#041124;border:1px solid #1E2D45;padding:24px;margin-bottom:24px;">
               <p style="color:#64748B;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0 0 16px;">Application Summary</p>
               <table style="width:100%;border-collapse:collapse;">
                 <tr><td style="color:#64748B;font-size:13px;padding:6px 0;width:140px;">Club</td><td style="color:#F4EFE6;font-size:13px;padding:6px 0;">${clubName}</td></tr>

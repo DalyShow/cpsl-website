@@ -31,11 +31,11 @@ const MATCHES = [
 
 export function CalendarDayViewBlock({ heading, monthLabel }: Props) {
   return (
-    <section style={{ background: "#091628", padding: "64px 0" }}>
+    <section style={{ background: "#041124", padding: "64px 0" }}>
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
-          <div style={{ fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", fontWeight: 700, fontSize: 11, letterSpacing: "0.12em", color: "#C9A74C", marginBottom: 10 }}>
+          <div style={{ fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", fontWeight: 700, fontSize: 11, letterSpacing: "0.12em", color: "#D4B949", marginBottom: 10 }}>
             CAROLINA PREMIER SOCCER LEAGUE
           </div>
           <h2 style={{ fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)", fontWeight: 900, fontSize: 44, lineHeight: 1, color: "white", letterSpacing: "-0.5px" }}>

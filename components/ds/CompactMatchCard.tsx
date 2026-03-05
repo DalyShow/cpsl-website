@@ -67,7 +67,7 @@ export function CompactMatchCard({
       style={{
         width: 200,
         flexShrink: 0,
-        background: "#0D1B3E",
+        background: "#131B2D",
         border: `1px solid ${borderColor}`,
         borderRadius: 10,
         overflow: "hidden",

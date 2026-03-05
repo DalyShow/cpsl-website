@@ -70,9 +70,9 @@ function FilterButton({ label, active, onClick }: { label: string; active: boole
       onMouseLeave={() => setHovered(false)}
       style={{
         padding: "7px 18px",
-        background: active ? "#C9A74C" : hovered ? "rgba(201,167,76,0.08)" : "transparent",
+        background: active ? "#D4B949" : hovered ? "rgba(201,167,76,0.08)" : "transparent",
         border: "none",
-        color: active ? "#091628" : hovered ? "#C9A74C" : "#64748B",
+        color: active ? "#041124" : hovered ? "#D4B949" : "#64748B",
         fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
         fontWeight: 700,
         fontSize: 13,

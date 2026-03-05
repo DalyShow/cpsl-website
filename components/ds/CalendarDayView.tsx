@@ -84,7 +84,7 @@ export function CalendarDayView({
         display: "flex",
         flex: 1,
         overflow: "hidden",
-        background: "#091628",
+        background: "#131B2D",
       }}
     >
       {/* ── Left: DayPicker sidebar — hidden, preserved for future use ── */}
@@ -126,7 +126,7 @@ export function CalendarDayView({
                   fontWeight: 700,
                   fontSize: 11,
                   letterSpacing: "0.12em",
-                  color: "#C9A74C",
+                  color: "#D4B949",
                   marginBottom: 2,
                 }}
               >
@@ -202,7 +202,7 @@ function DayNavButton({
         height: 32,
         borderRadius: 8,
         border: "1px solid #1E2D45",
-        background: hovered && !disabled ? "#162040" : "#0D1B3E",
+        background: hovered && !disabled ? "#162040" : "#131B2D",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

@@ -28,9 +28,9 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
 
   const bg        = dark ? "#1A2438" : "#F4EFE6";
   const border    = dark ? "#1E2D45" : "#D9CEBF";
-  const titleColor   = dark ? "#F4EFE6" : "#091628";
+  const titleColor   = dark ? "#F4EFE6" : "#041124";
   const subtitleColor = dark ? "#8899B0" : "#64748B";
-  const shieldColor  = dark ? "#FFFFFF" : "#091628";
+  const shieldColor  = dark ? "#FFFFFF" : "#041124";
 
   return (
     <div
@@ -81,7 +81,7 @@ export function SectionHeader({ title, badge, subtitle, variant = "dark" }: Sect
                 fontSize: "18px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#C9A74C",
+                color: "#D4B949",
                 lineHeight: 1,
                 whiteSpace: "nowrap",
               }}

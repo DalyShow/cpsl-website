@@ -84,7 +84,7 @@ export function CalendarMatchCard({
       style={{
         borderRadius: 16,
         border: borderStyle,
-        background: "#0D1B3E",
+        background: "#131B2D",
         overflow: "hidden",
         display: "flex",
         cursor: onClick ? "pointer" : "default",
@@ -224,7 +224,7 @@ export function CalendarMatchCard({
                 display: "flex",
                 alignItems: "center",
                 flexShrink: 0,
-                background: "#091628",
+                background: "#131B2D",
                 borderRadius: 10,
                 padding: "6px 16px",
                 margin: "0 12px",
@@ -471,7 +471,7 @@ function StatusBadge({
           fontWeight: 700,
           fontSize: 11,
           letterSpacing: "0.06em",
-          color: "#C9A74C",
+          color: "#D4B949",
         }}
       >
         UPCOMING

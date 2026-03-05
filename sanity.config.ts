@@ -22,6 +22,10 @@ export default defineConfig({
               .title("Home Page")
               .id("homePage")
               .child(S.document().schemaType("homePage").documentId("homePage")),
+            S.listItem()
+              .title("Brand Page")
+              .id("brandPage")
+              .child(S.document().schemaType("brandPage").documentId("brandPage")),
             S.divider(),
             S.listItem()
               .title("Pages")

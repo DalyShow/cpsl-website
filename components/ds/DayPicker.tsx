@@ -39,7 +39,7 @@ const WEEKDAY_HEADERS_SUN = ["S", "M", "T", "W", "T", "F", "S"];
 
 const DOT_COLORS: Record<MatchDotType, string> = {
   premiership: "#3B82F6",
-  cup: "#C9A74C",
+  cup: "#D4B949",
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ export function DayPicker({
         display: "flex",
         flexDirection: "column",
         gap: 20,
-        background: "#0D1B3E",
+        background: "#131B2D",
       }}
     >
       {/* Month navigation */}
@@ -127,7 +127,7 @@ export function DayPicker({
                 fontWeight: 700,
                 fontSize: 10,
                 letterSpacing: "0.08em",
-                color: i >= 5 ? "#C9A74C" : "#475569", // SAT/SUN in gold (last 2 cols for Mon-first)
+                color: i >= 5 ? "#D4B949" : "#475569", // SAT/SUN in gold (last 2 cols for Mon-first)
               }}
             >
               {h}
@@ -168,7 +168,7 @@ export function DayPicker({
                       width: 26,
                       height: 26,
                       borderRadius: "50%",
-                      background: isSelected ? "#C9A74C" : "transparent",
+                      background: isSelected ? "#D4B949" : "transparent",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -180,7 +180,7 @@ export function DayPicker({
                         fontSize: 12,
                         fontWeight: isSelected || isToday ? 700 : 400,
                         color: isSelected
-                          ? "#091628"
+                          ? "#131B2D"
                           : isSatOrSun
                           ? "#94A3B8"
                           : "#64748B",
@@ -242,7 +242,7 @@ export function DayPicker({
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <SummaryRow dot="#3B82F6" label="Premiership" count={summary.premiership} />
-            <SummaryRow dot="#C9A74C" label="CPSL Cup" count={summary.cup} muted={summary.cup === 0} />
+            <SummaryRow dot="#D4B949" label="CPSL Cup" count={summary.cup} muted={summary.cup === 0} />
             <div style={{ height: 1, background: "#1E2D45", margin: "4px 0" }} />
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span

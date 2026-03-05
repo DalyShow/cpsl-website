@@ -1,5 +1,6 @@
 import { siteSettings }        from "./siteSettings";
 import { homePage }            from "./homePage";
+import { brandPage }           from "./brandPage";
 import { page }                from "./page";
 import { heroBlock }            from "./blocks/heroBlock";
 import { contentSectionBlock }  from "./blocks/contentSectionBlock";
@@ -14,6 +15,7 @@ export const schemaTypes = [
   // Documents
   siteSettings,
   homePage,
+  brandPage,
   page,
   // Blocks
   heroBlock,

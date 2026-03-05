@@ -25,7 +25,7 @@ export default async function SchedulePage() {
         ctaHref={settings?.ctaHref ?? "/apply"}
         showLive={false}
       />
-      <main className="pt-20" style={{ background: "#091628", minHeight: "100vh" }}>
+      <main className="pt-20" style={{ background: "#041124", minHeight: "100vh" }}>
         <SectionHeader
           title="Schedule"
           badge="2026–2027 Season"

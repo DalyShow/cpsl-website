@@ -56,13 +56,13 @@ function ToggleButton({
       onMouseLeave={() => setHovered(false)}
       style={{
         padding: "7px 16px",
-        background: active ? "#C9A74C" : hovered ? "rgba(201,167,76,0.08)" : "transparent",
+        background: active ? "#D4B949" : hovered ? "rgba(201,167,76,0.08)" : "transparent",
         border: "none",
         fontFamily: "'Barlow Condensed', sans-serif",
         fontWeight: active ? 700 : 600,
         fontSize: 13,
         letterSpacing: "0.05em",
-        color: active ? "#091628" : hovered ? "#C9A74C" : "#64748B",
+        color: active ? "#041124" : hovered ? "#D4B949" : "#64748B",
         cursor: "pointer",
         transition: "background 0.15s, color 0.15s",
       }}

@@ -11,7 +11,7 @@ const initialState: FormState = {};
 
 // ─── Shared styles ────────────────────────────────────────────────────────────
 const cardStyle: React.CSSProperties = {
-  background: "#0D1B3E",
+  background: "#041124",
   border: "1px solid #1E2D45",
   padding: "32px",
   marginBottom: "16px",
@@ -94,7 +94,7 @@ export function ApplicationForm() {
   if (state.success) {
     return (
       <div style={{
-        background: "#0D1B3E",
+        background: "#041124",
         border: "1px solid #1E2D45",
         padding: "48px 40px",
         textAlign: "center",
@@ -102,14 +102,14 @@ export function ApplicationForm() {
         <div style={{
           width: 56,
           height: 56,
-          background: "#C9A74C",
+          background: "#D4B949",
           borderRadius: "50%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           margin: "0 auto 24px",
         }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#091628" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#041124" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
@@ -213,7 +213,7 @@ export function ApplicationForm() {
               fontSize: "12px",
               letterSpacing: "1.5px",
               textTransform: "uppercase",
-              color: allSelected ? "#E74552" : "#C9A74C",
+              color: allSelected ? "#E74552" : "#D4B949",
               cursor: "pointer",
               whiteSpace: "nowrap",
               flexShrink: 0,
@@ -269,7 +269,7 @@ export function ApplicationForm() {
                     fontSize: "11px",
                     letterSpacing: "1px",
                     textTransform: "uppercase",
-                    color: colAllSelected ? "#E74552" : "#C9A74C",
+                    color: colAllSelected ? "#E74552" : "#D4B949",
                     cursor: "pointer",
                   }}
                 >
@@ -285,8 +285,8 @@ export function ApplicationForm() {
                       display: "flex",
                       alignItems: "center",
                       gap: "10px",
-                      background: selectedGroups.includes(group) ? "#0D1B3E" : "#1E2D45",
-                      border: `1px solid ${selectedGroups.includes(group) ? "#C9A74C" : "#2A3F5C"}`,
+                      background: selectedGroups.includes(group) ? "#041124" : "#1E2D45",
+                      border: `1px solid ${selectedGroups.includes(group) ? "#D4B949" : "#2A3F5C"}`,
                       padding: "11px 14px",
                       cursor: "pointer",
                       userSelect: "none",
@@ -302,7 +302,7 @@ export function ApplicationForm() {
                       style={{
                         width: 16,
                         height: 16,
-                        accentColor: "#C9A74C",
+                        accentColor: "#D4B949",
                         flexShrink: 0,
                         cursor: "pointer",
                       }}
@@ -330,7 +330,7 @@ export function ApplicationForm() {
         disabled={isPending}
         style={{
           width: "100%",
-          background: isPending ? "#8A6E2E" : "#C9A74C",
+          background: isPending ? "#8A6E2E" : "#D4B949",
           border: "none",
           padding: "16px 24px",
           fontFamily: "var(--font-display, 'Barlow Condensed', sans-serif)",
@@ -338,7 +338,7 @@ export function ApplicationForm() {
           fontSize: "16px",
           letterSpacing: "2px",
           textTransform: "uppercase",
-          color: "#091628",
+          color: "#041124",
           cursor: isPending ? "not-allowed" : "pointer",
           transition: "background 0.15s ease",
         }}
