@@ -159,6 +159,12 @@ const display: React.CSSProperties = {
 };
 const body: React.CSSProperties = { fontFamily: "'Inter', sans-serif" };
 
+// Ensure hex values always have a leading # so CSS recognises them
+const hex = (v: string | undefined) => {
+  if (!v) return "transparent";
+  return v.startsWith("#") ? v : `#${v}`;
+};
+
 const bgVariantMap: Record<string, string> = {
   dark:  T.navy,
   charcoal: T.charcoal,
@@ -418,18 +424,18 @@ function RenderColorSystem({ s }: { s: BrandSection }) {
       </h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: T.navy3 }}>
         {colors.map(c => (
-          <div key={c.hex} className="flex flex-col justify-between p-6 md:p-8" style={{ background: c.hex, minHeight: "200px" }}>
+          <div key={c.hex} className="flex flex-col justify-between p-6 md:p-8" style={{ background: hex(c.hex), minHeight: "200px" }}>
             <div>
-              <div className="font-bold mb-1" style={{ ...display, fontSize: "clamp(13px, 1.8vw, 20px)", fontWeight: 800, color: c.textColor }}>
+              <div className="font-bold mb-1" style={{ ...display, fontSize: "clamp(13px, 1.8vw, 20px)", fontWeight: 800, color: hex(c.textColor) }}>
                 {c.name.toUpperCase()}
               </div>
-              <div className="text-xs" style={{ color: c.textColor, opacity: 0.65 }}>{c.role}</div>
+              <div className="text-xs" style={{ color: hex(c.textColor), opacity: 0.65 }}>{c.role}</div>
             </div>
             <div>
-              <div className="mb-1" style={{ ...display, fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: 900, color: c.textColor, letterSpacing: "0.04em" }}>
-                {c.hex}
+              <div className="mb-1" style={{ ...display, fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: 900, color: hex(c.textColor), letterSpacing: "0.04em" }}>
+                {hex(c.hex)}
               </div>
-              <div className="text-xs" style={{ color: c.textColor, opacity: 0.5, letterSpacing: "0.06em" }}>
+              <div className="text-xs" style={{ color: hex(c.textColor), opacity: 0.5, letterSpacing: "0.06em" }}>
                 RGB {c.rgb}
               </div>
             </div>
