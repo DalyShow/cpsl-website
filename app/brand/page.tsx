@@ -310,7 +310,6 @@ function RenderFullBleedImage({ s }: { s: BrandSection }) {
           className="lg:order-first"
           style={{
             minHeight: "400px",
-            borderBottom: `1px solid ${T.navy3}`,
             ...panelStyle,
           }}
         >
