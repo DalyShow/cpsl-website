@@ -422,22 +422,25 @@ function RenderColorSystem({ s }: { s: BrandSection }) {
       <h2 className="mb-14" style={{ ...display, fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 900, lineHeight: 0.92 }}>
         {s.heading ?? "THE PALETTE"}
       </h2>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: T.navy3 }}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {colors.map(c => (
-          <div key={c.hex} className="flex flex-col justify-between p-6 md:p-8" style={{ background: hex(c.hex), minHeight: "200px" }}>
-            <div>
-              <div className="font-bold mb-1" style={{ ...display, fontSize: "clamp(13px, 1.8vw, 20px)", fontWeight: 800, color: hex(c.textColor) }}>
-                {c.name.toUpperCase()}
+          <div key={c.hex} style={{ border: `1px solid ${T.navy3}`, overflow: "hidden" }}>
+            {/* ── Colour swatch ── */}
+            <div style={{ height: 96, background: hex(c.hex) }} />
+            {/* ── Info panel ── */}
+            <div style={{ background: T.charcoal, padding: "14px 16px" }}>
+              <div style={{ ...display, fontSize: 13, fontWeight: 800, color: T.white, marginBottom: 2 }}>
+                {c.name ?? "—"}
               </div>
-              <div className="text-xs" style={{ color: hex(c.textColor), opacity: 0.65 }}>{c.role}</div>
-            </div>
-            <div>
-              <div className="mb-1" style={{ ...display, fontSize: "clamp(18px, 2.5vw, 28px)", fontWeight: 900, color: hex(c.textColor), letterSpacing: "0.04em" }}>
+              <div style={{ fontSize: 11, color: T.gray, marginBottom: 10 }}>{c.role}</div>
+              <div style={{ ...display, fontSize: 15, fontWeight: 700, color: T.gold, letterSpacing: "0.06em" }}>
                 {hex(c.hex)}
               </div>
-              <div className="text-xs" style={{ color: hex(c.textColor), opacity: 0.5, letterSpacing: "0.06em" }}>
-                RGB {c.rgb}
-              </div>
+              {c.rgb && (
+                <div style={{ fontSize: 10, color: T.gray, marginTop: 2, letterSpacing: "0.04em" }}>
+                  RGB {c.rgb}
+                </div>
+              )}
             </div>
           </div>
         ))}

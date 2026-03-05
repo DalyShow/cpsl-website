@@ -17,8 +17,11 @@ export function ColorHexInput(props: StringInputProps) {
   };
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = e.target.value;
-    onChange(v ? set(v) : unset());
+    const raw = e.target.value.trim();
+    if (!raw) { onChange(unset()); return; }
+    // Always store with leading # so CSS recognises it as a hex colour
+    const v = raw.startsWith("#") ? raw : `#${raw}`;
+    onChange(set(v));
   };
 
   return (
