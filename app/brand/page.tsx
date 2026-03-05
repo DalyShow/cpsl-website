@@ -300,7 +300,7 @@ function RenderFullBleedImage({ s }: { s: BrandSection }) {
         {/* ── Left: image panel — 64px padding creates the frame ─────── */}
         <div
           className="lg:order-first"
-          style={{ minHeight: "400px", padding: "64px", backgroundColor: T.charcoal, display: "flex", alignItems: "stretch" }}
+          style={{ minHeight: "400px", padding: "64px", display: "flex", alignItems: "stretch" }}
         >
           {/* Inner div fills content area (inside the padding) */}
           {fit === "tile" && (
