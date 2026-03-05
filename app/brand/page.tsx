@@ -302,7 +302,7 @@ function RenderFullBleedImage({ s }: { s: BrandSection }) {
       : { backgroundColor: panelBg, position: "relative", overflow: "hidden" };
 
   return (
-    <section style={{ borderBottom: `1px solid ${T.navy3}`, padding: "64px" }}>
+    <section style={{ borderBottom: `1px solid ${T.navy3}`, padding: "64px", background: T.charcoal }}>
       <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: "70vh" }}>
 
         {/* ── Left: image panel ──────────────────────────────────────── */}
