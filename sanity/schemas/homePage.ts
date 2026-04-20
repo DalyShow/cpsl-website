@@ -16,6 +16,7 @@ export const homePage = defineType({
         { type: "ctaBannerBlock" },
         { type: "clubDirectoryBlock" },
         { type: "calendarDayViewBlock" },
+        { type: "logoTickerBlock" },
       ],
     }),
   ],

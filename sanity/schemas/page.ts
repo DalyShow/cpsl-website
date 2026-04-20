@@ -40,6 +40,7 @@ export const page = defineType({
         { type: "calendarDayViewBlock" },
         { type: "standingsBlock" },
         { type: "matchdayBlock" },
+        { type: "logoTickerBlock" },
       ],
     }),
   ],

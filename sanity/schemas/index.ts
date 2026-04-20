@@ -10,6 +10,7 @@ import { calendarDayViewBlock } from "./blocks/calendarDayViewBlock";
 import { sectionHeaderBlock }  from "./blocks/sectionHeaderBlock";
 import { standingsBlock }      from "./blocks/standingsBlock";
 import { matchdayBlock }       from "./blocks/matchdayBlock";
+import { logoTickerBlock }     from "./blocks/logoTickerBlock";
 
 export const schemaTypes = [
   // Documents
@@ -26,4 +27,5 @@ export const schemaTypes = [
   calendarDayViewBlock,
   standingsBlock,
   matchdayBlock,
+  logoTickerBlock,
 ];

@@ -29,7 +29,8 @@ export default async function Home() {
           image{ ..., asset->{ url } },
           bottomImage{ ..., asset->{ url } },
           lottie{ ..., asset->{ url } },
-          bottomLottie{ ..., asset->{ url } }
+          bottomLottie{ ..., asset->{ url } },
+          logos[]{ ..., image{ ..., asset->{ url } } }
         }
       }`
     ),

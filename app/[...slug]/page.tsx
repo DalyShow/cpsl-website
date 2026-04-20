@@ -50,7 +50,8 @@ export default async function DynamicPage({
             image{ ..., asset->{ url } },
             bottomImage{ ..., asset->{ url } },
             lottie{ ..., asset->{ url } },
-            bottomLottie{ ..., asset->{ url } }
+            bottomLottie{ ..., asset->{ url } },
+            logos[]{ ..., image{ ..., asset->{ url } } }
           }
         }`,
       { slug: pageSlug, parentSlug }
