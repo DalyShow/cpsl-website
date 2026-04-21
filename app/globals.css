@@ -114,9 +114,6 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg-page);
-  background-image: url('/brand-pattern.svg');
-  background-size: 180px 140px;
-  background-repeat: repeat;
   color: var(--fg-primary);
   font-family: "Inter", sans-serif;
   font-size: 16px;

@@ -56,8 +56,7 @@ export const logoTickerBlock = defineType({
       name: "sectionBackground",
       title: "Section Background Hex",
       type: "string",
-      initialValue: "transparent",
-      description: "The surface the ticker sits on. Leave 'transparent' to inherit from the page.",
+      description: "Override the ticker's background colour. Leave blank to inherit the page background.",
     }),
   ],
   preview: {
