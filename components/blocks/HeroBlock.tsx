@@ -64,15 +64,46 @@ export function HeroBlock({
       : [];
   const hasBg = imageUrls.length > 0;
 
-  const [bgIndex, setBgIndex] = useState(0);
+  // Two-layer ping-pong so at most one additional image is in memory. The
+  // inactive layer holds whatever we're fading away from; the active one
+  // is what the visitor is currently looking at. The next image is only
+  // fetched (via new Image().src) when it's time to transition — so only
+  // one image beyond the visible one is ever in flight.
+  const [layers, setLayers] = useState<[string | null, string | null]>([
+    imageUrls[0] ?? null,
+    null,
+  ]);
+  const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
   useEffect(() => {
     if (imageUrls.length < 2) return;
     const ms = Math.max(1, backgroundInterval) * 1000;
-    const id = setInterval(() => {
-      setBgIndex((i) => (i + 1) % imageUrls.length);
+    let cancelled = false;
+    const timer = setTimeout(() => {
+      const nextIdx = (currentIdx + 1) % imageUrls.length;
+      const nextUrl = imageUrls[nextIdx];
+      const preload = new window.Image();
+      preload.src = nextUrl;
+      const swap = () => {
+        if (cancelled) return;
+        const inactive: 0 | 1 = activeLayer === 0 ? 1 : 0;
+        setLayers((l) => {
+          const next: [string | null, string | null] = [l[0], l[1]];
+          next[inactive] = nextUrl;
+          return next;
+        });
+        setActiveLayer(inactive);
+        setCurrentIdx(nextIdx);
+      };
+      if (preload.complete) swap();
+      else preload.onload = swap;
     }, ms);
-    return () => clearInterval(id);
-  }, [imageUrls.length, backgroundInterval]);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [imageUrls, currentIdx, activeLayer, backgroundInterval]);
   const lottieUrl  = lottie?.asset?.url;
   const imageUrl   = image?.asset?.url;
   const hasMedia   = !!(lottieUrl || imageUrl);
@@ -96,21 +127,23 @@ export function HeroBlock({
       }}
     >
       {hasBg &&
-        imageUrls.map((url, i) => (
-          <div
-            key={url}
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${url}) center/cover no-repeat`,
-              backgroundBlendMode: backgroundBlendMode,
-              opacity: i === bgIndex ? backgroundOpacity : 0,
-              transition: `opacity ${backgroundTransition}s ease-in-out`,
-              pointerEvents: "none",
-            }}
-          />
-        ))}
+        layers.map((url, i) =>
+          url ? (
+            <div
+              key={i}
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${url}) center/cover no-repeat`,
+                backgroundBlendMode: backgroundBlendMode,
+                opacity: i === activeLayer ? backgroundOpacity : 0,
+                transition: `opacity ${backgroundTransition}s ease-in-out`,
+                pointerEvents: "none",
+              }}
+            />
+          ) : null
+        )}
       <div
         style={{
           position: "relative",
