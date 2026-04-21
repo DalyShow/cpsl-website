@@ -2,6 +2,12 @@
 
 // Ported from CPSL Design System — components/cpsl/modules/LogoTicker.tsx
 
+import { useEffect, useRef, useState } from "react";
+
+// Uploaded assets are 2x for retina — display at half their physical size.
+const TILE_SIZE = 58;
+const GAP = 30;
+
 interface TickerLogo {
   _key?: string;
   asset?: { url?: string };
@@ -28,19 +34,43 @@ export function LogoTickerBlock({
   sectionBackground = "transparent",
 }: LogoTickerBlockProps) {
   const items = (logos ?? []).filter((l) => l?.asset?.url);
+
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [shouldScroll, setShouldScroll] = useState(false);
+
+  useEffect(() => {
+    if (items.length === 0) return;
+    const vp = viewportRef.current;
+    if (!vp) return;
+
+    const contentWidth =
+      items.length * TILE_SIZE + Math.max(0, items.length - 1) * GAP;
+
+    const check = () => {
+      setShouldScroll(contentWidth > vp.clientWidth);
+    };
+    check();
+
+    const ro = new ResizeObserver(check);
+    ro.observe(vp);
+    return () => ro.disconnect();
+  }, [items.length]);
+
   if (items.length === 0) return null;
 
-  // Duplicate the list so translateX(-50%) lands on a seamless seam.
-  const loop = [...items, ...items];
+  // Duplicate items only when the row is wider than the viewport — this
+  // lets translateX(-50%) land on a seamless seam mid-loop.
+  const rendered = shouldScroll ? [...items, ...items] : items;
 
-  const maskStyle: React.CSSProperties | undefined = edgeFade
-    ? {
-        WebkitMaskImage:
-          "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
-        maskImage:
-          "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
-      }
-    : undefined;
+  const maskStyle: React.CSSProperties | undefined =
+    shouldScroll && edgeFade
+      ? {
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
+        }
+      : undefined;
 
   return (
     <section style={{ background: sectionBackground, padding: "16px 0" }}>
@@ -62,8 +92,10 @@ export function LogoTickerBlock({
         )}
 
         <div
+          ref={viewportRef}
           className="cpsl-logo-ticker"
           data-pause-on-hover={pauseOnHover ? "true" : "false"}
+          data-scrolling={shouldScroll ? "true" : "false"}
           style={{
             overflow: "hidden",
             width: "100%",
@@ -75,23 +107,25 @@ export function LogoTickerBlock({
             style={{
               display: "flex",
               flexDirection: "row",
-              gap: 30,
-              width: "max-content",
-              animation: `cpsl-ticker-scroll ${durationSeconds}s linear infinite`,
+              gap: GAP,
+              width: shouldScroll ? "max-content" : "100%",
+              animation: shouldScroll
+                ? `cpsl-ticker-scroll ${durationSeconds}s linear infinite`
+                : "none",
               animationDirection: reverse ? "reverse" : "normal",
             }}
           >
-            {loop.map((logo, i) => {
+            {rendered.map((logo, i) => {
               const url = logo.asset?.url ?? "";
-              const isClone = i >= items.length;
+              const isClone = shouldScroll && i >= items.length;
               return (
                 <div
                   key={`${logo._key ?? i}-${i}`}
                   aria-hidden={isClone}
                   style={{
                     flexShrink: 0,
-                    width: 115,
-                    height: 115,
+                    width: TILE_SIZE,
+                    height: TILE_SIZE,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -118,7 +152,7 @@ export function LogoTickerBlock({
               from { transform: translate3d(0, 0, 0); }
               to   { transform: translate3d(-50%, 0, 0); }
             }
-            .cpsl-logo-ticker[data-pause-on-hover="true"]:hover .cpsl-logo-ticker__track {
+            .cpsl-logo-ticker[data-pause-on-hover="true"][data-scrolling="true"]:hover .cpsl-logo-ticker__track {
               animation-play-state: paused;
             }
             @media (prefers-reduced-motion: reduce) {
