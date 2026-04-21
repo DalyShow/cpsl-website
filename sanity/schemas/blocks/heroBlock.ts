@@ -19,6 +19,34 @@ export const heroBlock = defineType({
         defineField({ name: "alt", title: "Alt Text", type: "string" }),
       ],
     }),
+    defineField({
+      name: "image",
+      title: "Image (below headline)",
+      description: "Optional. Sits between the headline and the subheading.",
+      type: "image",
+      options: { accept: "image/svg+xml,image/png,image/webp,image/jpeg" },
+      fields: [
+        defineField({ name: "alt", title: "Alt Text", type: "string" }),
+      ],
+    }),
+    defineField({
+      name: "lottie",
+      title: "Lottie Animation (below headline)",
+      description: "Optional. Upload a .lottie or .json file. Sits in the same slot as the image — takes precedence over image if both are set.",
+      type: "file",
+      options: { accept: ".lottie,.json,application/json" },
+      fields: [
+        defineField({ name: "loop",     title: "Loop",     type: "boolean", initialValue: true }),
+        defineField({ name: "autoplay", title: "Autoplay", type: "boolean", initialValue: true }),
+      ],
+    }),
+    defineField({
+      name: "mediaMaxWidth",
+      title: "Media Max Width (px)",
+      type: "number",
+      initialValue: 320,
+      description: "Constrains the below-headline image or Lottie.",
+    }),
   ],
   preview: {
     select: { title: "heading" },

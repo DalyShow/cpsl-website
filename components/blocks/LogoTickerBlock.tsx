@@ -110,9 +110,10 @@ export function LogoTickerBlock({
               flexDirection: "row",
               gap: GAP,
               width: shouldScroll ? "max-content" : "100%",
-              animation: shouldScroll
-                ? `cpsl-ticker-scroll ${durationSeconds}s linear infinite`
-                : "none",
+              animationName: shouldScroll ? "cpsl-ticker-scroll" : "none",
+              animationDuration: shouldScroll ? `${durationSeconds}s` : undefined,
+              animationTimingFunction: shouldScroll ? "linear" : undefined,
+              animationIterationCount: shouldScroll ? "infinite" : undefined,
               animationDirection: reverse ? "reverse" : "normal",
               // Consumed by the keyframes below for an exact, seamless reset.
               ["--cpsl-ticker-repeat" as string]: repeatOffset,

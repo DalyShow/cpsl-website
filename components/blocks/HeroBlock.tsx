@@ -1,3 +1,13 @@
+"use client";
+
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
+interface LottieField {
+  asset?: { url?: string };
+  loop?: boolean;
+  autoplay?: boolean;
+}
+
 interface HeroBlockProps {
   eyebrow?: string;
   heading?: string;
@@ -8,6 +18,12 @@ interface HeroBlockProps {
     asset?: { url?: string };
     alt?: string;
   };
+  image?: {
+    asset?: { url?: string };
+    alt?: string;
+  };
+  lottie?: LottieField;
+  mediaMaxWidth?: number;
 }
 
 export function HeroBlock({
@@ -17,8 +33,14 @@ export function HeroBlock({
   ctaLabel   = "Join Our League",
   ctaHref    = "#contact",
   backgroundImage,
+  image,
+  lottie,
+  mediaMaxWidth = 320,
 }: HeroBlockProps) {
   const bgImageUrl = backgroundImage?.asset?.url;
+  const lottieUrl  = lottie?.asset?.url;
+  const imageUrl   = image?.asset?.url;
+  const hasMedia   = !!(lottieUrl || imageUrl);
 
   return (
     <section
@@ -70,11 +92,42 @@ export function HeroBlock({
             letterSpacing: "-0.02em",
             textTransform: "uppercase",
             color: "#F4EFE6",
-            marginBottom: "28px",
+            marginBottom: hasMedia ? "28px" : "28px",
           }}
         >
           {heading}
         </h1>
+
+        {/* Image or Lottie under the headline — lottie wins if both supplied */}
+        {hasMedia && (
+          <div
+            style={{
+              maxWidth: mediaMaxWidth,
+              width: "100%",
+              margin: "0 auto 28px",
+            }}
+          >
+            {lottieUrl ? (
+              <DotLottieReact
+                src={lottieUrl}
+                loop={lottie?.loop ?? true}
+                autoplay={lottie?.autoplay ?? true}
+                style={{ width: "100%", height: "auto" }}
+              />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={imageUrl!}
+                alt={image?.alt ?? ""}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
+            )}
+          </div>
+        )}
 
         {/* Subheading */}
         {subheading && (
