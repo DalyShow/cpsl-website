@@ -47,6 +47,7 @@ export default async function DynamicPage({
           sections[]{
             ...,
             backgroundImage{ ..., asset->{ url } },
+            backgroundImages[]{ ..., asset->{ url } },
             image{ ..., asset->{ url } },
             bottomImage{ ..., asset->{ url } },
             lottie{ ..., asset->{ url } },

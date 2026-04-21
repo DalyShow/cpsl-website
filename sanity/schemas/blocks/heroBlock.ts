@@ -12,12 +12,44 @@ export const heroBlock = defineType({
     defineField({ name: "ctaHref",    title: "CTA Button Link",  type: "string", initialValue: "#contact" }),
     defineField({
       name: "backgroundImage",
-      title: "Background Image",
+      title: "Background Image (single)",
+      description: "Use this for a single static image. For a crossfading slideshow, use Background Images below — it takes precedence.",
       type: "image",
       options: { hotspot: true },
       fields: [
         defineField({ name: "alt", title: "Alt Text", type: "string" }),
       ],
+    }),
+    defineField({
+      name: "backgroundImages",
+      title: "Background Images (slideshow)",
+      description: "Upload two or more images to crossfade between them. Leave empty to use the single image above.",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({ name: "alt", title: "Alt Text", type: "string" }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "backgroundInterval",
+      title: "Seconds per image",
+      type: "number",
+      initialValue: 6,
+      description: "How long each image stays fully visible before crossfading.",
+      validation: (R) => R.positive(),
+    }),
+    defineField({
+      name: "backgroundTransition",
+      title: "Crossfade Duration (seconds)",
+      type: "number",
+      initialValue: 1.5,
+      description: "How long each fade transition takes. Lower = snappier, higher = silkier.",
+      validation: (R) => R.positive(),
     }),
     defineField({
       name: "backgroundOpacity",

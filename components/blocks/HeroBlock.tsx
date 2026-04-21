@@ -1,6 +1,7 @@
 "use client";
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useEffect, useState } from "react";
 
 interface LottieField {
   asset?: { url?: string };
@@ -18,6 +19,13 @@ interface HeroBlockProps {
     asset?: { url?: string };
     alt?: string;
   };
+  backgroundImages?: Array<{
+    _key?: string;
+    asset?: { url?: string };
+    alt?: string;
+  }>;
+  backgroundInterval?: number;
+  backgroundTransition?: number;
   backgroundBlendMode?: string;
   backgroundOpacity?: number;
   image?: {
@@ -35,13 +43,36 @@ export function HeroBlock({
   ctaLabel   = "Join Our League",
   ctaHref    = "#contact",
   backgroundImage,
+  backgroundImages,
+  backgroundInterval = 6,
+  backgroundTransition = 1.5,
   backgroundBlendMode = "normal",
   backgroundOpacity = 1,
   image,
   lottie,
   mediaMaxWidth = 320,
 }: HeroBlockProps) {
-  const bgImageUrl = backgroundImage?.asset?.url;
+  // Prefer the array for slideshow; fall back to the single image.
+  const slideshow = (backgroundImages ?? [])
+    .map((img) => img?.asset?.url)
+    .filter((url): url is string => !!url);
+  const imageUrls =
+    slideshow.length > 0
+      ? slideshow
+      : backgroundImage?.asset?.url
+      ? [backgroundImage.asset.url]
+      : [];
+  const hasBg = imageUrls.length > 0;
+
+  const [bgIndex, setBgIndex] = useState(0);
+  useEffect(() => {
+    if (imageUrls.length < 2) return;
+    const ms = Math.max(1, backgroundInterval) * 1000;
+    const id = setInterval(() => {
+      setBgIndex((i) => (i + 1) % imageUrls.length);
+    }, ms);
+    return () => clearInterval(id);
+  }, [imageUrls.length, backgroundInterval]);
   const lottieUrl  = lottie?.asset?.url;
   const imageUrl   = image?.asset?.url;
   const hasMedia   = !!(lottieUrl || imageUrl);
@@ -64,19 +95,22 @@ export function HeroBlock({
         overflow: "hidden",
       }}
     >
-      {bgImageUrl && (
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${bgImageUrl}) center/cover no-repeat`,
-            backgroundBlendMode: backgroundBlendMode,
-            opacity: backgroundOpacity,
-            pointerEvents: "none",
-          }}
-        />
-      )}
+      {hasBg &&
+        imageUrls.map((url, i) => (
+          <div
+            key={url}
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${url}) center/cover no-repeat`,
+              backgroundBlendMode: backgroundBlendMode,
+              opacity: i === bgIndex ? backgroundOpacity : 0,
+              transition: `opacity ${backgroundTransition}s ease-in-out`,
+              pointerEvents: "none",
+            }}
+          />
+        ))}
       <div
         style={{
           position: "relative",
