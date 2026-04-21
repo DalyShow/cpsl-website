@@ -144,7 +144,7 @@ export function LogoTickerBlock({
                       objectFit: "contain",
                       display: "block",
                       filter:
-                        "drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35)) drop-shadow(0 11px 11px rgba(0, 0, 0, 0.31)) drop-shadow(0 25px 15px rgba(0, 0, 0, 0.18)) drop-shadow(0 44px 18px rgba(0, 0, 0, 0.05)) drop-shadow(0 69px 19px rgba(0, 0, 0, 0.01))",
+                        "drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45)) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.25))",
                     }}
                   />
                 </div>
