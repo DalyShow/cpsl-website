@@ -85,7 +85,7 @@ export function TopNav({
                   borderColor: i === activeIndex ? "#D4B949" : "transparent",
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 600,
-                  fontSize: "18px",
+                  fontSize: "14px",
                   textTransform: "uppercase",
                   letterSpacing: "0.11em",
                 }}
@@ -108,10 +108,34 @@ export function TopNav({
             </div>
           )}
 
+          <div className="hidden md:flex items-center relative">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4"
+              style={{ color: "#7A9BAA" }}
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              className="h-9 w-52 pl-8 pr-3 text-sm bg-transparent border outline-none focus:border-[#D4B949] placeholder:text-[#7A9BAA]"
+              style={{ borderColor: "#1E2D45", color: "white", borderRadius: "6px" }}
+            />
+          </div>
+
           <Link
             href={ctaHref || "#"}
-            className="hidden md:flex items-center px-4 py-2 rounded-none text-sm font-bold transition-all hover:opacity-90"
-            style={{ background: "#D4B949", color: "#041124", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 500, fontSize: "15px" }}
+            className="hidden md:flex items-center px-4 py-2 transition-all hover:opacity-90"
+            style={{ background: "#D4B949", color: "#041124", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "14px", letterSpacing: "0.04em", borderRadius: "6px" }}
           >
             {ctaLabel}
           </Link>
