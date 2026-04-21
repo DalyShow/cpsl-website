@@ -54,50 +54,49 @@ export function TopNav({
       className="fixed top-0 left-0 right-0 z-50 h-20"
       style={{ background: "#041124", borderBottom: "1px solid #1E2D45" }}
     >
-      <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto h-full grid grid-cols-[auto_1fr_auto] items-center px-4 sm:px-6">
 
-        {/* ── Logo + Desktop nav (grouped flush-left, matching design system) ── */}
-        <div className="flex items-center gap-8">
-          <Link
-            href="/"
-            className="flex items-center py-3 flex-shrink-0"
-            onClick={() => setActiveIndex(-1)}
-          >
-            <Image
-              src="/cpsl-horizontal.svg"
-              alt="CPSL"
-              width={148}
-              height={54}
-              unoptimized
-              priority
-            />
-          </Link>
+        {/* ── Logo ─────────────────────────────────────────────── */}
+        <Link
+          href="/"
+          className="flex items-center py-3 flex-shrink-0"
+          onClick={() => setActiveIndex(-1)}
+        >
+          <Image
+            src="/cpsl-horizontal.svg"
+            alt="CPSL"
+            width={148}
+            height={54}
+            unoptimized
+            priority
+          />
+        </Link>
 
-          <nav className="hidden md:flex gap-1">
-            {items.map((item, i) => (
-              <Link
-                key={item.label}
-                href={item.href || "#"}
-                onClick={() => setActiveIndex(i)}
-                className="px-4 py-4 border-b-2 transition-colors text-[#7A9BAA] hover:text-[#F4EFE6]"
-                style={{
-                  color: i === activeIndex ? "white" : undefined,
-                  borderColor: i === activeIndex ? "#D4B949" : "transparent",
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.11em",
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        {/* ── Centered nav ─────────────────────────────────────── */}
+        <nav className="hidden md:flex gap-1 justify-self-center">
+          {items.map((item, i) => (
+            <Link
+              key={item.label}
+              href={item.href || "#"}
+              onClick={() => setActiveIndex(i)}
+              className="px-4 py-4 border-b-2 transition-colors text-[#7A9BAA] hover:text-[#F4EFE6]"
+              style={{
+                color: i === activeIndex ? "white" : undefined,
+                borderColor: i === activeIndex ? "#D4B949" : "transparent",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 600,
+                fontSize: "14px",
+                textTransform: "uppercase",
+                letterSpacing: "0.11em",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-        {/* ── Right slot ───────────────────────────────────────────── */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* ── Right slot ───────────────────────────────────────── */}
+        <div className="flex items-center gap-2 sm:gap-3 justify-self-end">
           {showLive && (
             <div
               className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold"
@@ -108,34 +107,19 @@ export function TopNav({
             </div>
           )}
 
-          <div className="hidden md:flex items-center relative">
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4"
-              style={{ color: "#7A9BAA" }}
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
-            <input
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              className="h-9 w-52 pl-8 pr-3 text-sm bg-transparent border outline-none focus:border-[#D4B949] placeholder:text-[#7A9BAA]"
-              style={{ borderColor: "#1E2D45", color: "white", borderRadius: "6px" }}
-            />
-          </div>
-
           <Link
             href={ctaHref || "#"}
             className="hidden md:flex items-center px-4 py-2 transition-all hover:opacity-90"
-            style={{ background: "#D4B949", color: "#041124", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "14px", letterSpacing: "0.04em", borderRadius: "6px" }}
+            style={{
+              background: "#D4B949",
+              color: "#041124",
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              letterSpacing: "0.04em",
+              borderRadius: "6px",
+              textTransform: "uppercase",
+            }}
           >
             {ctaLabel}
           </Link>
