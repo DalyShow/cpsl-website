@@ -17,6 +17,7 @@ export const homePage = defineType({
         { type: "clubDirectoryBlock" },
         { type: "calendarDayViewBlock" },
         { type: "logoTickerBlock" },
+        { type: "subNavBlock" },
       ],
     }),
   ],

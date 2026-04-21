@@ -41,6 +41,7 @@ export const page = defineType({
         { type: "standingsBlock" },
         { type: "matchdayBlock" },
         { type: "logoTickerBlock" },
+        { type: "subNavBlock" },
       ],
     }),
   ],
