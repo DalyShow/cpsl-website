@@ -27,7 +27,7 @@ export interface LogoTickerBlockProps {
 export function LogoTickerBlock({
   heading,
   logos,
-  durationSeconds = 40,
+  durationSeconds = 80,
   reverse = false,
   pauseOnHover = true,
   edgeFade = true,
@@ -97,7 +97,8 @@ export function LogoTickerBlock({
           data-pause-on-hover={pauseOnHover ? "true" : "false"}
           data-scrolling={shouldScroll ? "true" : "false"}
           style={{
-            overflow: "hidden",
+            overflowX: "clip",
+            overflowY: "visible",
             width: "100%",
             ...maskStyle,
           }}

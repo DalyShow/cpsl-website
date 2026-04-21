@@ -30,7 +30,7 @@ export const logoTickerBlock = defineType({
       name: "durationSeconds",
       title: "Loop Duration (seconds)",
       type: "number",
-      initialValue: 40,
+      initialValue: 80,
       description: "Full loop time. Lower is faster.",
       validation: (R) => R.positive(),
     }),
