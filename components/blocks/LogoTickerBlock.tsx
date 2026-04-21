@@ -43,11 +43,11 @@ export function LogoTickerBlock({
     const vp = viewportRef.current;
     if (!vp) return;
 
-    const contentWidth =
-      items.length * TILE_SIZE + Math.max(0, items.length - 1) * GAP;
+    // Width of a single set as laid out in flex (with trailing gap — see below).
+    const singleSetWidth = items.length * TILE_SIZE + items.length * GAP;
 
     const check = () => {
-      setShouldScroll(contentWidth > vp.clientWidth);
+      setShouldScroll(singleSetWidth - GAP > vp.clientWidth);
     };
     check();
 
@@ -58,19 +58,19 @@ export function LogoTickerBlock({
 
   if (items.length === 0) return null;
 
-  // Duplicate items only when the row is wider than the viewport — this
-  // lets translateX(-50%) land on a seamless seam mid-loop.
+  // Duplicate items only when the row is wider than the viewport — the
+  // translation target is exactly one set's width so the second set lands
+  // where the first one started, producing a seamless loop regardless of
+  // the fractional math that plain `-50%` would introduce.
   const rendered = shouldScroll ? [...items, ...items] : items;
+  const repeatOffset = `${items.length * TILE_SIZE + items.length * GAP}px`;
 
-  const maskStyle: React.CSSProperties | undefined =
-    shouldScroll && edgeFade
-      ? {
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
-          maskImage:
-            "linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%)",
-        }
-      : undefined;
+  // Use the section background colour for the edge-fade overlays, falling
+  // back to the page background when the section is transparent.
+  const fadeColor =
+    !sectionBackground || sectionBackground === "transparent"
+      ? "var(--bg-page)"
+      : sectionBackground;
 
   return (
     <section style={{ background: sectionBackground, padding: "16px 0" }}>
@@ -97,10 +97,10 @@ export function LogoTickerBlock({
           data-pause-on-hover={pauseOnHover ? "true" : "false"}
           data-scrolling={shouldScroll ? "true" : "false"}
           style={{
+            position: "relative",
             overflowX: "clip",
             overflowY: "visible",
             width: "100%",
-            ...maskStyle,
           }}
         >
           <div
@@ -114,6 +114,8 @@ export function LogoTickerBlock({
                 ? `cpsl-ticker-scroll ${durationSeconds}s linear infinite`
                 : "none",
               animationDirection: reverse ? "reverse" : "normal",
+              // Consumed by the keyframes below for an exact, seamless reset.
+              ["--cpsl-ticker-repeat" as string]: repeatOffset,
             }}
           >
             {rendered.map((logo, i) => {
@@ -150,10 +152,41 @@ export function LogoTickerBlock({
             })}
           </div>
 
+          {edgeFade && shouldScroll && (
+            <>
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  width: 96,
+                  background: `linear-gradient(to right, ${fadeColor}, transparent)`,
+                  pointerEvents: "none",
+                  zIndex: 1,
+                }}
+              />
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  right: 0,
+                  width: 96,
+                  background: `linear-gradient(to left, ${fadeColor}, transparent)`,
+                  pointerEvents: "none",
+                  zIndex: 1,
+                }}
+              />
+            </>
+          )}
+
           <style>{`
             @keyframes cpsl-ticker-scroll {
               from { transform: translate3d(0, 0, 0); }
-              to   { transform: translate3d(-50%, 0, 0); }
+              to   { transform: translate3d(calc(-1 * var(--cpsl-ticker-repeat)), 0, 0); }
             }
             .cpsl-logo-ticker[data-pause-on-hover="true"][data-scrolling="true"]:hover .cpsl-logo-ticker__track {
               animation-play-state: paused;
