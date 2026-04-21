@@ -46,6 +46,9 @@ export function HeroBlock({
     <section
       style={{
         position: "relative",
+        // Fill the viewport below the fixed nav (80px) and the logo ticker
+        // section above it (≈78px) so the background image shows in full.
+        minHeight: "calc(100vh - 158px)",
         padding: "96px 24px",
         display: "flex",
         alignItems: "center",
