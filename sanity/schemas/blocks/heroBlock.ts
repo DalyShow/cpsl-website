@@ -20,6 +20,14 @@ export const heroBlock = defineType({
       ],
     }),
     defineField({
+      name: "backgroundOpacity",
+      title: "Background Image Opacity",
+      type: "number",
+      initialValue: 1,
+      description: "0 = fully transparent, 1 = fully opaque. Only affects the image layer — text stays crisp.",
+      validation: (R) => R.min(0).max(1),
+    }),
+    defineField({
       name: "backgroundBlendMode",
       title: "Background Blend Mode",
       type: "string",

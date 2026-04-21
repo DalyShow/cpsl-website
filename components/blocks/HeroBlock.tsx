@@ -19,6 +19,7 @@ interface HeroBlockProps {
     alt?: string;
   };
   backgroundBlendMode?: string;
+  backgroundOpacity?: number;
   image?: {
     asset?: { url?: string };
     alt?: string;
@@ -35,6 +36,7 @@ export function HeroBlock({
   ctaHref    = "#contact",
   backgroundImage,
   backgroundBlendMode = "normal",
+  backgroundOpacity = 1,
   image,
   lottie,
   mediaMaxWidth = 320,
@@ -58,12 +60,23 @@ export function HeroBlock({
         alignItems: "center",
         justifyContent: "center",
         zIndex: 0,
-        background: bgImageUrl
-          ? `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${bgImageUrl}) center/cover no-repeat`
-          : "#041124",
-        backgroundBlendMode: bgImageUrl ? backgroundBlendMode : undefined,
+        background: "#041124",
+        overflow: "hidden",
       }}
     >
+      {bgImageUrl && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${bgImageUrl}) center/cover no-repeat`,
+            backgroundBlendMode: backgroundBlendMode,
+            opacity: backgroundOpacity,
+            pointerEvents: "none",
+          }}
+        />
+      )}
       <div
         style={{
           position: "relative",
