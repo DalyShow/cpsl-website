@@ -52,18 +52,6 @@ export function HeroBlock({
         }}
       />
 
-      {/* Gold diagonal accent line — echoes the NC/SC border motif */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "3px",
-          background: "#D4B949",
-        }}
-      />
-
       <div
         style={{
           position: "relative",
