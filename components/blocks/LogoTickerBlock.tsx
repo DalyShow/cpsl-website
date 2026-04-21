@@ -73,7 +73,7 @@ export function LogoTickerBlock({
       : sectionBackground;
 
   return (
-    <section style={{ background: sectionBackground, padding: "16px 0" }}>
+    <section style={{ background: sectionBackground, padding: "16px 0", position: "relative", zIndex: 2 }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {heading && (
           <h2

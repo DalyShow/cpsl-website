@@ -18,6 +18,7 @@ interface HeroBlockProps {
     asset?: { url?: string };
     alt?: string;
   };
+  backgroundBlendMode?: string;
   image?: {
     asset?: { url?: string };
     alt?: string;
@@ -33,6 +34,7 @@ export function HeroBlock({
   ctaLabel   = "Join Our League",
   ctaHref    = "#contact",
   backgroundImage,
+  backgroundBlendMode = "normal",
   image,
   lottie,
   mediaMaxWidth = 320,
@@ -46,16 +48,20 @@ export function HeroBlock({
     <section
       style={{
         position: "relative",
-        // Fill the viewport below the fixed nav (80px) and the logo ticker
-        // section above it (≈78px) so the background image shows in full.
-        minHeight: "calc(100vh - 158px)",
-        padding: "96px 24px",
+        // Pull up behind the logo ticker (≈78 px tall) so the background
+        // image extends under it. Extra top padding keeps the content
+        // positioned as if the hero started below the ticker.
+        marginTop: "-78px",
+        padding: "174px 24px 96px",
+        minHeight: "calc(100vh - 80px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        zIndex: 0,
         background: bgImageUrl
           ? `linear-gradient(to bottom, rgba(9,22,40,0.72) 0%, rgba(9,22,40,0.55) 60%, rgba(9,22,40,0.80) 100%), url(${bgImageUrl}) center/cover no-repeat`
           : "#041124",
+        backgroundBlendMode: bgImageUrl ? backgroundBlendMode : undefined,
       }}
     >
       <div
