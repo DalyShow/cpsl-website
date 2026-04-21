@@ -146,22 +146,24 @@ export function HeroBlock({
           </p>
         )}
 
-        {/* CTA */}
+        {/* CTA — matches the primary button in the nav */}
         {ctaLabel && (
           <a
             href={ctaHref || "#"}
             style={{
-              display: "inline-block",
-              padding: "14px 36px",
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "8px 16px",
               background: "#D4B949",
               color: "#041124",
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 700,
-              fontSize: "17px",
+              fontSize: "14px",
               letterSpacing: "0.04em",
               textTransform: "uppercase",
               textDecoration: "none",
-              transition: "background 0.15s",
+              borderRadius: "6px",
+              transition: "opacity 0.15s",
             }}
           >
             {ctaLabel}
