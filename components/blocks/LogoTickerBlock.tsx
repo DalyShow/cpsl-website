@@ -4,8 +4,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Uploaded assets are 2x for retina; tile scaled to 80% of the half-size display.
-const TILE_SIZE = 46;
+// Tile scaled down to match the hero's proportions.
+const TILE_SIZE = 37;
 const GAP = 30;
 
 interface TickerLogo {
