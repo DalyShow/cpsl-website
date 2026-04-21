@@ -16,22 +16,13 @@ export const logoTickerBlock = defineType({
       title: "Logos",
       type: "array",
       description:
-        "Drag and drop multiple files at once to bulk-upload. Each tile is 115 × 115 px with a 30 px gap.",
+        "Drag and drop multiple files at once to bulk-upload. For accessibility, set the asset's alt text from the image details panel after upload.",
       of: [
         {
           type: "image",
           options: {
             accept: "image/svg+xml,image/png,image/webp,image/jpeg",
           },
-          fields: [
-            defineField({
-              name: "altText",
-              title: "Alt Text",
-              type: "string",
-              description:
-                "Accessible name — typically the club or brand name. Optional.",
-            }),
-          ],
         },
       ],
     }),
