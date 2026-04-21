@@ -15,8 +15,6 @@ export interface LogoTickerBlockProps {
   reverse?: boolean;
   pauseOnHover?: boolean;
   edgeFade?: boolean;
-  tileBackground?: string;
-  tileBorderColor?: string;
   sectionBackground?: string;
 }
 
@@ -27,9 +25,7 @@ export function LogoTickerBlock({
   reverse = false,
   pauseOnHover = true,
   edgeFade = true,
-  tileBackground = "#FFFFFF",
-  tileBorderColor = "#E2E8F0",
-  sectionBackground = "#FFFFFF",
+  sectionBackground = "transparent",
 }: LogoTickerBlockProps) {
   const items = (logos ?? []).filter((l) => l?.asset?.url);
   if (items.length === 0) return null;
@@ -47,94 +43,91 @@ export function LogoTickerBlock({
     : undefined;
 
   return (
-    <section style={{ background: sectionBackground, padding: "64px 0" }}>
-      {heading && (
-        <h2
-          style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontWeight: 700,
-            fontSize: 28,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            textAlign: "center",
-            margin: "0 0 32px",
-            color: "#091628",
-          }}
-        >
-          {heading}
-        </h2>
-      )}
+    <section style={{ background: sectionBackground, padding: "16px 0" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {heading && (
+          <h2
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 700,
+              fontSize: 20,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              margin: "0 0 16px",
+              color: "inherit",
+            }}
+          >
+            {heading}
+          </h2>
+        )}
 
-      <div
-        className="cpsl-logo-ticker"
-        data-pause-on-hover={pauseOnHover ? "true" : "false"}
-        style={{
-          overflow: "hidden",
-          width: "100%",
-          ...maskStyle,
-        }}
-      >
         <div
-          className="cpsl-logo-ticker__track"
+          className="cpsl-logo-ticker"
+          data-pause-on-hover={pauseOnHover ? "true" : "false"}
           style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 30,
-            width: "max-content",
-            animation: `cpsl-ticker-scroll ${durationSeconds}s linear infinite`,
-            animationDirection: reverse ? "reverse" : "normal",
+            overflow: "hidden",
+            width: "100%",
+            ...maskStyle,
           }}
         >
-          {loop.map((logo, i) => {
-            const url = logo.asset?.url ?? "";
-            const isClone = i >= items.length;
-            return (
-              <div
-                key={`${logo._key ?? i}-${i}`}
-                aria-hidden={isClone}
-                style={{
-                  flexShrink: 0,
-                  width: 115,
-                  height: 115,
-                  background: tileBackground,
-                  border: `1px solid ${tileBorderColor}`,
-                  borderRadius: 16,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: 16,
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={url}
-                  alt={isClone ? "" : (logo.altText ?? "")}
+          <div
+            className="cpsl-logo-ticker__track"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 30,
+              width: "max-content",
+              animation: `cpsl-ticker-scroll ${durationSeconds}s linear infinite`,
+              animationDirection: reverse ? "reverse" : "normal",
+            }}
+          >
+            {loop.map((logo, i) => {
+              const url = logo.asset?.url ?? "";
+              const isClone = i >= items.length;
+              return (
+                <div
+                  key={`${logo._key ?? i}-${i}`}
+                  aria-hidden={isClone}
                   style={{
-                    maxWidth: "100%",
-                    maxHeight: "100%",
-                    objectFit: "contain",
-                    display: "block",
+                    flexShrink: 0,
+                    width: 115,
+                    height: 115,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
-                />
-              </div>
-            );
-          })}
-        </div>
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={url}
+                    alt={isClone ? "" : (logo.altText ?? "")}
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                      display: "block",
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
 
-        <style>{`
-          @keyframes cpsl-ticker-scroll {
-            from { transform: translate3d(0, 0, 0); }
-            to   { transform: translate3d(-50%, 0, 0); }
-          }
-          .cpsl-logo-ticker[data-pause-on-hover="true"]:hover .cpsl-logo-ticker__track {
-            animation-play-state: paused;
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .cpsl-logo-ticker__track {
-              animation: none !important;
+          <style>{`
+            @keyframes cpsl-ticker-scroll {
+              from { transform: translate3d(0, 0, 0); }
+              to   { transform: translate3d(-50%, 0, 0); }
             }
-          }
-        `}</style>
+            .cpsl-logo-ticker[data-pause-on-hover="true"]:hover .cpsl-logo-ticker__track {
+              animation-play-state: paused;
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .cpsl-logo-ticker__track {
+                animation: none !important;
+              }
+            }
+          `}</style>
+        </div>
       </div>
     </section>
   );

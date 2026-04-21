@@ -62,24 +62,11 @@ export const logoTickerBlock = defineType({
       initialValue: true,
     }),
     defineField({
-      name: "tileBackground",
-      title: "Tile Background Hex",
-      type: "string",
-      initialValue: "#FFFFFF",
-      description: "Background colour of each 115 × 115 tile.",
-    }),
-    defineField({
-      name: "tileBorderColor",
-      title: "Tile Border Hex",
-      type: "string",
-      initialValue: "#E2E8F0",
-    }),
-    defineField({
       name: "sectionBackground",
       title: "Section Background Hex",
       type: "string",
-      initialValue: "#FFFFFF",
-      description: "The surface the ticker sits on. Use #091628 for dark navy.",
+      initialValue: "transparent",
+      description: "The surface the ticker sits on. Leave 'transparent' to inherit from the page.",
     }),
   ],
   preview: {
