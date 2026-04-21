@@ -51,7 +51,7 @@ export default async function DynamicPage({
             bottomImage{ ..., asset->{ url } },
             lottie{ ..., asset->{ url } },
             bottomLottie{ ..., asset->{ url } },
-            logos[]{ ..., image{ ..., asset->{ url } } }
+            logos[]{ ..., asset->{ url } }
           }
         }`,
       { slug: pageSlug, parentSlug }

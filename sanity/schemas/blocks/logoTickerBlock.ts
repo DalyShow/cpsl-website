@@ -15,34 +15,23 @@ export const logoTickerBlock = defineType({
       name: "logos",
       title: "Logos",
       type: "array",
-      description: "Drag to reorder. Each tile is 115 × 115 px with a 30 px gap.",
+      description:
+        "Drag and drop multiple files at once to bulk-upload. Each tile is 115 × 115 px with a 30 px gap.",
       of: [
         {
-          type: "object",
-          name: "tickerLogo",
-          title: "Logo",
+          type: "image",
+          options: {
+            accept: "image/svg+xml,image/png,image/webp,image/jpeg",
+          },
           fields: [
-            defineField({
-              name: "image",
-              title: "Logo Image",
-              type: "image",
-              options: { accept: "image/svg+xml,image/png,image/webp,image/jpeg" },
-              validation: (R) => R.required(),
-            }),
             defineField({
               name: "altText",
               title: "Alt Text",
               type: "string",
-              description: "Accessible name — typically the club or brand name.",
+              description:
+                "Accessible name — typically the club or brand name. Optional.",
             }),
           ],
-          preview: {
-            select: { title: "altText", media: "image" },
-            prepare: ({ title, media }: { title?: string; media?: unknown }) => ({
-              title: title || "Logo",
-              media: media as undefined,
-            }),
-          },
         },
       ],
     }),

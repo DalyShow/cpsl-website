@@ -30,7 +30,7 @@ export default async function Home() {
           bottomImage{ ..., asset->{ url } },
           lottie{ ..., asset->{ url } },
           bottomLottie{ ..., asset->{ url } },
-          logos[]{ ..., image{ ..., asset->{ url } } }
+          logos[]{ ..., asset->{ url } }
         }
       }`
     ),

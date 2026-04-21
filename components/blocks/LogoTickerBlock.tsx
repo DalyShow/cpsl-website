@@ -4,7 +4,7 @@
 
 interface TickerLogo {
   _key?: string;
-  image?: { asset?: { url?: string } };
+  asset?: { url?: string };
   altText?: string;
 }
 
@@ -31,7 +31,7 @@ export function LogoTickerBlock({
   tileBorderColor = "#E2E8F0",
   sectionBackground = "#FFFFFF",
 }: LogoTickerBlockProps) {
-  const items = (logos ?? []).filter((l) => l?.image?.asset?.url);
+  const items = (logos ?? []).filter((l) => l?.asset?.url);
   if (items.length === 0) return null;
 
   // Duplicate the list so translateX(-50%) lands on a seamless seam.
@@ -86,7 +86,7 @@ export function LogoTickerBlock({
           }}
         >
           {loop.map((logo, i) => {
-            const url = logo.image?.asset?.url ?? "";
+            const url = logo.asset?.url ?? "";
             const isClone = i >= items.length;
             return (
               <div
